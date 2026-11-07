@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#142843">
+  <meta name="description" content="Tus ligas de fútbol, resultados y estadísticas en una misma vista.">
+  <title>Mis Ligas · Resultados y estadísticas</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir a los resultados</a>
+  <aside class="sidebar" aria-label="Navegación por liga">
+    <a class="brand" href="/" aria-label="Mis Ligas, inicio"><span class="brand-mark" aria-hidden="true">M<span>·</span></span><span>MIS LIGAS<small>Tu archivo de fútbol</small></span></a>
+    <div class="sidebar-section">TUS COMPETICIONES</div>
+    <nav id="league-nav" class="league-nav" aria-label="Ligas"><div class="nav-loading">Cargando ligas…</div></nav>
+    <div class="sidebar-card"><span class="small-ball" aria-hidden="true">◉</span><strong>El partido sigue aquí</strong><p>Historial, resultados y tus estadísticas, temporada a temporada.</p><span class="archive-tag">España + Colombia</span></div>
+    <div class="sidebar-bottom"><span class="status-dot" aria-hidden="true"></span><span>Tu espacio de estadísticas</span></div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><div class="breadcrumb">Mi archivo <span>/</span> <strong id="breadcrumb-league">Resultados</strong></div><div class="topbar-label"><span class="status-dot" aria-hidden="true"></span>DATOS REALES · HISTORIAL CONSERVADO</div></header>
+    <main id="main" tabindex="-1">
+      <section class="page-heading" aria-labelledby="page-title"><div><div class="eyebrow">EL JUEGO, EN NÚMEROS</div><h1 id="page-title">Resultados y estadísticas</h1><p id="page-description">Cargando tu archivo de partidos…</p></div><div class="heading-actions"><a id="export-link" class="button button-secondary" href="#" aria-disabled="true"><span aria-hidden="true">↓</span> Descargar Excel</a><button id="sync-button" class="button button-primary" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M6.1 7a7 7 0 0 1 11.6-1L20 9M4 15l2.3 3A7 7 0 0 0 18 17"/></svg><span>Actualizar datos</span></button></div></section>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <form id="filters" class="filter-panel" aria-label="Filtrar partidos">
+        <label>Temporada<select id="season-select" name="season" disabled><option>Cargando…</option></select></label>
+        <label>Tramo / torneo<select id="scope-select" name="scope" disabled><option value="all">Temporada completa</option></select></label>
+        <label class="team-filter">Equipo<select id="team-select" name="team" disabled><option value="all">Todos los equipos</option></select></label>
+        <label>Condición<select id="condition-select" name="condition"><option value="all">Local y visitante</option><option value="home">Como local</option><option value="away">Como visitante</option></select></label>
+        <button type="button" id="reset-button" class="reset-button" title="Restablecer filtros" aria-label="Restablecer filtros">↺</button>
+      </form>
+      <p id="scope-note" class="scope-note" role="note" hidden></p>
+      <div class="section-caption"><span id="active-filter-label">TU TEMPORADA DE UN VISTAZO</span><span id="data-timestamp">Comprobando datos…</span></div>
+      <section id="kpi-grid" class="kpi-grid" aria-label="Indicadores de la selección" aria-busy="true"></section>
+      <section id="team-summary" class="panel team-summary" aria-label="Estadísticas propias del equipo" hidden></section>
+      <section class="analytics-grid" aria-label="Estadísticas y frecuencia">
+        <article class="panel result-panel"><div class="panel-heading"><div><h2>Así terminan los partidos</h2><p>Victorias locales, empates y visitantes</p></div><span class="subtle-pill">FT</span></div><div id="outcome-chart" class="outcome-chart"></div><div id="outcome-legend" class="outcome-legend"></div></article>
+        <article class="panel frequency-panel"><div class="panel-heading"><div><h2>¿Cada cuánto marcan ambos?</h2><p>Frecuencia histórica en la selección</p></div><span class="mini-trend" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4 17 7-7 4 4 5-9M15 5h5v5"/></svg></span></div><div id="frequency-content" class="frequency-content"></div><p class="micro-copy">Los intervalos describen lo ocurrido; no predicen el próximo partido.</p></article>
+        <article class="panel score-panel"><div class="panel-heading"><div><h2>Marcadores habituales</h2><p>Los tres resultados más repetidos</p></div><span class="subtle-pill">TOP 3</span></div><div id="scorelines-content" class="scorelines-content"></div></article>
+      </section>
+      <section class="panel forecast-panel" aria-labelledby="forecast-title">
+        <div class="panel-heading"><div><h2 id="forecast-title">Próximos partidos · ambos marcan en HT</h2><p id="forecast-context">Referencia de la liga · todos los equipos · hora de Colombia</p></div><span class="subtle-pill">ESTIMACIÓN</span></div>
+        <div id="forecast-content" class="forecast-content" aria-live="polite"><p class="forecast-empty">Consultando el calendario y la muestra histórica…</p></div>
+      </section>
+      <section class="panel matches-panel" aria-labelledby="matches-title"><div class="matches-heading"><div><div class="title-with-count"><h2 id="matches-title">Todos los partidos</h2><span id="match-count" class="count-badge">—</span></div><p>Verde: ambos equipos marcaron en el primer tiempo.</p></div><div class="table-controls"><label class="visually-hidden" for="status-select">Estado del partido</label><select id="status-select"><option value="all">Todos los estados</option><option value="finished">Finalizados</option><option value="scheduled">Por jugar</option><option value="live">En juego</option><option value="postponed">Aplazados</option></select><label class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><span class="visually-hidden">Buscar un equipo</span><input id="search-input" type="search" placeholder="Buscar un equipo…" autocomplete="off" maxlength="100"></label></div></div>
+        <div class="order-toolbar"><div class="order-toggle" role="group" aria-label="Orden de los partidos"><button type="button" id="order-round" data-order="round" aria-pressed="true">Por jornada</button><button type="button" id="order-chronological" data-order="chronological" aria-pressed="false">Por fecha y hora</button></div><p id="order-note">Se conserva el orden de las jornadas del archivo.</p></div>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Lista de partidos; desplaza horizontalmente para ver todas las columnas"><table id="matches-table"><thead><tr><th scope="col" class="number-column">N.º</th><th scope="col">Fecha · hora COL</th><th scope="col">Jornada / fase</th><th scope="col" class="fixture-column">Partido</th><th scope="col">HT</th><th scope="col">FT</th><th scope="col">Córners</th><th scope="col" class="cards-column">Amarillas</th><th scope="col" class="cards-column">Rojas</th><th scope="col">Estado</th></tr></thead><tbody id="matches-body"><tr><td colspan="10" class="table-empty">Cargando partidos…</td></tr></tbody></table></div>
+        <div class="table-footer"><span id="pagination-label">Cargando…</span><div class="pagination"><button id="previous-page" class="page-button" aria-label="Página anterior" disabled>←</button><span id="page-label">—</span><button id="next-page" class="page-button" aria-label="Página siguiente" disabled>→</button></div></div>
+      </section>
+      <footer class="page-footer"><p id="update-mode">Las actualizaciones y su cobertura se indican al consultar la fuente.</p><p><a id="history-link" href="#" aria-disabled="true">Descargar archivo histórico</a><span>·</span><span>N/D = dato pendiente; no equivale a cero.</span></p></footer>
+    </main>
+  </div>
+</body>
+</html>
