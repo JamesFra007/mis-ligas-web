@@ -27,11 +27,12 @@ jobs:
     outputs:
       pages_enabled: ${{ steps.pages-status.outputs.enabled }}
     env:
-      LIGAS_DATA_DIR: ${{ runner.temp }}/mis-ligas-db
       LIGAS_AUTO_UPDATE: '0'
     steps:
       - name: Descargar la versión guardada
         uses: actions/checkout@v4
+      - name: Configurar almacenamiento temporal
+        run: echo "LIGAS_DATA_DIR=${RUNNER_TEMP}/mis-ligas-db" >> "$GITHUB_ENV"
       - name: Preparar Python
         uses: actions/setup-python@v5
         with:
