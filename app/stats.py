@@ -1,6 +1,7 @@
 """Statistics computed only from finished, played matches and known observations."""
 from collections import Counter
 from statistics import mean
+from .leagues import LEAGUES
 
 
 def avg(values):
@@ -39,8 +40,8 @@ def summarize(games, team='all'):
     yellow = [g['yellow'] for g in ft if g.get('yellow') is not None]
     red = [g['red'] for g in ft if g.get('red') is not None]
     outcomes = Counter('1' if g['ft_home'] > g['ft_away'] else '2' if g['ft_home'] < g['ft_away'] else 'X' for g in ft)
-    unresolved = sum(not known(pair(g,'ht')) or not known(pair(g,'ft')) or g.get('corners') is None or (g['league']=='spain' and (g.get('yellow') is None or g.get('red') is None)) for g in eligible)
-    summary = {'total': len(games), 'finished': len(ft), 'scheduled':sum(g['status']=='scheduled' for g in games), 'live':sum(g['status']=='live' for g in games), 'excluded':sum(bool(g.get('administrative')) for g in games), 'ht_base':len(ht), 'ht_cases':h, 'ht_rate':rate(h,len(ht)), 'ht_every':len(ht)/h if h else None, 'ft_base':len(ft), 'ft_cases':f, 'ft_rate':rate(f,len(ft)), 'ft_every':len(ft)/f if f else None, 'goals_ht_average':avg([sum(pair(g,'ht')) for g in ht]), 'goals_ft_average':avg([sum(pair(g,'ft')) for g in ft]), 'corners_average':avg(corners), 'corners_base':len(corners), 'corners_missing':len(ft)-len(corners), 'yellow_average':avg(yellow), 'yellow_base':len(yellow), 'red_average':avg(red), 'red_base':len(red), 'red_match_rate':rate(sum(r>0 for r in red),len(red)), 'red_matches':sum(r>0 for r in red), 'yellow_total':sum(yellow) if yellow else None, 'red_total':sum(red) if red else None, 'home_wins':outcomes['1'], 'draws':outcomes['X'], 'away_wins':outcomes['2'], 'unresolved':unresolved}
+    unresolved = sum(not known(pair(g,'ht')) or not known(pair(g,'ft')) or (LEAGUES.get(g['league'],{}).get('corners',True) and g.get('corners') is None) or (LEAGUES.get(g['league'],{}).get('cards',False) and (g.get('yellow') is None or g.get('red') is None)) for g in eligible)
+    summary = {'total': len(games), 'finished': len(ft), 'scheduled':sum(g['status']=='scheduled' for g in games), 'live':sum(g['status']=='live' for g in games), 'excluded':sum(bool(g.get('administrative')) for g in games), 'ht_base':len(ht), 'ht_cases':h, 'ht_rate':rate(h,len(ht)), 'ht_every':len(ht)/h if h else None, 'ft_base':len(ft), 'ft_cases':f, 'ft_rate':rate(f,len(ft)), 'ft_every':len(ft)/f if f else None, 'goals_ht_average':avg([sum(pair(g,'ht')) for g in ht]), 'goals_ft_average':avg([sum(pair(g,'ft')) for g in ft]), 'corners_average':avg(corners), 'corners_base':len(corners), 'corners_missing':sum(LEAGUES.get(g['league'],{}).get('corners',True) and g.get('corners') is None for g in ft), 'yellow_average':avg(yellow), 'yellow_base':len(yellow), 'red_average':avg(red), 'red_base':len(red), 'red_match_rate':rate(sum(r>0 for r in red),len(red)), 'red_matches':sum(r>0 for r in red), 'yellow_total':sum(yellow) if yellow else None, 'red_total':sum(red) if red else None, 'home_wins':outcomes['1'], 'draws':outcomes['X'], 'away_wins':outcomes['2'], 'unresolved':unresolved}
     scorelines = {}
     for period, items in [('ht',ht),('ft',ft)]:
         counts=Counter(pair(g,period) for g in items)

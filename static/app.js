@@ -14,6 +14,8 @@
   const currentLeague = () => meta?.leagues?.find(league => league.id === state.league);
   const currentSeason = () => currentLeague()?.seasons?.find(season => String(season.id) === state.season);
   const hasCards = () => Boolean(currentLeague()?.cards);
+  const hasCorners = () => currentLeague()?.corners !== false;
+  const visibleColumnCount = () => 7 + (hasCorners() ? 1 : 0) + (hasCards() ? 2 : 0);
   const query = () => {const params = new URLSearchParams(); Object.entries(state).forEach(([key, value]) => {if (value !== '') params.set(key, String(value));}); return params;};
   const safeCount = value => Number.isFinite(Number(value)) ? Number(value) : 0;
   const isOffline = () => meta?.mode === 'offline' || Boolean(meta?.offline);
@@ -67,7 +69,7 @@
     leagues.forEach(item => {
       const button = element('button', 'league-button' + (item.id === state.league ? ' active' : ''));
       button.type = 'button'; button.setAttribute('aria-pressed', String(item.id === state.league));
-      button.append(element('span', 'league-flag', item.id === 'colombia' ? '🇨🇴' : '🇪🇸'));
+      button.append(element('span', 'league-flag', item.flag || ({spain: '🇪🇸', colombia: '🇨🇴', hungary: '🇭🇺'}[item.id] || '⚽')));
       const label = element('span'); label.append(element('strong', '', item.name), element('small', '', item.country));
       button.append(label, element('span', 'league-chevron', '›'));
       button.addEventListener('click', () => changeLeague(item.id)); $('league-nav').append(button);
@@ -75,6 +77,8 @@
     setOptions($('season-select'), (league?.seasons || []).map(season => ({id: season.id, label: season.label})), state.season);
     $('breadcrumb-league').textContent = league?.name || 'Resultados';
     document.body.classList.toggle('hide-cards', !hasCards());
+    document.body.classList.toggle('hide-corners', !hasCorners());
+    $('archive-tag').textContent = leagues.map(item => item.country || item.name).join(' · ');
     $('history-link').href = '/api/history.xlsx?' + new URLSearchParams({league: state.league});
     $('history-link').removeAttribute('aria-disabled');
     $('sync-button').disabled = syncing || isOffline();
@@ -138,19 +142,20 @@
     const n = summary || {};
     const cards = [
       kpi('Ambos marcan · HT', percent(n.ht_rate), `${integer(n.ht_cases)} de ${integer(n.ht_base)} partidos con HT`, 'green', '↗', true),
-      kpi('Ambos marcan · FT', percent(n.ft_rate), `${integer(n.ft_cases)} de ${integer(n.ft_base)} partidos con FT`, 'purple', '⇄'),
-      kpi('Córners por partido', average(n.corners_average), `Total de ambos · ${integer(n.corners_base)} con dato`, 'gold', '⚑'),
-      kpi('Goles por partido · FT', average(n.goals_ft_average), 'Promedio al finalizar el partido', 'blue', '◎'),
-      kpi('Goles por partido · HT', average(n.goals_ht_average), 'Promedio al descanso', 'teal', '◷')
+      kpi('Ambos marcan · FT', percent(n.ft_rate), `${integer(n.ft_cases)} de ${integer(n.ft_base)} partidos con FT`, 'purple', '⇄')
     ];
+    if (hasCorners()) cards.push(kpi('Córners por partido', average(n.corners_average), `Total de ambos · ${integer(n.corners_base)} con dato`, 'gold', '⚑'));
+    cards.push(kpi('Goles por partido · FT', average(n.goals_ft_average), 'Promedio al finalizar el partido', 'blue', '◎'));
+    cards.push(kpi('Goles por partido · HT', average(n.goals_ht_average), 'Promedio al descanso', 'teal', '◷'));
     if (hasCards()) {
       cards.push(kpi('Amarillas por partido', average(n.yellow_average), `${integer(n.yellow_total)} tarjetas · ${integer(n.yellow_base)} con dato`, 'gold', '▯'));
       cards.push(kpi('Partidos con roja', percent(n.red_match_rate), `${integer(n.red_matches)} partidos · media ${average(n.red_average)} rojas`, 'red', '▯'));
     } else {
-      cards.push(kpi('Córners pendientes', integer(n.corners_missing), 'Los datos ausentes no cuentan como cero', 'gold', '⚑'));
+      if (hasCorners()) cards.push(kpi('Córners pendientes', integer(n.corners_missing), 'Los datos ausentes no cuentan como cero', 'gold', '⚑'));
       cards.push(kpi('Partidos por jugar', integer(safeCount(n.scheduled) + safeCount(n.live)), `${integer(n.live)} en juego · ${integer(n.scheduled)} programados`, 'blue', '◷'));
     }
     cards.push(kpi('Partidos analizados', integer(n.finished), n.excluded ? `${integer(n.excluded)} administrativos fuera del análisis` : 'Finalizados con resultado deportivo', 'teal', '✓'));
+    $('kpi-grid').classList.toggle('compact-kpis', cards.length === 6);
     $('kpi-grid').replaceChildren(...cards); $('kpi-grid').setAttribute('aria-busy', 'false');
   }
   function svgNode(tag, attributes, text) {
@@ -301,7 +306,7 @@
   function renderTeam(team) {
     const root = $('team-summary'); root.replaceChildren(); root.hidden = !team;
     if (!team) return;
-    const title = element('div', 'team-summary-title'); title.append(element('strong', '', team.team), element('span', '', 'Rendimiento y tarjetas propias')); root.append(title);
+    const title = element('div', 'team-summary-title'); title.append(element('strong', '', team.team), element('span', '', hasCards() ? 'Rendimiento y tarjetas propias' : 'Rendimiento del equipo')); root.append(title);
     const fields = [['PJ', integer(team.pj)], ['G / E / P', `${integer(team.wins)} / ${integer(team.draws)} / ${integer(team.losses)}`], ['GF / GC', `${integer(team.gf)} / ${integer(team.ga)}`]];
     fields.forEach(([label, value]) => {const item = element('div', 'team-stat'); item.append(element('strong', '', value), document.createTextNode(label)); root.append(item);});
     if (hasCards()) {
@@ -312,7 +317,7 @@
     const root = $('matches-body'); root.replaceChildren(); const paginationData = pagination || {page: 1, page_size: state.page_size, total: 0, pages: 1};
     const total = safeCount(paginationData.total); const page = safeCount(paginationData.page) || 1; const pages = Math.max(1, safeCount(paginationData.pages));
     $('match-count').textContent = integer(total);
-    if (!games?.length) {const row = element('tr'); const cell = element('td', 'table-empty', 'No hay partidos con estos filtros. Prueba otra selección o pulsa «Actualizar datos» para consultar la fuente.'); cell.colSpan = 10; row.append(cell); root.append(row);}
+    if (!games?.length) {const row = element('tr'); const cell = element('td', 'table-empty', 'No hay partidos con estos filtros. Prueba otra selección o pulsa «Actualizar datos» para consultar la fuente.'); cell.colSpan = visibleColumnCount(); row.append(cell); root.append(row);}
     const statusNames = {finished: 'Finalizado', scheduled: 'Por jugar', live: 'En juego', postponed: 'Aplazado', cancelled: 'Cancelado', suspended: 'Suspendido'};
     (games || []).forEach((game, index) => {
       const row = element('tr');
@@ -327,12 +332,16 @@
       const fixture = element('td', 'fixture-cell'); fixture.append(element('strong', '', game.home), element('span', 'versus', 'vs'), element('strong', '', game.away));
       if (game.administrative) {fixture.append(element('span', 'secondary-text', 'Resultado administrativo · fuera del análisis')); if (game.administrative_reason) fixture.title = game.administrative_reason;}
       const ht = scoreCell(game.ht_home, game.ht_away); const ft = scoreCell(game.ft_home, game.ft_away, true);
-      const corners = element('td', 'corners-value', game.corners === null || game.corners === undefined ? 'N/D' : integer(game.corners));
-      if (game.corners === null || game.corners === undefined) corners.title = 'Dato pendiente';
       const highlighted = Boolean(game.btts_ht) && !game.administrative;
-      const greenCells = [numberCell, date, phase, fixture, ht, ft, corners];
+      const greenCells = [numberCell, date, phase, fixture, ht, ft];
+      if (hasCorners()) {
+        const corners = element('td', 'corners-value corners-column', game.corners === null || game.corners === undefined ? 'N/D' : integer(game.corners));
+        if (game.corners === null || game.corners === undefined) corners.title = 'Dato pendiente';
+        greenCells.push(corners);
+      }
       if (highlighted) greenCells.forEach(cell => cell.classList.add('btts-cell'));
-      row.append(...greenCells, cardCell(game.yellow), cardCell(game.red, true));
+      row.append(...greenCells);
+      if (hasCards()) row.append(cardCell(game.yellow), cardCell(game.red, true));
       const status = element('td'); status.append(element('span', 'match-state ' + (game.administrative ? 'admin' : (['live', 'scheduled', 'postponed'].includes(game.status) ? game.status : '')), game.administrative ? 'Administrativo' : (statusNames[game.status] || 'Por confirmar'))); row.append(status); root.append(row);
     });
     const start = total ? (page - 1) * (paginationData.page_size || state.page_size) + 1 : 0;
@@ -344,7 +353,7 @@
   function showLoadError(error) {
     notice(error.message || 'No fue posible cargar los datos. Intenta de nuevo.', true);
     $('scope-note').hidden = true; renderForecast(null); updateHeading(); renderKPIs({}); renderOutcomes({}); renderFrequency({}); renderScorelines({}); renderTeam(null);
-    const root = $('matches-body'); root.replaceChildren(); const row = element('tr'); const cell = element('td', 'table-empty', 'No se pudieron cargar los partidos. El archivo histórico sigue disponible para descargar.'); cell.colSpan = 10; row.append(cell); root.append(row);
+    const root = $('matches-body'); root.replaceChildren(); const row = element('tr'); const cell = element('td', 'table-empty', 'No se pudieron cargar los partidos. El archivo histórico sigue disponible para descargar.'); cell.colSpan = visibleColumnCount(); row.append(cell); root.append(row);
     $('previous-page').disabled = true; $('next-page').disabled = true;
     $('kpi-grid').setAttribute('aria-busy', 'false');
   }
@@ -402,7 +411,7 @@
   }
   function initialSkeleton() {
     const root = $('kpi-grid'); root.replaceChildren();
-    ['Ambos marcan · HT', 'Ambos marcan · FT', 'Córners por partido', 'Goles por partido · FT', 'Goles por partido · HT', 'Tarjetas', 'Frecuencia', 'Partidos analizados'].forEach((label, index) => {const card = kpi(label, '—', 'Cargando datos…', index === 0 ? 'green' : 'blue', '·', index === 0); card.classList.add('loading'); root.append(card);});
+    (state.league === 'hungary' ? ['Ambos marcan · HT', 'Ambos marcan · FT', 'Goles por partido · FT', 'Goles por partido · HT', 'Partidos por jugar', 'Partidos analizados'] : ['Ambos marcan · HT', 'Ambos marcan · FT', 'Córners por partido', 'Goles por partido · FT', 'Goles por partido · HT', 'Tarjetas', 'Frecuencia', 'Partidos analizados']).forEach((label, index) => {const card = kpi(label, '—', 'Cargando datos…', index === 0 ? 'green' : 'blue', '·', index === 0); card.classList.add('loading'); root.append(card);});
   }
   $('filters').addEventListener('submit', event => event.preventDefault());
   $('season-select').addEventListener('change', event => {state.season = event.target.value; state.scope = 'all'; state.team = 'all'; state.condition = 'all'; state.page = 1; loadDashboard();});

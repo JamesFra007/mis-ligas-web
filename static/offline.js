@@ -12,6 +12,9 @@
   const btts = a => known(a) && Math.min(...a) > 0;
   const rate = (n,b) => b ? n/b : null;
   const present = v => v !== null && v !== undefined;
+  const capabilities = league => metadata.leagues?.find(item => item.id === league);
+  const hasCorners = league => capabilities(league)?.corners !== false;
+  const hasCards = league => Boolean(capabilities(league)?.cards);
   function frequency(games,p) {
     const hits = games.map((g,i) => btts(pair(g,p)) ? i+1 : 0).filter(Boolean);
     const boundaries = [0,...hits,games.length+1];
@@ -23,8 +26,8 @@
     const h = ht.filter(g => btts(pair(g,'ht'))).length, f = ft.filter(g => btts(pair(g,'ft'))).length;
     const corners = ft.map(g=>g.corners).filter(present), yellow=ft.map(g=>g.yellow).filter(present), red=ft.map(g=>g.red).filter(present);
     const outcomes = {1:0,X:0,2:0};ft.forEach(g=>outcomes[g.ft_home>g.ft_away ? '1' : g.ft_home<g.ft_away ? '2' : 'X']++);
-    const unresolved = eligible.filter(g => !known(pair(g,'ht')) || !known(pair(g,'ft')) || !present(g.corners) || (g.league==='spain' && (!present(g.yellow) || !present(g.red)))).length;
-    const s={total:games.length,finished:ft.length,scheduled:games.filter(g=>g.status==='scheduled').length,live:games.filter(g=>g.status==='live').length,excluded:games.filter(g=>g.administrative).length,ht_base:ht.length,ht_cases:h,ht_rate:rate(h,ht.length),ht_every:h?ht.length/h:null,ft_base:ft.length,ft_cases:f,ft_rate:rate(f,ft.length),ft_every:f?ft.length/f:null,goals_ht_average:mean(ht.map(g=>sum(pair(g,'ht')))),goals_ft_average:mean(ft.map(g=>sum(pair(g,'ft')))),corners_average:mean(corners),corners_base:corners.length,corners_missing:ft.length-corners.length,yellow_average:mean(yellow),yellow_base:yellow.length,red_average:mean(red),red_base:red.length,red_match_rate:rate(red.filter(n=>n>0).length,red.length),red_matches:red.filter(n=>n>0).length,yellow_total:yellow.length?sum(yellow):null,red_total:red.length?sum(red):null,home_wins:outcomes[1],draws:outcomes.X,away_wins:outcomes[2],unresolved};
+    const unresolved = eligible.filter(g => !known(pair(g,'ht')) || !known(pair(g,'ft')) || (hasCorners(g.league) && !present(g.corners)) || (hasCards(g.league) && (!present(g.yellow) || !present(g.red)))).length;
+    const s={total:games.length,finished:ft.length,scheduled:games.filter(g=>g.status==='scheduled').length,live:games.filter(g=>g.status==='live').length,excluded:games.filter(g=>g.administrative).length,ht_base:ht.length,ht_cases:h,ht_rate:rate(h,ht.length),ht_every:h?ht.length/h:null,ft_base:ft.length,ft_cases:f,ft_rate:rate(f,ft.length),ft_every:f?ft.length/f:null,goals_ht_average:mean(ht.map(g=>sum(pair(g,'ht')))),goals_ft_average:mean(ft.map(g=>sum(pair(g,'ft')))),corners_average:mean(corners),corners_base:corners.length,corners_missing:games.some(g=>hasCorners(g.league))?ft.length-corners.length:0,yellow_average:mean(yellow),yellow_base:yellow.length,red_average:mean(red),red_base:red.length,red_match_rate:rate(red.filter(n=>n>0).length,red.length),red_matches:red.filter(n=>n>0).length,yellow_total:yellow.length?sum(yellow):null,red_total:red.length?sum(red):null,home_wins:outcomes[1],draws:outcomes.X,away_wins:outcomes[2],unresolved};
     const scorelines={};
     for(const [p,items] of [['ht',ht],['ft',ft]]){
       const counts=new Map();items.forEach(g=>{const key=pair(g,p).join('-');counts.set(key,(counts.get(key)||0)+1);});
@@ -76,15 +79,16 @@
     const link=event.target.closest('a');if(!link)return;
     if(link.id==='history-link'){
       event.preventDefault();const key=window.__offlineFilters.get('league')||'spain',file=bundle.workbooks[key];
+      if(!file){const note=document.getElementById('notice');note.textContent='El archivo histórico de esta liga todavía no está disponible en esta copia.';note.className='notice';note.hidden=false;return;}
       const bytes=Uint8Array.from(atob(file.base64),c=>c.charCodeAt(0));download(new Blob([bytes],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}),file.name);
     }else if(link.id==='export-link'){
       event.preventDefault();const {games,league,season}=filtered(window.__offlineFilters);
-      const headers=['N.º','Fecha COL','Hora COL','Jornada','Local','Visitante','HT','FT','Córners',...(league==='spain'?['Amarillas','Rojas']:[]),'Torneo / vuelta','Fase','Estado'];
+      const headers=['N.º','Fecha COL','Hora COL','Jornada','Local','Visitante','HT','FT',...(hasCorners(league)?['Córners']:[]),...(hasCards(league)?['Amarillas','Rojas']:[]),'Torneo / vuelta','Fase','Estado'];
       const csv=[headers];const names={finished:'Finalizado',scheduled:'Programado',live:'En juego',postponed:'Aplazado',cancelled:'Cancelado'};
       games.forEach((g,i)=>{
         const score=p=>known(pair(g,p))?pair(g,p).join('-'):g.status==='finished'?'N/D':'';
         const observation=v=>present(v)?v:g.status==='finished'?'N/D':'';
-        csv.push([i+1,g.date_confirmed===false?'Fecha pendiente':g.date,g.time_confirmed===false?'Hora pendiente':g.time,g.round,g.home,g.away,score('ht'),score('ft'),observation(g.corners),...(league==='spain'?[observation(g.yellow),g.red===0?'':observation(g.red)]:[]),({first:'Primera vuelta',second:'Segunda vuelta',all:'Temporada'})[g.scope]||g.scope,g.phase,g.administrative?'Administrativo':names[g.status]||g.status]);
+        csv.push([i+1,g.date_confirmed===false?'Fecha pendiente':g.date,g.time_confirmed===false?'Hora pendiente':g.time,g.round,g.home,g.away,score('ht'),score('ft'),...(hasCorners(league)?[observation(g.corners)]:[]),...(hasCards(league)?[observation(g.yellow),g.red===0?'':observation(g.red)]:[]),({first:'Primera vuelta',second:'Segunda vuelta',all:'Temporada'})[g.scope]||g.scope,g.phase,g.administrative?'Administrativo':names[g.status]||g.status]);
       });
       download(new Blob(['\ufeff'+csv.map(row=>row.map(csvCell).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'}),`MisLigas_${league}_${season}_filtrado.csv`);
     }else if(link.classList.contains('brand')){event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});}

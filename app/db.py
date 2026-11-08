@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import sqlite3
+from .leagues import LEAGUES
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = Path(os.environ.get('LIGAS_DATA_DIR', ROOT / 'data'))
@@ -62,7 +63,7 @@ def validate(game):
     for key in ('id', 'league', 'season', 'home', 'away', 'date'):
         if not game.get(key):
             raise ValueError(f'Falta {key} en un partido')
-    if game['league'] not in ('spain', 'colombia'):
+    if game['league'] not in LEAGUES:
         raise ValueError('Liga desconocida')
     if game.get('status') not in ('finished', 'scheduled', 'live', 'postponed', 'cancelled'):
         raise ValueError('Estado desconocido')
@@ -112,6 +113,22 @@ def upsert(incoming):
             row = con.execute('SELECT * FROM games WHERE id=?', (new['id'],)).fetchone() if new.get('id') else None
             if row is None and new.get('provider_id'):
                 row = con.execute('SELECT * FROM games WHERE league=? AND provider_id=?', (new['league'], str(new['provider_id']))).fetchone()
+            if row is None and new['league'] == 'hungary' and new.get('fixture_key'):
+                # MLSZ assigns report IDs only after a fixture has been played.
+                # Reconcile a provisional fixture, but retain two genuine reports
+                # for an abandoned match and its replay in the same round.
+                matches = con.execute("SELECT * FROM games WHERE league=? AND season=? AND json_extract(payload,'$.fixture_key')=?", ('hungary',new['season'],new['fixture_key'])).fetchall()
+                incoming_provisional = str(new.get('provider_id','')).startswith('fixture:')
+                if not incoming_provisional:
+                    matches = [r for r in matches if str(r['provider_id'] or '').startswith('fixture:') and not json.loads(r['payload']).get('administrative')]
+                else:
+                    matches = [r for r in matches if not json.loads(r['payload']).get('administrative')]
+                if len(matches)==1:
+                    row = matches[0]
+                    if incoming_provisional and str(row['provider_id'] or '').startswith('mlsz:'):
+                        # An old provisional calendar must not replace an actual report.
+                        counts['unchanged'] += 1
+                        continue
             if row is None and new['league'] == 'spain':
                 row = con.execute('SELECT * FROM games WHERE league=? AND season=? AND home=? AND away=?', (new['league'], new['season'], new['home'], new['away'])).fetchone()
             if row is None:
@@ -121,6 +138,9 @@ def upsert(incoming):
                 validate(new)
                 _insert(con, new, stamp)
                 counts['added'] += 1
+                continue
+            if new['league']=='hungary' and str(new.get('provider_id','')).startswith('fixture:') and str(row['provider_id'] or '').startswith('mlsz:'):
+                counts['unchanged'] += 1
                 continue
             old = json.loads(row['payload'])
             merged = dict(old)
@@ -144,6 +164,9 @@ def upsert(incoming):
                 merged['date_confirmed'] = old.get('date_confirmed',True)
                 merged['time_confirmed'] = old.get('time_confirmed',bool(old.get('time')))
             merged['administrative'] = bool(old.get('administrative') or new.get('administrative'))
+            if new['league']=='hungary' and new.get('administrative'):
+                merged['ht_home']=None
+                merged['ht_away']=None
             if old.get('administrative'):
                 for key in ('status', 'ht_home', 'ht_away', 'ft_home', 'ft_away'):
                     merged[key] = old.get(key)

@@ -23,7 +23,7 @@ from app.providers import ProviderError, get_coverage, sync_games
 def current_seasons(now=None):
     stamp = now or datetime.now(ZoneInfo('America/Bogota'))
     first = stamp.year if stamp.month >= 7 else stamp.year - 1
-    return {'spain': f'{first}-{(first+1)%100:02d}', 'colombia': str(stamp.year)}
+    return {'spain': f'{first}-{(first+1)%100:02d}', 'colombia': str(stamp.year), 'hungary': f'{first}-{(first+1)%100:02d}'}
 
 
 def persisted_games():
@@ -71,6 +71,8 @@ def build_site(output_dir, *, refresh=False):
     protected = [ROOT, db.DATA.resolve(), (ROOT / 'data').resolve(), (ROOT / 'app').resolve()]
     if output == ROOT or any(output == p or p in output.parents for p in protected[1:]):
         raise ValueError('La salida debe ser una carpeta exclusiva del sitio, como site/.')
+    from scripts.export_hungary_history import export_history
+    export_history()
     from scripts.build_offline import build
     build(output=output / 'index.html', hosted=True)
     rows = db.all_seasons()

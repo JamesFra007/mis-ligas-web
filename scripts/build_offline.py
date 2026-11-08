@@ -10,6 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from app.main import metadata,forecast_view
 from app import db
+from app.leagues import LEAGUES
 
 
 def safe_json(data):
@@ -29,7 +30,9 @@ def build(output=None, hosted=False):
             games.extend(db.games(league['id'],season['id']))
         forecasts[league['id']]=forecast_view(league['id'])
     books={}
-    for key,name in [('spain','LaLiga_RESUMEN_DINAMICO.xlsx'),('colombia','Liga_Colombiana_RESUMEN_DINAMICO.xlsx')]:
+    for key,info in LEAGUES.items():
+        name=info['history_file']
+        if not (ROOT/'data/history'/name).exists():continue
         books[key]={'name':name,'base64':base64.b64encode((ROOT/'data/history'/name).read_bytes()).decode()}
     bundle={'meta':meta,'games':games,'workbooks':books,'forecasts':forecasts}
     html=(ROOT/'static/index.html').read_text()

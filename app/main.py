@@ -26,31 +26,31 @@ from openpyxl.utils.units import pixels_to_EMU
 from . import db
 from .stats import summarize, btts, pair
 from .order import order_games
+from .leagues import LEAGUES
 
 ROOT = Path(__file__).resolve().parents[1]
 AUTO_UPDATE = os.environ.get('LIGAS_AUTO_UPDATE', '0') == '1'
 INTERVAL = max(5, int(os.environ.get('LIGAS_UPDATE_MINUTES', '30')))
 SYNC_LOCK = threading.Lock()
-LEAGUES = {'spain': {'name':'LaLiga','country':'España','cards':True}, 'colombia': {'name':'Liga BetPlay','country':'Colombia','cards':False}}
 
 
 def current_season(league):
     today = datetime.now(ZoneInfo('America/Bogota'))
     year = today.year if today.month >= 7 else today.year - 1
-    return f'{year}-{(year+1)%100:02d}' if league == 'spain' else str(today.year)
+    return f'{year}-{(year+1)%100:02d}' if LEAGUES[league]['split_season'] else str(today.year)
 
 
 def check(league, season=None):
     if league not in LEAGUES:
         raise HTTPException(400, 'Liga no válida.')
     if season is not None:
-        pattern = r'20\d{2}-\d{2}' if league == 'spain' else r'20\d{2}'
+        pattern = r'20\d{2}-\d{2}' if LEAGUES[league]['split_season'] else r'20\d{2}'
         if not re.fullmatch(pattern, season):
             raise HTTPException(400, 'Temporada no válida.')
         y = int(season[:4])
         if not 2018 <= y <= datetime.now(ZoneInfo('America/Bogota')).year + 1:
             raise HTTPException(400, 'Temporada fuera del intervalo disponible.')
-        if league == 'spain' and season[-2:] != f'{(y+1)%100:02d}':
+        if LEAGUES[league]['split_season'] and season[-2:] != f'{(y+1)%100:02d}':
             raise HTTPException(400, 'La temporada debe contener dos años consecutivos.')
 
 
@@ -198,7 +198,7 @@ def sync(request: SyncRequest):
 @app.get('/api/history.xlsx')
 def history(league: str):
     check(league)
-    name='LaLiga_RESUMEN_DINAMICO.xlsx' if league=='spain' else 'Liga_Colombiana_RESUMEN_DINAMICO.xlsx'
+    name=LEAGUES[league]['history_file']
     file=ROOT/'data'/'history'/name
     if not file.exists():
         raise HTTPException(404, 'El Excel histórico no está disponible en esta instalación.')
@@ -220,10 +220,11 @@ def export(league: str='spain',season: str='2025-26',scope: str='all',team: str=
     stats=summarize(rows,team)['summary'];w=Workbook();ws=w.active;ws.title='Partidos';ws.sheet_view.showGridLines=False
     ws.merge_cells('A1:J1');ws['A1']=f"{LEAGUES[league]['name']} · {season.replace('-','/')} · {scope if scope!='all' else 'Temporada completa'}"
     ws['A1'].font=Font(size=17,bold=True,color='FFFFFF');ws['A1'].fill=PatternFill('solid',fgColor='172554');ws.row_dimensions[1].height=30
-    lines=[f"Partidos finalizados: {stats['finished']} | Ambos marcan HT: {stats['ht_cases']}/{stats['ht_base']} | Ambos marcan FT: {stats['ft_cases']}/{stats['ft_base']}", 'Frecuencia histórica; no predice el siguiente partido. Solo se analizan encuentros terminados y no administrativos.','Verde: ambos equipos marcaron en HT. N/D: dato pendiente. Celda vacía en rojas: cero.','Filtros: equipo '+('Todos' if team=='all' else team)+' · condición '+condition+' · estado '+status+(f' · búsqueda {search}' if search else '')]
+    lines=[f"Partidos finalizados: {stats['finished']} | Ambos marcan HT: {stats['ht_cases']}/{stats['ht_base']} | Ambos marcan FT: {stats['ft_cases']}/{stats['ft_base']}", 'Frecuencia histórica; no predice el siguiente partido. Solo se analizan encuentros terminados y no administrativos.','Verde: ambos equipos marcaron en HT. N/D: dato pendiente.'+(' Celda vacía en rojas: cero.' if LEAGUES[league]['cards'] else ''),'Filtros: equipo '+('Todos' if team=='all' else team)+' · condición '+condition+' · estado '+status+(f' · búsqueda {search}' if search else '')]
     for i,line in enumerate(lines,2):
         ws.merge_cells(start_row=i,start_column=1,end_row=i,end_column=10);ws.cell(i,1,line);ws.cell(i,1).font=Font(size=10,color='475569');ws.cell(i,1).alignment=Alignment(wrap_text=True,vertical='center');ws.row_dimensions[i].height=27
-    headers=['N.º','Fecha · hora (COL)','Jornada','Local','Visitante','HT','FT','Córners']
+    headers=['N.º','Fecha · hora (COL)','Jornada','Local','Visitante','HT','FT']
+    if LEAGUES[league]['corners']:headers+=['Córners']
     if LEAGUES[league]['cards']:headers+=['Amarillas','Rojas']
     headers+=['Torneo / vuelta','Fase','Estado']
     row=7
@@ -235,7 +236,9 @@ def export(league: str='spain',season: str='2025-26',scope: str='all',team: str=
         row+=1
         score=lambda p:f"{game[p+'_home']}-{game[p+'_away']}" if game.get(p+'_home') is not None and game.get(p+'_away') is not None else 'N/D' if game['status']=='finished' else ''
         calendar='Fecha pendiente' if game.get('date_confirmed') is False else game['date']+(' '+game['time'] if game.get('time') and game.get('time_confirmed',True) else ' · Hora pendiente')
-        values=[i,calendar,game.get('round'),game['home'],game['away'],score('ht'),score('ft'),game.get('corners') if game.get('corners') is not None else 'N/D' if game['status']=='finished' else '']
+        values=[i,calendar,game.get('round'),game['home'],game['away'],score('ht'),score('ft')]
+        if LEAGUES[league]['corners']:
+            values += [game.get('corners') if game.get('corners') is not None else 'N/D' if game['status']=='finished' else '']
         if LEAGUES[league]['cards']:
             values += [game.get('yellow') if game.get('yellow') is not None else 'N/D' if game['status']=='finished' else '', None if game.get('red')==0 else game.get('red') if game.get('red') is not None else 'N/D' if game['status']=='finished' else '']
         values += [{'first':'Primera vuelta','second':'Segunda vuelta','all':'Temporada'}.get(game.get('scope'),game.get('scope')),game.get('phase'), 'Administrativo' if game.get('administrative') else state_names[game['status']]]
@@ -243,7 +246,7 @@ def export(league: str='spain',season: str='2025-26',scope: str='all',team: str=
             cell=ws.cell(row,c,value);cell.font=Font(name='Arial',size=10);cell.alignment=Alignment(horizontal='center',vertical='center')
             # Treat provider text as plain values, never spreadsheet formulas.
             if isinstance(value,str):cell.data_type='s'
-            if c<=8 and game['status']=='finished' and not game.get('administrative') and btts(pair(game,'ht')):
+            if c<=(8 if LEAGUES[league]['corners'] else 7) and game['status']=='finished' and not game.get('administrative') and btts(pair(game,'ht')):
                 cell.fill=PatternFill('solid',fgColor='C6EFCE')
         ws.row_dimensions[row].height=18
         if LEAGUES[league]['cards']:
