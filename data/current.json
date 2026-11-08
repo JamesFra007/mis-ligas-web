@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-08T15:17:59.203190+00:00",
+  "captured_at": "2026-11-08T16:19:42.421490+00:00",
   "sources": [
     {
       "league": "spain",
@@ -8,8 +8,8 @@
       "ok": true,
       "coverage": {
         "fixtures_available": true,
-        "scheduled": 264,
-        "confirmed_upcoming": 26,
+        "scheduled": 263,
+        "confirmed_upcoming": 25,
         "warnings": []
       }
     },
@@ -3839,7 +3839,7 @@
       "round": null,
       "scope": "all",
       "phase": "LaLiga",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
