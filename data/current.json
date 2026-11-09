@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-09T09:44:04.292313+00:00",
+  "captured_at": "2026-11-09T10:37:43.924651+00:00",
   "sources": [
     {
       "league": "spain",
@@ -22013,7 +22013,7 @@
     },
     {
       "id": "spain:401882809",
-      "provider_id": "espn:401882809",
+      "provider_id": "fd:2627:Sevilla:Alaves",
       "espn_id": "401882809",
       "league": "spain",
       "season": "2026-27",
@@ -22034,19 +22034,19 @@
       "ft_home": 0,
       "ft_away": 0,
       "corners": 9,
-      "yellow": 4,
+      "yellow": 5,
       "red": 0,
-      "yellow_home": 1,
+      "yellow_home": 2,
       "yellow_away": 3,
       "red_home": 0,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 110
     },
     {
       "id": "spain:401882812",
-      "provider_id": "espn:401882812",
+      "provider_id": "fd:2627:Malaga:Santander",
       "espn_id": "401882812",
       "league": "spain",
       "season": "2026-27",
@@ -22067,19 +22067,19 @@
       "ft_home": 1,
       "ft_away": 2,
       "corners": 9,
-      "yellow": 6,
+      "yellow": 8,
       "red": 1,
-      "yellow_home": 4,
+      "yellow_home": 6,
       "yellow_away": 2,
       "red_home": 1,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 111
     },
     {
       "id": "spain:401882813",
-      "provider_id": "espn:401882813",
+      "provider_id": "fd:2627:Espanol:La Coruna",
       "espn_id": "401882813",
       "league": "spain",
       "season": "2026-27",
@@ -22107,12 +22107,12 @@
       "red_home": 0,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 112
     },
     {
       "id": "spain:401882811",
-      "provider_id": "espn:401882811",
+      "provider_id": "fd:2627:Osasuna:Ath Bilbao",
       "espn_id": "401882811",
       "league": "spain",
       "season": "2026-27",
@@ -22140,12 +22140,12 @@
       "red_home": 0,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 113
     },
     {
       "id": "spain:401882808",
-      "provider_id": "espn:401882808",
+      "provider_id": "fd:2627:Valencia:Real Madrid",
       "espn_id": "401882808",
       "league": "spain",
       "season": "2026-27",
@@ -22173,12 +22173,12 @@
       "red_home": 1,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 114
     },
     {
       "id": "spain:401882814",
-      "provider_id": "espn:401882814",
+      "provider_id": "fd:2627:Elche:Betis",
       "espn_id": "401882814",
       "league": "spain",
       "season": "2026-27",
@@ -22206,12 +22206,12 @@
       "red_home": 0,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 115
     },
     {
       "id": "spain:401882810",
-      "provider_id": "espn:401882810",
+      "provider_id": "fd:2627:Sociedad:Vallecano",
       "espn_id": "401882810",
       "league": "spain",
       "season": "2026-27",
@@ -22239,12 +22239,12 @@
       "red_home": 0,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 116
     },
     {
       "id": "spain:401882807",
-      "provider_id": "espn:401882807",
+      "provider_id": "fd:2627:Villarreal:Getafe",
       "espn_id": "401882807",
       "league": "spain",
       "season": "2026-27",
@@ -22272,12 +22272,12 @@
       "red_home": 0,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 117
     },
     {
       "id": "spain:401882815",
-      "provider_id": "espn:401882815",
+      "provider_id": "fd:2627:Celta:Levante",
       "espn_id": "401882815",
       "league": "spain",
       "season": "2026-27",
@@ -22305,12 +22305,12 @@
       "red_home": 0,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 118
     },
     {
       "id": "spain:401882816",
-      "provider_id": "espn:401882816",
+      "provider_id": "fd:2627:Ath Madrid:Barcelona",
       "espn_id": "401882816",
       "league": "spain",
       "season": "2026-27",
@@ -22338,7 +22338,7 @@
       "red_home": 0,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 119
     },
     {
