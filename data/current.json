@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-09T02:20:39.770241+00:00",
+  "captured_at": "2026-11-09T02:28:18.715853+00:00",
   "sources": [
     {
       "league": "spain",
@@ -37,7 +37,7 @@
         "warnings": [],
         "source": "MLSZ",
         "matches": 198,
-        "missing_ht": 37
+        "missing_ht": 0
       }
     },
     {
