@@ -69,7 +69,7 @@
     leagues.forEach(item => {
       const button = element('button', 'league-button' + (item.id === state.league ? ' active' : ''));
       button.type = 'button'; button.setAttribute('aria-pressed', String(item.id === state.league));
-      button.append(element('span', 'league-flag', item.flag || ({spain: '🇪🇸', colombia: '🇨🇴', hungary: '🇭🇺'}[item.id] || '⚽')));
+      button.append(element('span', 'league-flag', item.flag || ({spain: '🇪🇸', colombia: '🇨🇴', hungary: '🇭🇺', poland: '🇵🇱'}[item.id] || '⚽')));
       const label = element('span'); label.append(element('strong', '', item.name), element('small', '', item.country));
       button.append(label, element('span', 'league-chevron', '›'));
       button.addEventListener('click', () => changeLeague(item.id)); $('league-nav').append(button);
@@ -332,6 +332,7 @@
       const fixture = element('td', 'fixture-cell'); fixture.append(element('strong', '', game.home), element('span', 'versus', 'vs'), element('strong', '', game.away));
       if (game.administrative) {fixture.append(element('span', 'secondary-text', 'Resultado administrativo · fuera del análisis')); if (game.administrative_reason) fixture.title = game.administrative_reason;}
       const ht = scoreCell(game.ht_home, game.ht_away); const ft = scoreCell(game.ft_home, game.ft_away, true);
+      if (game.status === 'finished' && !game.administrative && (game.ht_home === null || game.ht_home === undefined || game.ht_away === null || game.ht_away === undefined)) {ht.querySelector('.score-chip').textContent = 'N/D'; ht.title = 'Marcador del descanso pendiente de verificar';}
       const highlighted = Boolean(game.btts_ht) && !game.administrative;
       const greenCells = [numberCell, date, phase, fixture, ht, ft];
       if (hasCorners()) {
@@ -411,7 +412,7 @@
   }
   function initialSkeleton() {
     const root = $('kpi-grid'); root.replaceChildren();
-    (state.league === 'hungary' ? ['Ambos marcan · HT', 'Ambos marcan · FT', 'Goles por partido · FT', 'Goles por partido · HT', 'Partidos por jugar', 'Partidos analizados'] : ['Ambos marcan · HT', 'Ambos marcan · FT', 'Córners por partido', 'Goles por partido · FT', 'Goles por partido · HT', 'Tarjetas', 'Frecuencia', 'Partidos analizados']).forEach((label, index) => {const card = kpi(label, '—', 'Cargando datos…', index === 0 ? 'green' : 'blue', '·', index === 0); card.classList.add('loading'); root.append(card);});
+    (['hungary','poland'].includes(state.league) ? ['Ambos marcan · HT', 'Ambos marcan · FT', 'Goles por partido · FT', 'Goles por partido · HT', 'Partidos por jugar', 'Partidos analizados'] : ['Ambos marcan · HT', 'Ambos marcan · FT', 'Córners por partido', 'Goles por partido · FT', 'Goles por partido · HT', 'Tarjetas', 'Frecuencia', 'Partidos analizados']).forEach((label, index) => {const card = kpi(label, '—', 'Cargando datos…', index === 0 ? 'green' : 'blue', '·', index === 0); card.classList.add('loading'); root.append(card);});
   }
   $('filters').addEventListener('submit', event => event.preventDefault());
   $('season-select').addEventListener('change', event => {state.season = event.target.value; state.scope = 'all'; state.team = 'all'; state.condition = 'all'; state.page = 1; loadDashboard();});

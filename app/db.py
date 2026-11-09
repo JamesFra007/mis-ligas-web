@@ -164,7 +164,7 @@ def upsert(incoming):
                 merged['date_confirmed'] = old.get('date_confirmed',True)
                 merged['time_confirmed'] = old.get('time_confirmed',bool(old.get('time')))
             merged['administrative'] = bool(old.get('administrative') or new.get('administrative'))
-            if new['league']=='hungary' and new.get('administrative'):
+            if new['league'] in ('hungary','poland') and new.get('administrative'):
                 merged['ht_home']=None
                 merged['ht_away']=None
             if old.get('administrative'):

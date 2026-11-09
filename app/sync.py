@@ -3,12 +3,13 @@ import argparse
 import json
 from fastapi import HTTPException
 from . import db
+from .leagues import LEAGUES
 from .main import perform_sync
 
 
 def main():
     parser=argparse.ArgumentParser(description='Actualizar partidos de Mis Ligas')
-    parser.add_argument('league',choices=['spain','colombia','hungary'])
+    parser.add_argument('league',choices=list(LEAGUES))
     parser.add_argument('season',help='2026-27 para España; 2026 para Colombia')
     args=parser.parse_args();db.initialize()
     try:

@@ -1,10 +1,10 @@
 # Mis Ligas
 
-Web en español con resultados, calendarios y estadísticas de LaLiga, la liga colombiana y la primera división de Hungría (NB I).
+Web en español con resultados, calendarios y estadísticas de LaLiga, la liga colombiana, Hungría (NB I) y Polonia (Ekstraklasa).
 
 - Historial por temporada, equipo, torneo y local/visitante.
 - Vistas por jornada/listado original y por fecha y hora de Colombia.
-- HT y FT en las tres ligas; Hungría se centra en resultados, sin córners ni tarjetas. Verdes cuando ambos marcaron en HT.
+- HT y FT en las cuatro ligas; Hungría y Polonia se centran en resultados, sin córners ni tarjetas. Verdes cuando ambos marcaron en HT.
 - Próximos partidos con fecha y hora confirmadas, identificando los horarios pendientes.
 - Referencia estadística del siguiente ambos marcan en HT, con muestra, incertidumbre y aviso de caducidad. Es una referencia compartida de liga, no un pronóstico específico por equipo ni una garantía.
 - Descarga de los Excel históricos y exportación de datos filtrados a CSV.
@@ -19,7 +19,7 @@ Los datos se conservan en JSON versionado. El sitio público contiene únicament
 
 ## Fuentes y cobertura
 
-Football-Data (CSV SP1) y ESPN aportan estadísticas y calendario de España y Colombia. La fuente de Hungría es el centro de partidos oficial de la federación húngara (MLSZ). Hungría incluye nueve temporadas desde 2018/19, con dos incidencias históricas señaladas: un resultado administrativo y un abandono con repetición. Los datos faltantes se indican y no se convierten en cero. Los partidos futuros, en juego y administrativos no se usan como encuentros terminados en los resúmenes. La hora se muestra en Colombia. No se inventan jornadas ni horarios pendientes.
+Football-Data (CSV SP1) y ESPN aportan estadísticas y calendario de España y Colombia. La fuente de Hungría es el centro de partidos oficial de la federación húngara (MLSZ). Hungría incluye nueve temporadas desde 2018/19, con dos incidencias históricas señaladas: un resultado administrativo y un abandono con repetición. Polonia utiliza el centro de partidos oficial de la Ekstraklasa para el calendario actual y BetExplorer para el histórico desde 2018/19, contrastado con RSSSF y 90minut. Las temporadas 2018/19 y 2019/20 incluyen la fase regular y ambos grupos finales. Los datos faltantes se indican y no se convierten en cero. Los partidos futuros, en juego y administrativos no se usan como encuentros terminados en los resúmenes. La hora se muestra en Colombia. No se inventan jornadas ni horarios pendientes.
 
 ## Desarrollo local
 
@@ -36,7 +36,7 @@ La web local abre en http://127.0.0.1:8000. Para generar el sitio sin consultar 
 python scripts/publish_snapshot.py --output-dir site
 ```
 
-Para consultar las tres ligas y generar una nueva versión:
+Para consultar las ligas y generar una nueva versión:
 
 ```sh
 python scripts/publish_snapshot.py --refresh --output-dir site

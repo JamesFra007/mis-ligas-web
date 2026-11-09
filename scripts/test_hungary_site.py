@@ -11,6 +11,7 @@ from urllib.parse import urlencode
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from app import db
+from app.leagues import LEAGUES
 from app.main import dashboard
 from openpyxl import load_workbook
 from playwright.async_api import async_playwright
@@ -29,8 +30,8 @@ async def run(url=None):
         page=await context.new_page();page.on('pageerror',lambda error:errors.append(str(error)))
         if url:await page.goto(url,wait_until='networkidle',timeout=60000)
         else:await page.set_content((ROOT/'site/index.html').read_text(),wait_until='load')
-        await page.wait_for_function("document.querySelectorAll('#league-nav button').length===3")
-        assert await page.locator('#league-nav button').count()==3;checks+=1
+        await page.wait_for_function("document.querySelectorAll('#league-nav button').length===4")
+        assert await page.locator('#league-nav button').count()==len(LEAGUES);checks+=1
         # Existing leagues retain their own columns and statistics.
         await page.wait_for_function("document.querySelectorAll('#matches-body tr').length===40")
         assert await page.locator('#kpi-grid article').count()==8;checks+=1

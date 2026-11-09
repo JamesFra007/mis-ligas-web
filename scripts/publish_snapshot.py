@@ -17,13 +17,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from app import db
+from app.leagues import LEAGUES
 from app.providers import ProviderError, get_coverage, sync_games
 
 
 def current_seasons(now=None):
     stamp = now or datetime.now(ZoneInfo('America/Bogota'))
     first = stamp.year if stamp.month >= 7 else stamp.year - 1
-    return {'spain': f'{first}-{(first+1)%100:02d}', 'colombia': str(stamp.year), 'hungary': f'{first}-{(first+1)%100:02d}'}
+    return {key:f'{first}-{(first+1)%100:02d}' if info['split_season'] else str(stamp.year) for key,info in LEAGUES.items()}
 
 
 def persisted_games():
@@ -53,6 +54,10 @@ def refresh_sources():
         # is preferable to marking only one successfully queried league as fresh.
         raise RuntimeError('No se publicó una actualización parcial: ' + ' | '.join(errors))
     changes = db.upsert(incoming)
+    for source in sources:
+        if 'missing_ht' in source['coverage']:
+            stored = db.games(source['league'], source['season'])
+            source['coverage']['missing_ht'] = sum(g['status']=='finished' and not g.get('administrative') and (g.get('ht_home') is None or g.get('ht_away') is None) for g in stored)
     captured = datetime.now(timezone.utc).isoformat()
     snapshot = {'captured_at': captured, 'sources': sources, 'games': persisted_games()}
     target = ROOT / 'data/current.json'
@@ -72,7 +77,9 @@ def build_site(output_dir, *, refresh=False):
     if output == ROOT or any(output == p or p in output.parents for p in protected[1:]):
         raise ValueError('La salida debe ser una carpeta exclusiva del sitio, como site/.')
     from scripts.export_hungary_history import export_history
-    export_history()
+    for key,info in LEAGUES.items():
+        if not info['corners'] and not info['cards']:
+            export_history(league=key)
     from scripts.build_offline import build
     build(output=output / 'index.html', hosted=True)
     rows = db.all_seasons()
@@ -101,7 +108,7 @@ def build_site(output_dir, *, refresh=False):
 def main():
     parser = argparse.ArgumentParser(description='Preparar la versión gratuita de Mis Ligas para GitHub Pages')
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'site')
-    parser.add_argument('--refresh', action='store_true', help='Consultar ambas ligas y persistir el estado antes de construir')
+    parser.add_argument('--refresh', action='store_true', help='Consultar las ligas y persistir el estado antes de construir')
     args = parser.parse_args()
     try:
         report = build_site(args.output_dir, refresh=args.refresh)

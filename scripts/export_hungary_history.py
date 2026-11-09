@@ -1,4 +1,4 @@
-"""Export the Hungarian HT/FT history without corner or card columns."""
+"""Export HT/FT-only league histories without corner or card columns."""
 from __future__ import annotations
 from datetime import datetime
 from pathlib import Path
@@ -17,8 +17,8 @@ from app.stats import summarize,known,pair,btts
 NAVY='172554';GREEN='059669';TEAL='0F766E';PURPLE='7C3AED';BLUE='2563EB';PINK='DB2777';ORANGE='EA580C'
 
 
-def export_history(output=None):
-    seasons=[s for s in db.all_seasons() if s['league']=='hungary']
+def export_history(output=None, league='hungary'):
+    seasons=[s for s in db.all_seasons() if s['league']==league]
     if not seasons:
         return None
     w=Workbook();w.remove(w.active);notes=[]
@@ -31,10 +31,10 @@ def export_history(output=None):
                 for x in rr:x.fill=PatternFill('solid',fgColor=color)
         return cell
     for season in seasons:
-        key=season['season'];games=db.games('hungary',key)
-        result=summarize(games);s=result['summary'];ws=w.create_sheet('NB I '+key[2:])
+        key=season['season'];games=db.games(league,key)
+        result=summarize(games);s=result['summary'];ws=w.create_sheet(('NB I ' if league=='hungary' else 'EKSTRA ')+key[2:])
         ws.sheet_view.showGridLines=False;ws.freeze_panes=None
-        merge(ws,1,1,9,'HUNGRÍA · NB I · '+key.replace('-','/'),NAVY);ws.row_dimensions[1].height=32
+        merge(ws,1,1,9,LEAGUES[league]['country'].upper()+' · '+LEAGUES[league]['name'].upper()+' · '+key.replace('-','/'),NAVY);ws.row_dimensions[1].height=32
         merge(ws,2,1,9,'Orden por jornada/listado original. Fecha y hora de Colombia. Verde: ambos equipos marcaron en HT.');ws.row_dimensions[2].height=25
         tiles=[(4,1,3,'AMBOS MARCAN · HT',s['ht_rate'],'0.0%',GREEN),(4,4,6,'UN CASO HT CADA',s['ht_every'],'0.00',TEAL),(4,7,9,'AMBOS MARCAN · FT',s['ft_rate'],'0.0%',PURPLE),(9,1,3,'UN CASO FT CADA',s['ft_every'],'0.00',PINK),(9,4,6,'GOLES / PARTIDO · HT',s['goals_ht_average'],'0.00',BLUE),(9,7,9,'GOLES / PARTIDO · FT',s['goals_ft_average'],'0.00',ORANGE)]
         for row,c1,c2,label,value,fmt,color in tiles:
@@ -63,7 +63,7 @@ def export_history(output=None):
             row=23+number
             calendar='Fecha pendiente' if g.get('date_confirmed') is False else g['date']+(' '+g['time'] if g.get('time') and g.get('time_confirmed',True) else ' · Hora pendiente')
             score=lambda p:'-'.join(map(str,pair(g,p))) if known(pair(g,p)) else 'N/D' if g['status']=='finished' and not g.get('administrative') else ''
-            observation=g.get('administrative_reason') or ('Fuera del análisis: resultado administrativo.' if g.get('administrative') else 'HT pendiente' if g['status']=='finished' and not known(pair(g,'ht')) else '')
+            observation=g.get('administrative_reason') or ('Fuera del análisis: resultado administrativo.' if g.get('administrative') else 'HT pendiente' if g['status']=='finished' and not known(pair(g,'ht')) else g.get('phase','') if league=='poland' and g.get('phase') not in (None,'Ekstraklasa') else '')
             state='Administrativo' if g.get('administrative') else {'finished':'Finalizado','scheduled':'Programado','live':'En juego','postponed':'Aplazado','cancelled':'Cancelado'}.get(g['status'],g['status'])
             values=[number,calendar,g.get('round'),g['home'],g['away'],score('ht'),score('ft'),state,observation]
             highlight=g['status']=='finished' and not g.get('administrative') and btts(pair(g,'ht'))
@@ -82,8 +82,9 @@ def export_history(output=None):
         for col,width in enumerate(widths,1):ws.column_dimensions[get_column_letter(col)].width=width
         ws.sheet_properties.pageSetUpPr.fitToPage=True;ws.page_setup.orientation='landscape';ws.page_setup.paperSize=ws.PAPERSIZE_A3;ws.page_setup.fitToWidth=1;ws.page_setup.fitToHeight=0
     n=w.create_sheet('Notas');n.freeze_panes=None;n.sheet_view.showGridLines=False
-    n.append(['Fuente: Federación Húngara de Fútbol (MLSZ), https://adatbank.mlsz.hu/'])
-    n.append(['Hungría NB I desde 2018/19. Resultados HT y FT; datos ausentes se indican como N/D.'])
+    sources=sorted({g.get('source','') for season in seasons for g in db.games(league,season['season']) if g.get('source')})
+    n.append(['Fuentes de los registros: '+ '; '.join(sources)])
+    n.append([LEAGUES[league]['country']+' · '+LEAGUES[league]['name']+' desde 2018/19. Resultados HT y FT; datos ausentes se indican como N/D.'])
     n.append(['Administrativos: se conservan en la lista y se excluyen de estadísticas de partidos jugados.'])
     n.append(['Los partidos futuros y horarios pendientes no se convierten en resultados 0-0.'])
     n.append(['Este histórico se genera a partir de los datos guardados de la aplicación.'])
@@ -94,7 +95,7 @@ def export_history(output=None):
         for c in row:
             if isinstance(c.value,str):c.data_type='s'
             c.font=Font(name='Arial',size=10);c.alignment=Alignment(vertical='center',wrap_text=True)
-    target=Path(output) if output else ROOT/'data/history'/LEAGUES['hungary']['history_file']
+    target=Path(output) if output else ROOT/'data/history'/LEAGUES[league]['history_file']
     target.parent.mkdir(parents=True,exist_ok=True);w.save(target)
     return target
 
