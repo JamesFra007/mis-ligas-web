@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-09T02:38:25.184719+00:00",
+  "captured_at": "2026-11-09T03:37:47.074073+00:00",
   "sources": [
     {
       "league": "spain",
@@ -44277,12 +44277,12 @@
       "round": null,
       "scope": "Finalización",
       "phase": "Liga BetPlay",
-      "status": "live",
-      "ht_home": null,
-      "ht_away": null,
-      "ft_home": null,
-      "ft_away": null,
-      "corners": null,
+      "status": "finished",
+      "ht_home": 1,
+      "ht_away": 2,
+      "ft_home": 1,
+      "ft_away": 2,
+      "corners": 14,
       "yellow": null,
       "red": null,
       "yellow_home": null,
