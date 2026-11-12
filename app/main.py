@@ -26,6 +26,7 @@ from openpyxl.utils.units import pixels_to_EMU
 from . import db
 from .stats import summarize, btts, pair
 from .order import order_games
+from .rounds import round_options, select_round
 from .leagues import LEAGUES
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -129,14 +130,15 @@ def metadata():
     return {'leagues':leagues, 'updated_at':last['at'] if last else db.setting('imported_at'), 'last_sync':last, 'auto_update':AUTO_UPDATE,'update_interval_minutes':INTERVAL,'timezone':'America/Bogota'}
 
 
-def select_games(league, season, scope='all', team='all', condition='all', status='all', search='', order='round'):
+def select_games(league, season, scope='all', team='all', condition='all', status='all', search='', order='round', match_round=''):
     check(league, season)
     if condition not in ('all','home','away'):
         raise HTTPException(400, 'Condición no válida.')
     if status not in ('all','finished','scheduled','live','postponed','cancelled'):
         raise HTTPException(400, 'Estado no válido.')
     try:
-        all_games = order_games(db.games(league,season),order)
+        original_games = db.games(league,season)
+        all_games = order_games(original_games,order)
     except ValueError as error:
         raise HTTPException(400,str(error)) from error
     teams = sorted({g[k] for g in all_games for k in ('home','away')})
@@ -158,17 +160,24 @@ def select_games(league, season, scope='all', team='all', condition='all', statu
         value=search.casefold().strip()
         rows=[g for g in rows if value in (g['home']+' '+g['away']).casefold()]
     unknown_rounds = sum(g.get('round') is None for g in all_games) if league == 'spain' else 0
-    scope_note = f'La fuente no informa la jornada de {unknown_rounds} partidos; esos encuentros solo aparecen en Temporada completa hasta poder confirmar su vuelta.' if unknown_rounds else None
-    return rows, {'scopes':scopes,'teams':teams,'scope_note':scope_note}
+    scope_note = f'La fuente no informa la jornada de {unknown_rounds} partidos; se agrupan como «Jornada pendiente» hasta poder verificarla.' if unknown_rounds else None
+    selected_ids = {g['id'] for g in rows}
+    rounds = round_options(g for g in original_games if g['id'] in selected_ids)
+    rows,selected_round = select_round(rows, match_round, rounds)
+    return rows, {'scopes':scopes,'teams':teams,'scope_note':scope_note,'rounds':rounds,'selected_round':selected_round}
 
 
 @app.get('/api/dashboard')
-def dashboard(league: str='spain',season: str='2025-26',scope: str='all',team: str='all',condition: str='all',status: str='all',search: str=Query('',max_length=100),page: int=Query(1,ge=1),page_size: int=Query(40,ge=1,le=200),order: str='round'):
+def dashboard(league: str='spain',season: str='2025-26',scope: str='all',team: str='all',condition: str='all',status: str='all',search: str=Query('',max_length=100),page: int=Query(1,ge=1),page_size: int=Query(40,ge=1,le=200),order: str='round',match_round: str=''):
     rows,options=select_games(league,season,scope,team,condition,status,search,order)
-    total=len(rows);pages=max(1,math.ceil(total/page_size));page=min(page,pages)
-    visible=[{**g,'btts_ht':g['status']=='finished' and not g.get('administrative') and btts(pair(g,'ht'))} for g in rows[(page-1)*page_size:page*page_size]]
+    matches,options['selected_round']=select_round(rows, match_round, options['rounds'])
+    total=len(matches);pages=max(1,math.ceil(total/page_size));page=min(page,pages)
+    visible=[{**g,'btts_ht':g['status']=='finished' and not g.get('administrative') and btts(pair(g,'ht'))} for g in matches[(page-1)*page_size:page*page_size]]
     last=db.setting('last_sync')
-    return {**summarize(rows,team),'options':options,'games':visible,'pagination':{'page':page,'page_size':page_size,'total':total,'pages':pages},'updated_at':last['at'] if last else db.setting('imported_at')}
+    from .streaks import ht_droughts, ft_droughts, red_droughts
+    ht_spells = ht_droughts(rows)
+    droughts = {'ht':ht_spells,'ft':ft_droughts(rows),'red':red_droughts(rows) if league == 'spain' else None}
+    return {**summarize(rows,team),'ht_droughts':ht_spells,'droughts':droughts,'options':options,'games':visible,'pagination':{'page':page,'page_size':page_size,'total':total,'pages':pages},'updated_at':last['at'] if last else db.setting('imported_at')}
 
 
 @app.get('/api/forecast')
@@ -215,12 +224,13 @@ def card_icon(ws, row, col, color):
 
 
 @app.get('/api/export.xlsx')
-def export(league: str='spain',season: str='2025-26',scope: str='all',team: str='all',condition: str='all',status: str='all',search: str=Query('',max_length=100),order: str='round'):
-    rows,_=select_games(league,season,scope,team,condition,status,search,order)
+def export(league: str='spain',season: str='2025-26',scope: str='all',team: str='all',condition: str='all',status: str='all',search: str=Query('',max_length=100),order: str='round',match_round: str=''):
+    rows,options=select_games(league,season,scope,team,condition,status,search,order,match_round)
     stats=summarize(rows,team)['summary'];w=Workbook();ws=w.active;ws.title='Partidos';ws.sheet_view.showGridLines=False
     ws.merge_cells('A1:J1');ws['A1']=f"{LEAGUES[league]['name']} · {season.replace('-','/')} · {scope if scope!='all' else 'Temporada completa'}"
     ws['A1'].font=Font(size=17,bold=True,color='FFFFFF');ws['A1'].fill=PatternFill('solid',fgColor='172554');ws.row_dimensions[1].height=30
-    lines=[f"Partidos finalizados: {stats['finished']} | Ambos marcan HT: {stats['ht_cases']}/{stats['ht_base']} | Ambos marcan FT: {stats['ft_cases']}/{stats['ft_base']}", 'Frecuencia histórica; no predice el siguiente partido. Solo se analizan encuentros terminados y no administrativos.','Verde: ambos equipos marcaron en HT. N/D: dato pendiente.'+(' Celda vacía en rojas: cero.' if LEAGUES[league]['cards'] else ''),'Filtros: equipo '+('Todos' if team=='all' else team)+' · condición '+condition+' · estado '+status+(f' · búsqueda {search}' if search else '')]
+    selected_label=next((item['label'] for item in options['rounds'] if item['id']==options['selected_round']), '')
+    lines=[f"Partidos finalizados: {stats['finished']} | Ambos marcan HT: {stats['ht_cases']}/{stats['ht_base']} | Ambos marcan FT: {stats['ft_cases']}/{stats['ft_base']}", 'Frecuencia histórica; no predice el siguiente partido. Solo se analizan encuentros terminados y no administrativos.','Verde: ambos equipos marcaron en HT. N/D: dato pendiente.'+(' Celda vacía en rojas: cero.' if LEAGUES[league]['cards'] else ''),'Filtros: equipo '+('Todos' if team=='all' else team)+' · condición '+condition+' · estado '+status+(f' · búsqueda {search}' if search else '')+(f' · {selected_label}' if selected_label else '')]
     for i,line in enumerate(lines,2):
         ws.merge_cells(start_row=i,start_column=1,end_row=i,end_column=10);ws.cell(i,1,line);ws.cell(i,1).font=Font(size=10,color='475569');ws.cell(i,1).alignment=Alignment(wrap_text=True,vertical='center');ws.row_dimensions[i].height=27
     headers=['N.º','Fecha · hora (COL)','Jornada','Local','Visitante','HT','FT']

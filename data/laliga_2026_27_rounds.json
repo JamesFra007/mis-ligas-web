@@ -1,0 +1,2667 @@
+{
+  "league": "spain",
+  "season": "2026-27",
+  "source": "LaLiga · calendario oficial",
+  "matches": [
+    {
+      "home": "Alavés",
+      "away": "Getafe",
+      "round": 1,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=1&limit=100&contentLanguage=es",
+      "official_id": "102249"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Malaga",
+      "round": 1,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=1&limit=100&contentLanguage=es",
+      "official_id": "102250"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Athletic Club",
+      "round": 1,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=1&limit=100&contentLanguage=es",
+      "official_id": "102254"
+    },
+    {
+      "home": "Celta",
+      "away": "Osasuna",
+      "round": 1,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=1&limit=100&contentLanguage=es",
+      "official_id": "102251"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Levante",
+      "round": 1,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=1&limit=100&contentLanguage=es",
+      "official_id": "102253"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Elche",
+      "round": 1,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=1&limit=100&contentLanguage=es",
+      "official_id": "102252"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Real Sociedad",
+      "round": 1,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=1&limit=100&contentLanguage=es",
+      "official_id": "102256"
+    },
+    {
+      "home": "Santander",
+      "away": "Villarreal",
+      "round": 1,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=1&limit=100&contentLanguage=es",
+      "official_id": "102255"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Rayo Vallecano",
+      "round": 1,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=1&limit=100&contentLanguage=es",
+      "official_id": "102257"
+    },
+    {
+      "home": "Valencia",
+      "away": "Real Betis",
+      "round": 1,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=1&limit=100&contentLanguage=es",
+      "official_id": "102258"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Sevilla",
+      "round": 2,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=2&limit=100&contentLanguage=es",
+      "official_id": "102259"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Villarreal",
+      "round": 2,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=2&limit=100&contentLanguage=es",
+      "official_id": "102260"
+    },
+    {
+      "home": "Elche",
+      "away": "Barcelona",
+      "round": 2,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=2&limit=100&contentLanguage=es",
+      "official_id": "102262"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Real Madrid",
+      "round": 2,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=2&limit=100&contentLanguage=es",
+      "official_id": "102263"
+    },
+    {
+      "home": "Getafe",
+      "away": "Santander",
+      "round": 2,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=2&limit=100&contentLanguage=es",
+      "official_id": "102264"
+    },
+    {
+      "home": "Malaga",
+      "away": "La Coruna",
+      "round": 2,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=2&limit=100&contentLanguage=es",
+      "official_id": "102265"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Levante",
+      "round": 2,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=2&limit=100&contentLanguage=es",
+      "official_id": "102266"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Alavés",
+      "round": 2,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=2&limit=100&contentLanguage=es",
+      "official_id": "102267"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Real Sociedad",
+      "round": 2,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=2&limit=100&contentLanguage=es",
+      "official_id": "102261"
+    },
+    {
+      "home": "Valencia",
+      "away": "Celta",
+      "round": 2,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=2&limit=100&contentLanguage=es",
+      "official_id": "102268"
+    },
+    {
+      "home": "Alavés",
+      "away": "Villarreal",
+      "round": 3,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=3&limit=100&contentLanguage=es",
+      "official_id": "102269"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Rayo Vallecano",
+      "round": 3,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=3&limit=100&contentLanguage=es",
+      "official_id": "102272"
+    },
+    {
+      "home": "Celta",
+      "away": "Athletic Club",
+      "round": 3,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=3&limit=100&contentLanguage=es",
+      "official_id": "102270"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Valencia",
+      "round": 3,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=3&limit=100&contentLanguage=es",
+      "official_id": "102271"
+    },
+    {
+      "home": "Levante",
+      "away": "Real Betis",
+      "round": 3,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=3&limit=100&contentLanguage=es",
+      "official_id": "102273"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Getafe",
+      "round": 3,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=3&limit=100&contentLanguage=es",
+      "official_id": "102274"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Malaga",
+      "round": 3,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=3&limit=100&contentLanguage=es",
+      "official_id": "102276"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Espanyol",
+      "round": 3,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=3&limit=100&contentLanguage=es",
+      "official_id": "102277"
+    },
+    {
+      "home": "Santander",
+      "away": "Elche",
+      "round": 3,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=3&limit=100&contentLanguage=es",
+      "official_id": "102275"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Atlético de Madrid",
+      "round": 3,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=3&limit=100&contentLanguage=es",
+      "official_id": "102278"
+    },
+    {
+      "home": "Alavés",
+      "away": "Osasuna",
+      "round": 4,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=4&limit=100&contentLanguage=es",
+      "official_id": "102279"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Atlético de Madrid",
+      "round": 4,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=4&limit=100&contentLanguage=es",
+      "official_id": "102280"
+    },
+    {
+      "home": "Elche",
+      "away": "Real Sociedad",
+      "round": 4,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=4&limit=100&contentLanguage=es",
+      "official_id": "102282"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Sevilla",
+      "round": 4,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=4&limit=100&contentLanguage=es",
+      "official_id": "102283"
+    },
+    {
+      "home": "Getafe",
+      "away": "Celta",
+      "round": 4,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=4&limit=100&contentLanguage=es",
+      "official_id": "102284"
+    },
+    {
+      "home": "Malaga",
+      "away": "Levante",
+      "round": 4,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=4&limit=100&contentLanguage=es",
+      "official_id": "102285"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Santander",
+      "round": 4,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=4&limit=100&contentLanguage=es",
+      "official_id": "102286"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Real Madrid",
+      "round": 4,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=4&limit=100&contentLanguage=es",
+      "official_id": "102281"
+    },
+    {
+      "home": "Valencia",
+      "away": "Barcelona",
+      "round": 4,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=4&limit=100&contentLanguage=es",
+      "official_id": "102287"
+    },
+    {
+      "home": "Villarreal",
+      "away": "La Coruna",
+      "round": 4,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=4&limit=100&contentLanguage=es",
+      "official_id": "102288"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Elche",
+      "round": 5,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=5&limit=100&contentLanguage=es",
+      "official_id": "102289"
+    },
+    {
+      "home": "Celta",
+      "away": "Malaga",
+      "round": 5,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=5&limit=100&contentLanguage=es",
+      "official_id": "102290"
+    },
+    {
+      "home": "Getafe",
+      "away": "La Coruna",
+      "round": 5,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=5&limit=100&contentLanguage=es",
+      "official_id": "102291"
+    },
+    {
+      "home": "Levante",
+      "away": "Barcelona",
+      "round": 5,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=5&limit=100&contentLanguage=es",
+      "official_id": "102292"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Espanyol",
+      "round": 5,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=5&limit=100&contentLanguage=es",
+      "official_id": "102293"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Rayo Vallecano",
+      "round": 5,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=5&limit=100&contentLanguage=es",
+      "official_id": "102295"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Atlético de Madrid",
+      "round": 5,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=5&limit=100&contentLanguage=es",
+      "official_id": "102296"
+    },
+    {
+      "home": "Santander",
+      "away": "Alavés",
+      "round": 5,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=5&limit=100&contentLanguage=es",
+      "official_id": "102294"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Valencia",
+      "round": 5,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=5&limit=100&contentLanguage=es",
+      "official_id": "102297"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Real Betis",
+      "round": 5,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=5&limit=100&contentLanguage=es",
+      "official_id": "102298"
+    },
+    {
+      "home": "Alavés",
+      "away": "Valencia",
+      "round": 6,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=6&limit=100&contentLanguage=es",
+      "official_id": "102299"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Osasuna",
+      "round": 6,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=6&limit=100&contentLanguage=es",
+      "official_id": "102300"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Santander",
+      "round": 6,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=6&limit=100&contentLanguage=es",
+      "official_id": "102304"
+    },
+    {
+      "home": "Elche",
+      "away": "Real Madrid",
+      "round": 6,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=6&limit=100&contentLanguage=es",
+      "official_id": "102303"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Sevilla",
+      "round": 6,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=6&limit=100&contentLanguage=es",
+      "official_id": "102302"
+    },
+    {
+      "home": "Levante",
+      "away": "Athletic Club",
+      "round": 6,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=6&limit=100&contentLanguage=es",
+      "official_id": "102305"
+    },
+    {
+      "home": "Malaga",
+      "away": "Villarreal",
+      "round": 6,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=6&limit=100&contentLanguage=es",
+      "official_id": "102306"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Espanyol",
+      "round": 6,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=6&limit=100&contentLanguage=es",
+      "official_id": "102307"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Getafe",
+      "round": 6,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=6&limit=100&contentLanguage=es",
+      "official_id": "102301"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Celta",
+      "round": 6,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=6&limit=100&contentLanguage=es",
+      "official_id": "102308"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Alavés",
+      "round": 7,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=7&limit=100&contentLanguage=es",
+      "official_id": "102309"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Real Madrid",
+      "round": 7,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=7&limit=100&contentLanguage=es",
+      "official_id": "102310"
+    },
+    {
+      "home": "Celta",
+      "away": "Santander",
+      "round": 7,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=7&limit=100&contentLanguage=es",
+      "official_id": "102311"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Elche",
+      "round": 7,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=7&limit=100&contentLanguage=es",
+      "official_id": "102313"
+    },
+    {
+      "home": "Getafe",
+      "away": "Malaga",
+      "round": 7,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=7&limit=100&contentLanguage=es",
+      "official_id": "102314"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Real Betis",
+      "round": 7,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=7&limit=100&contentLanguage=es",
+      "official_id": "102312"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Rayo Vallecano",
+      "round": 7,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=7&limit=100&contentLanguage=es",
+      "official_id": "102315"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Barcelona",
+      "round": 7,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=7&limit=100&contentLanguage=es",
+      "official_id": "102316"
+    },
+    {
+      "home": "Valencia",
+      "away": "Real Sociedad",
+      "round": 7,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=7&limit=100&contentLanguage=es",
+      "official_id": "102317"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Levante",
+      "round": 7,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=7&limit=100&contentLanguage=es",
+      "official_id": "102318"
+    },
+    {
+      "home": "Alavés",
+      "away": "Atlético de Madrid",
+      "round": 8,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=8&limit=100&contentLanguage=es",
+      "official_id": "102319"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Getafe",
+      "round": 8,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=8&limit=100&contentLanguage=es",
+      "official_id": "102322"
+    },
+    {
+      "home": "Elche",
+      "away": "Celta",
+      "round": 8,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=8&limit=100&contentLanguage=es",
+      "official_id": "102321"
+    },
+    {
+      "home": "Levante",
+      "away": "Sevilla",
+      "round": 8,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=8&limit=100&contentLanguage=es",
+      "official_id": "102323"
+    },
+    {
+      "home": "Malaga",
+      "away": "Espanyol",
+      "round": 8,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=8&limit=100&contentLanguage=es",
+      "official_id": "102324"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Athletic Club",
+      "round": 8,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=8&limit=100&contentLanguage=es",
+      "official_id": "102326"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Osasuna",
+      "round": 8,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=8&limit=100&contentLanguage=es",
+      "official_id": "102320"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Villarreal",
+      "round": 8,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=8&limit=100&contentLanguage=es",
+      "official_id": "102327"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "La Coruna",
+      "round": 8,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=8&limit=100&contentLanguage=es",
+      "official_id": "102328"
+    },
+    {
+      "home": "Santander",
+      "away": "Valencia",
+      "round": 8,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=8&limit=100&contentLanguage=es",
+      "official_id": "102325"
+    },
+    {
+      "home": "Celta",
+      "away": "Alavés",
+      "round": 9,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=9&limit=100&contentLanguage=es",
+      "official_id": "102330"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Atlético de Madrid",
+      "round": 9,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=9&limit=100&contentLanguage=es",
+      "official_id": "102332"
+    },
+    {
+      "home": "Getafe",
+      "away": "Rayo Vallecano",
+      "round": 9,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=9&limit=100&contentLanguage=es",
+      "official_id": "102333"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Levante",
+      "round": 9,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=9&limit=100&contentLanguage=es",
+      "official_id": "102331"
+    },
+    {
+      "home": "Malaga",
+      "away": "Real Sociedad",
+      "round": 9,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=9&limit=100&contentLanguage=es",
+      "official_id": "102334"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Santander",
+      "round": 9,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=9&limit=100&contentLanguage=es",
+      "official_id": "102335"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Barcelona",
+      "round": 9,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=9&limit=100&contentLanguage=es",
+      "official_id": "102329"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Sevilla",
+      "round": 9,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=9&limit=100&contentLanguage=es",
+      "official_id": "102336"
+    },
+    {
+      "home": "Valencia",
+      "away": "Athletic Club",
+      "round": 9,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=9&limit=100&contentLanguage=es",
+      "official_id": "102337"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Elche",
+      "round": 9,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=9&limit=100&contentLanguage=es",
+      "official_id": "102338"
+    },
+    {
+      "home": "Alavés",
+      "away": "Malaga",
+      "round": 10,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=10&limit=100&contentLanguage=es",
+      "official_id": "102339"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Getafe",
+      "round": 10,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=10&limit=100&contentLanguage=es",
+      "official_id": "102340"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "La Coruna",
+      "round": 10,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=10&limit=100&contentLanguage=es",
+      "official_id": "102341"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Real Madrid",
+      "round": 10,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=10&limit=100&contentLanguage=es",
+      "official_id": "102343"
+    },
+    {
+      "home": "Celta",
+      "away": "Real Betis",
+      "round": 10,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=10&limit=100&contentLanguage=es",
+      "official_id": "102342"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Elche",
+      "round": 10,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=10&limit=100&contentLanguage=es",
+      "official_id": "102345"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Levante",
+      "round": 10,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=10&limit=100&contentLanguage=es",
+      "official_id": "102346"
+    },
+    {
+      "home": "Santander",
+      "away": "Espanyol",
+      "round": 10,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=10&limit=100&contentLanguage=es",
+      "official_id": "102344"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Osasuna",
+      "round": 10,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=10&limit=100&contentLanguage=es",
+      "official_id": "102347"
+    },
+    {
+      "home": "Valencia",
+      "away": "Villarreal",
+      "round": 10,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=10&limit=100&contentLanguage=es",
+      "official_id": "102348"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Real Sociedad",
+      "round": 11,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=11&limit=100&contentLanguage=es",
+      "official_id": "102349"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Alavés",
+      "round": 11,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=11&limit=100&contentLanguage=es",
+      "official_id": "102353"
+    },
+    {
+      "home": "Elche",
+      "away": "Valencia",
+      "round": 11,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=11&limit=100&contentLanguage=es",
+      "official_id": "102352"
+    },
+    {
+      "home": "Getafe",
+      "away": "Sevilla",
+      "round": 11,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=11&limit=100&contentLanguage=es",
+      "official_id": "102354"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Osasuna",
+      "round": 11,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=11&limit=100&contentLanguage=es",
+      "official_id": "102351"
+    },
+    {
+      "home": "Levante",
+      "away": "Atlético de Madrid",
+      "round": 11,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=11&limit=100&contentLanguage=es",
+      "official_id": "102355"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Celta",
+      "round": 11,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=11&limit=100&contentLanguage=es",
+      "official_id": "102357"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Malaga",
+      "round": 11,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=11&limit=100&contentLanguage=es",
+      "official_id": "102350"
+    },
+    {
+      "home": "Santander",
+      "away": "Real Madrid",
+      "round": 11,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=11&limit=100&contentLanguage=es",
+      "official_id": "102356"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Espanyol",
+      "round": 11,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=11&limit=100&contentLanguage=es",
+      "official_id": "102358"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Barcelona",
+      "round": 12,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=12&limit=100&contentLanguage=es",
+      "official_id": "102359"
+    },
+    {
+      "home": "Celta",
+      "away": "Levante",
+      "round": 12,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=12&limit=100&contentLanguage=es",
+      "official_id": "102360"
+    },
+    {
+      "home": "Elche",
+      "away": "Real Betis",
+      "round": 12,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=12&limit=100&contentLanguage=es",
+      "official_id": "102361"
+    },
+    {
+      "home": "Espanyol",
+      "away": "La Coruna",
+      "round": 12,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=12&limit=100&contentLanguage=es",
+      "official_id": "102362"
+    },
+    {
+      "home": "Malaga",
+      "away": "Santander",
+      "round": 12,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=12&limit=100&contentLanguage=es",
+      "official_id": "102363"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Athletic Club",
+      "round": 12,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=12&limit=100&contentLanguage=es",
+      "official_id": "102364"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Rayo Vallecano",
+      "round": 12,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=12&limit=100&contentLanguage=es",
+      "official_id": "102365"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Alavés",
+      "round": 12,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=12&limit=100&contentLanguage=es",
+      "official_id": "102366"
+    },
+    {
+      "home": "Valencia",
+      "away": "Real Madrid",
+      "round": 12,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=12&limit=100&contentLanguage=es",
+      "official_id": "102367"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Getafe",
+      "round": 12,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=12&limit=100&contentLanguage=es",
+      "official_id": "102368"
+    },
+    {
+      "home": "Alavés",
+      "away": "La Coruna",
+      "round": 13,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es",
+      "official_id": "102369"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Espanyol",
+      "round": 13,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es",
+      "official_id": "102370"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Villarreal",
+      "round": 13,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es",
+      "official_id": "102371"
+    },
+    {
+      "home": "Getafe",
+      "away": "Atlético de Madrid",
+      "round": 13,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es",
+      "official_id": "102372"
+    },
+    {
+      "home": "Levante",
+      "away": "Elche",
+      "round": 13,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es",
+      "official_id": "102373"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Malaga",
+      "round": 13,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es",
+      "official_id": "102374"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Valencia",
+      "round": 13,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es",
+      "official_id": "102376"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Celta",
+      "round": 13,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es",
+      "official_id": "102377"
+    },
+    {
+      "home": "Santander",
+      "away": "Real Sociedad",
+      "round": 13,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es",
+      "official_id": "102375"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Real Betis",
+      "round": 13,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es",
+      "official_id": "102378"
+    },
+    {
+      "home": "Celta",
+      "away": "Villarreal",
+      "round": 14,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=14&limit=100&contentLanguage=es",
+      "official_id": "102380"
+    },
+    {
+      "home": "Elche",
+      "away": "Atlético de Madrid",
+      "round": 14,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=14&limit=100&contentLanguage=es",
+      "official_id": "102382"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Getafe",
+      "round": 14,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=14&limit=100&contentLanguage=es",
+      "official_id": "102383"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Barcelona",
+      "round": 14,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=14&limit=100&contentLanguage=es",
+      "official_id": "102381"
+    },
+    {
+      "home": "Levante",
+      "away": "Santander",
+      "round": 14,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=14&limit=100&contentLanguage=es",
+      "official_id": "102384"
+    },
+    {
+      "home": "Malaga",
+      "away": "Athletic Club",
+      "round": 14,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=14&limit=100&contentLanguage=es",
+      "official_id": "102385"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Rayo Vallecano",
+      "round": 14,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=14&limit=100&contentLanguage=es",
+      "official_id": "102379"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Alavés",
+      "round": 14,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=14&limit=100&contentLanguage=es",
+      "official_id": "102386"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Sevilla",
+      "round": 14,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=14&limit=100&contentLanguage=es",
+      "official_id": "102387"
+    },
+    {
+      "home": "Valencia",
+      "away": "Osasuna",
+      "round": 14,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=14&limit=100&contentLanguage=es",
+      "official_id": "102388"
+    },
+    {
+      "home": "Alavés",
+      "away": "Espanyol",
+      "round": 15,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=15&limit=100&contentLanguage=es",
+      "official_id": "102389"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Real Madrid",
+      "round": 15,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=15&limit=100&contentLanguage=es",
+      "official_id": "102390"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Real Betis",
+      "round": 15,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=15&limit=100&contentLanguage=es",
+      "official_id": "102391"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Celta",
+      "round": 15,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=15&limit=100&contentLanguage=es",
+      "official_id": "102392"
+    },
+    {
+      "home": "Getafe",
+      "away": "Valencia",
+      "round": 15,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=15&limit=100&contentLanguage=es",
+      "official_id": "102393"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Elche",
+      "round": 15,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=15&limit=100&contentLanguage=es",
+      "official_id": "102394"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Levante",
+      "round": 15,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=15&limit=100&contentLanguage=es",
+      "official_id": "102396"
+    },
+    {
+      "home": "Santander",
+      "away": "La Coruna",
+      "round": 15,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=15&limit=100&contentLanguage=es",
+      "official_id": "102395"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Malaga",
+      "round": 15,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=15&limit=100&contentLanguage=es",
+      "official_id": "102397"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Real Sociedad",
+      "round": 15,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=15&limit=100&contentLanguage=es",
+      "official_id": "102398"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Valencia",
+      "round": 16,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=16&limit=100&contentLanguage=es",
+      "official_id": "102399"
+    },
+    {
+      "home": "Elche",
+      "away": "Sevilla",
+      "round": 16,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=16&limit=100&contentLanguage=es",
+      "official_id": "102402"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Celta",
+      "round": 16,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=16&limit=100&contentLanguage=es",
+      "official_id": "102403"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Athletic Club",
+      "round": 16,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=16&limit=100&contentLanguage=es",
+      "official_id": "102401"
+    },
+    {
+      "home": "Levante",
+      "away": "Alavés",
+      "round": 16,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=16&limit=100&contentLanguage=es",
+      "official_id": "102404"
+    },
+    {
+      "home": "Malaga",
+      "away": "Barcelona",
+      "round": 16,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=16&limit=100&contentLanguage=es",
+      "official_id": "102405"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Santander",
+      "round": 16,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=16&limit=100&contentLanguage=es",
+      "official_id": "102400"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Osasuna",
+      "round": 16,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=16&limit=100&contentLanguage=es",
+      "official_id": "102406"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Getafe",
+      "round": 16,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=16&limit=100&contentLanguage=es",
+      "official_id": "102407"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Rayo Vallecano",
+      "round": 16,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=16&limit=100&contentLanguage=es",
+      "official_id": "102408"
+    },
+    {
+      "home": "Alavés",
+      "away": "Elche",
+      "round": 17,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=17&limit=100&contentLanguage=es",
+      "official_id": "102409"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Real Betis",
+      "round": 17,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=17&limit=100&contentLanguage=es",
+      "official_id": "102410"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Real Sociedad",
+      "round": 17,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=17&limit=100&contentLanguage=es",
+      "official_id": "102413"
+    },
+    {
+      "home": "Celta",
+      "away": "Atlético de Madrid",
+      "round": 17,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=17&limit=100&contentLanguage=es",
+      "official_id": "102411"
+    },
+    {
+      "home": "Getafe",
+      "away": "Levante",
+      "round": 17,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=17&limit=100&contentLanguage=es",
+      "official_id": "102414"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Real Madrid",
+      "round": 17,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=17&limit=100&contentLanguage=es",
+      "official_id": "102412"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Villarreal",
+      "round": 17,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=17&limit=100&contentLanguage=es",
+      "official_id": "102415"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Malaga",
+      "round": 17,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=17&limit=100&contentLanguage=es",
+      "official_id": "102416"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Santander",
+      "round": 17,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=17&limit=100&contentLanguage=es",
+      "official_id": "102417"
+    },
+    {
+      "home": "Valencia",
+      "away": "Espanyol",
+      "round": 17,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=17&limit=100&contentLanguage=es",
+      "official_id": "102418"
+    },
+    {
+      "home": "Celta",
+      "away": "La Coruna",
+      "round": 18,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=18&limit=100&contentLanguage=es",
+      "official_id": "102420"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Barcelona",
+      "round": 18,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=18&limit=100&contentLanguage=es",
+      "official_id": "102421"
+    },
+    {
+      "home": "Levante",
+      "away": "Valencia",
+      "round": 18,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=18&limit=100&contentLanguage=es",
+      "official_id": "102422"
+    },
+    {
+      "home": "Malaga",
+      "away": "Elche",
+      "round": 18,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=18&limit=100&contentLanguage=es",
+      "official_id": "102423"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Atlético de Madrid",
+      "round": 18,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=18&limit=100&contentLanguage=es",
+      "official_id": "102425"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Alavés",
+      "round": 18,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=18&limit=100&contentLanguage=es",
+      "official_id": "102419"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Getafe",
+      "round": 18,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=18&limit=100&contentLanguage=es",
+      "official_id": "102426"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Osasuna",
+      "round": 18,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=18&limit=100&contentLanguage=es",
+      "official_id": "102427"
+    },
+    {
+      "home": "Santander",
+      "away": "Athletic Club",
+      "round": 18,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=18&limit=100&contentLanguage=es",
+      "official_id": "102424"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Sevilla",
+      "round": 18,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=18&limit=100&contentLanguage=es",
+      "official_id": "102428"
+    },
+    {
+      "home": "Alavés",
+      "away": "Real Sociedad",
+      "round": 19,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=19&limit=100&contentLanguage=es",
+      "official_id": "102429"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Villarreal",
+      "round": 19,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=19&limit=100&contentLanguage=es",
+      "official_id": "102430"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Santander",
+      "round": 19,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=19&limit=100&contentLanguage=es",
+      "official_id": "102431"
+    },
+    {
+      "home": "Elche",
+      "away": "Getafe",
+      "round": 19,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=19&limit=100&contentLanguage=es",
+      "official_id": "102433"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Real Betis",
+      "round": 19,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=19&limit=100&contentLanguage=es",
+      "official_id": "102434"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Rayo Vallecano",
+      "round": 19,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=19&limit=100&contentLanguage=es",
+      "official_id": "102432"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Barcelona",
+      "round": 19,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=19&limit=100&contentLanguage=es",
+      "official_id": "102435"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Levante",
+      "round": 19,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=19&limit=100&contentLanguage=es",
+      "official_id": "102436"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Celta",
+      "round": 19,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=19&limit=100&contentLanguage=es",
+      "official_id": "102437"
+    },
+    {
+      "home": "Valencia",
+      "away": "Malaga",
+      "round": 19,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=19&limit=100&contentLanguage=es",
+      "official_id": "102438"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Real Sociedad",
+      "round": 20,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=20&limit=100&contentLanguage=es",
+      "official_id": "102439"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Elche",
+      "round": 20,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=20&limit=100&contentLanguage=es",
+      "official_id": "102442"
+    },
+    {
+      "home": "Celta",
+      "away": "Valencia",
+      "round": 20,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=20&limit=100&contentLanguage=es",
+      "official_id": "102441"
+    },
+    {
+      "home": "Getafe",
+      "away": "Athletic Club",
+      "round": 20,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=20&limit=100&contentLanguage=es",
+      "official_id": "102443"
+    },
+    {
+      "home": "Levante",
+      "away": "Espanyol",
+      "round": 20,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=20&limit=100&contentLanguage=es",
+      "official_id": "102444"
+    },
+    {
+      "home": "Malaga",
+      "away": "Real Madrid",
+      "round": 20,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=20&limit=100&contentLanguage=es",
+      "official_id": "102445"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Sevilla",
+      "round": 20,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=20&limit=100&contentLanguage=es",
+      "official_id": "102447"
+    },
+    {
+      "home": "Real Betis",
+      "away": "La Coruna",
+      "round": 20,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=20&limit=100&contentLanguage=es",
+      "official_id": "102440"
+    },
+    {
+      "home": "Santander",
+      "away": "Osasuna",
+      "round": 20,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=20&limit=100&contentLanguage=es",
+      "official_id": "102446"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Alavés",
+      "round": 20,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=20&limit=100&contentLanguage=es",
+      "official_id": "102448"
+    },
+    {
+      "home": "Alavés",
+      "away": "Barcelona",
+      "round": 21,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=21&limit=100&contentLanguage=es",
+      "official_id": "102449"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Levante",
+      "round": 21,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=21&limit=100&contentLanguage=es",
+      "official_id": "102450"
+    },
+    {
+      "home": "Elche",
+      "away": "Rayo Vallecano",
+      "round": 21,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=21&limit=100&contentLanguage=es",
+      "official_id": "102452"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Villarreal",
+      "round": 21,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=21&limit=100&contentLanguage=es",
+      "official_id": "102453"
+    },
+    {
+      "home": "Getafe",
+      "away": "Osasuna",
+      "round": 21,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=21&limit=100&contentLanguage=es",
+      "official_id": "102454"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Atlético de Madrid",
+      "round": 21,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=21&limit=100&contentLanguage=es",
+      "official_id": "102451"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Real Betis",
+      "round": 21,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=21&limit=100&contentLanguage=es",
+      "official_id": "102456"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Malaga",
+      "round": 21,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=21&limit=100&contentLanguage=es",
+      "official_id": "102457"
+    },
+    {
+      "home": "Santander",
+      "away": "Celta",
+      "round": 21,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=21&limit=100&contentLanguage=es",
+      "official_id": "102455"
+    },
+    {
+      "home": "Valencia",
+      "away": "Sevilla",
+      "round": 21,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=21&limit=100&contentLanguage=es",
+      "official_id": "102458"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Espanyol",
+      "round": 22,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=22&limit=100&contentLanguage=es",
+      "official_id": "102459"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Valencia",
+      "round": 22,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=22&limit=100&contentLanguage=es",
+      "official_id": "102462"
+    },
+    {
+      "home": "Celta",
+      "away": "Getafe",
+      "round": 22,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=22&limit=100&contentLanguage=es",
+      "official_id": "102461"
+    },
+    {
+      "home": "Levante",
+      "away": "Real Sociedad",
+      "round": 22,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=22&limit=100&contentLanguage=es",
+      "official_id": "102463"
+    },
+    {
+      "home": "Malaga",
+      "away": "Alavés",
+      "round": 22,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=22&limit=100&contentLanguage=es",
+      "official_id": "102464"
+    },
+    {
+      "home": "Osasuna",
+      "away": "La Coruna",
+      "round": 22,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=22&limit=100&contentLanguage=es",
+      "official_id": "102465"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Real Madrid",
+      "round": 22,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=22&limit=100&contentLanguage=es",
+      "official_id": "102466"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Elche",
+      "round": 22,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=22&limit=100&contentLanguage=es",
+      "official_id": "102460"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Athletic Club",
+      "round": 22,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=22&limit=100&contentLanguage=es",
+      "official_id": "102467"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Santander",
+      "round": 22,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=22&limit=100&contentLanguage=es",
+      "official_id": "102468"
+    },
+    {
+      "home": "Alavés",
+      "away": "Celta",
+      "round": 23,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=23&limit=100&contentLanguage=es",
+      "official_id": "102469"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Osasuna",
+      "round": 23,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=23&limit=100&contentLanguage=es",
+      "official_id": "102470"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Atlético de Madrid",
+      "round": 23,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=23&limit=100&contentLanguage=es",
+      "official_id": "102475"
+    },
+    {
+      "home": "Elche",
+      "away": "Levante",
+      "round": 23,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=23&limit=100&contentLanguage=es",
+      "official_id": "102473"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Rayo Vallecano",
+      "round": 23,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=23&limit=100&contentLanguage=es",
+      "official_id": "102474"
+    },
+    {
+      "home": "Getafe",
+      "away": "Villarreal",
+      "round": 23,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=23&limit=100&contentLanguage=es",
+      "official_id": "102476"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Malaga",
+      "round": 23,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=23&limit=100&contentLanguage=es",
+      "official_id": "102472"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Sevilla",
+      "round": 23,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=23&limit=100&contentLanguage=es",
+      "official_id": "102471"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Real Madrid",
+      "round": 23,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=23&limit=100&contentLanguage=es",
+      "official_id": "102477"
+    },
+    {
+      "home": "Valencia",
+      "away": "Santander",
+      "round": 23,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=23&limit=100&contentLanguage=es",
+      "official_id": "102478"
+    },
+    {
+      "home": "Celta",
+      "away": "Rayo Vallecano",
+      "round": 24,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=24&limit=100&contentLanguage=es",
+      "official_id": "102479"
+    },
+    {
+      "home": "Elche",
+      "away": "La Coruna",
+      "round": 24,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=24&limit=100&contentLanguage=es",
+      "official_id": "102480"
+    },
+    {
+      "home": "Levante",
+      "away": "Malaga",
+      "round": 24,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=24&limit=100&contentLanguage=es",
+      "official_id": "102481"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Atlético de Madrid",
+      "round": 24,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=24&limit=100&contentLanguage=es",
+      "official_id": "102482"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Athletic Club",
+      "round": 24,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=24&limit=100&contentLanguage=es",
+      "official_id": "102484"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Real Betis",
+      "round": 24,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=24&limit=100&contentLanguage=es",
+      "official_id": "102485"
+    },
+    {
+      "home": "Santander",
+      "away": "Getafe",
+      "round": 24,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=24&limit=100&contentLanguage=es",
+      "official_id": "102483"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Espanyol",
+      "round": 24,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=24&limit=100&contentLanguage=es",
+      "official_id": "102486"
+    },
+    {
+      "home": "Valencia",
+      "away": "Alavés",
+      "round": 24,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=24&limit=100&contentLanguage=es",
+      "official_id": "102487"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Barcelona",
+      "round": 24,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=24&limit=100&contentLanguage=es",
+      "official_id": "102488"
+    },
+    {
+      "home": "Alavés",
+      "away": "Santander",
+      "round": 25,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=25&limit=100&contentLanguage=es",
+      "official_id": "102489"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Celta",
+      "round": 25,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=25&limit=100&contentLanguage=es",
+      "official_id": "102490"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Elche",
+      "round": 25,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=25&limit=100&contentLanguage=es",
+      "official_id": "102491"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Levante",
+      "round": 25,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=25&limit=100&contentLanguage=es",
+      "official_id": "102494"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Osasuna",
+      "round": 25,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=25&limit=100&contentLanguage=es",
+      "official_id": "102493"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Real Sociedad",
+      "round": 25,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=25&limit=100&contentLanguage=es",
+      "official_id": "102492"
+    },
+    {
+      "home": "Malaga",
+      "away": "Real Betis",
+      "round": 25,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=25&limit=100&contentLanguage=es",
+      "official_id": "102495"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Getafe",
+      "round": 25,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=25&limit=100&contentLanguage=es",
+      "official_id": "102496"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Real Madrid",
+      "round": 25,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=25&limit=100&contentLanguage=es",
+      "official_id": "102497"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Valencia",
+      "round": 25,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=25&limit=100&contentLanguage=es",
+      "official_id": "102498"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Barcelona",
+      "round": 26,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=26&limit=100&contentLanguage=es",
+      "official_id": "102499"
+    },
+    {
+      "home": "Celta",
+      "away": "Espanyol",
+      "round": 26,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=26&limit=100&contentLanguage=es",
+      "official_id": "102501"
+    },
+    {
+      "home": "Getafe",
+      "away": "Alavés",
+      "round": 26,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=26&limit=100&contentLanguage=es",
+      "official_id": "102502"
+    },
+    {
+      "home": "Levante",
+      "away": "La Coruna",
+      "round": 26,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=26&limit=100&contentLanguage=es",
+      "official_id": "102503"
+    },
+    {
+      "home": "Malaga",
+      "away": "Atlético de Madrid",
+      "round": 26,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=26&limit=100&contentLanguage=es",
+      "official_id": "102504"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Sevilla",
+      "round": 26,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=26&limit=100&contentLanguage=es",
+      "official_id": "102505"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Villarreal",
+      "round": 26,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=26&limit=100&contentLanguage=es",
+      "official_id": "102500"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Valencia",
+      "round": 26,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=26&limit=100&contentLanguage=es",
+      "official_id": "102507"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Elche",
+      "round": 26,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=26&limit=100&contentLanguage=es",
+      "official_id": "102508"
+    },
+    {
+      "home": "Santander",
+      "away": "Rayo Vallecano",
+      "round": 26,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=26&limit=100&contentLanguage=es",
+      "official_id": "102506"
+    },
+    {
+      "home": "Alavés",
+      "away": "Athletic Club",
+      "round": 27,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=27&limit=100&contentLanguage=es",
+      "official_id": "102509"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Celta",
+      "round": 27,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=27&limit=100&contentLanguage=es",
+      "official_id": "102510"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Real Betis",
+      "round": 27,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=27&limit=100&contentLanguage=es",
+      "official_id": "102514"
+    },
+    {
+      "home": "Elche",
+      "away": "Malaga",
+      "round": 27,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=27&limit=100&contentLanguage=es",
+      "official_id": "102512"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Santander",
+      "round": 27,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=27&limit=100&contentLanguage=es",
+      "official_id": "102513"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Getafe",
+      "round": 27,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=27&limit=100&contentLanguage=es",
+      "official_id": "102511"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Osasuna",
+      "round": 27,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=27&limit=100&contentLanguage=es",
+      "official_id": "102515"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Real Sociedad",
+      "round": 27,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=27&limit=100&contentLanguage=es",
+      "official_id": "102516"
+    },
+    {
+      "home": "Valencia",
+      "away": "Levante",
+      "round": 27,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=27&limit=100&contentLanguage=es",
+      "official_id": "102517"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Real Madrid",
+      "round": 27,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=27&limit=100&contentLanguage=es",
+      "official_id": "102518"
+    },
+    {
+      "home": "Alavés",
+      "away": "Sevilla",
+      "round": 28,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=28&limit=100&contentLanguage=es",
+      "official_id": "102519"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Valencia",
+      "round": 28,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=28&limit=100&contentLanguage=es",
+      "official_id": "102520"
+    },
+    {
+      "home": "Barcelona",
+      "away": "La Coruna",
+      "round": 28,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=28&limit=100&contentLanguage=es",
+      "official_id": "102523"
+    },
+    {
+      "home": "Elche",
+      "away": "Villarreal",
+      "round": 28,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=28&limit=100&contentLanguage=es",
+      "official_id": "102522"
+    },
+    {
+      "home": "Getafe",
+      "away": "Real Sociedad",
+      "round": 28,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=28&limit=100&contentLanguage=es",
+      "official_id": "102524"
+    },
+    {
+      "home": "Malaga",
+      "away": "Rayo Vallecano",
+      "round": 28,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=28&limit=100&contentLanguage=es",
+      "official_id": "102525"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Celta",
+      "round": 28,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=28&limit=100&contentLanguage=es",
+      "official_id": "102526"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Levante",
+      "round": 28,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=28&limit=100&contentLanguage=es",
+      "official_id": "102521"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Espanyol",
+      "round": 28,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=28&limit=100&contentLanguage=es",
+      "official_id": "102528"
+    },
+    {
+      "home": "Santander",
+      "away": "Atlético de Madrid",
+      "round": 28,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=28&limit=100&contentLanguage=es",
+      "official_id": "102527"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Getafe",
+      "round": 29,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=29&limit=100&contentLanguage=es",
+      "official_id": "102529"
+    },
+    {
+      "home": "Celta",
+      "away": "Real Madrid",
+      "round": 29,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=29&limit=100&contentLanguage=es",
+      "official_id": "102530"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Athletic Club",
+      "round": 29,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=29&limit=100&contentLanguage=es",
+      "official_id": "102531"
+    },
+    {
+      "home": "Levante",
+      "away": "Osasuna",
+      "round": 29,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=29&limit=100&contentLanguage=es",
+      "official_id": "102532"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Barcelona",
+      "round": 29,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=29&limit=100&contentLanguage=es",
+      "official_id": "102534"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Alavés",
+      "round": 29,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=29&limit=100&contentLanguage=es",
+      "official_id": "102535"
+    },
+    {
+      "home": "Santander",
+      "away": "Real Betis",
+      "round": 29,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=29&limit=100&contentLanguage=es",
+      "official_id": "102533"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Elche",
+      "round": 29,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=29&limit=100&contentLanguage=es",
+      "official_id": "102536"
+    },
+    {
+      "home": "Valencia",
+      "away": "La Coruna",
+      "round": 29,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=29&limit=100&contentLanguage=es",
+      "official_id": "102537"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Malaga",
+      "round": 29,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=29&limit=100&contentLanguage=es",
+      "official_id": "102538"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Santander",
+      "round": 30,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=30&limit=100&contentLanguage=es",
+      "official_id": "102539"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Sevilla",
+      "round": 30,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=30&limit=100&contentLanguage=es",
+      "official_id": "102543"
+    },
+    {
+      "home": "Elche",
+      "away": "Alavés",
+      "round": 30,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=30&limit=100&contentLanguage=es",
+      "official_id": "102542"
+    },
+    {
+      "home": "Getafe",
+      "away": "Espanyol",
+      "round": 30,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=30&limit=100&contentLanguage=es",
+      "official_id": "102544"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Villarreal",
+      "round": 30,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=30&limit=100&contentLanguage=es",
+      "official_id": "102541"
+    },
+    {
+      "home": "Levante",
+      "away": "Rayo Vallecano",
+      "round": 30,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=30&limit=100&contentLanguage=es",
+      "official_id": "102545"
+    },
+    {
+      "home": "Malaga",
+      "away": "Osasuna",
+      "round": 30,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=30&limit=100&contentLanguage=es",
+      "official_id": "102546"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Celta",
+      "round": 30,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=30&limit=100&contentLanguage=es",
+      "official_id": "102540"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Atlético de Madrid",
+      "round": 30,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=30&limit=100&contentLanguage=es",
+      "official_id": "102547"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Valencia",
+      "round": 30,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=30&limit=100&contentLanguage=es",
+      "official_id": "102548"
+    },
+    {
+      "home": "Alavés",
+      "away": "Real Betis",
+      "round": 31,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=31&limit=100&contentLanguage=es",
+      "official_id": "102549"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Levante",
+      "round": 31,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=31&limit=100&contentLanguage=es",
+      "official_id": "102550"
+    },
+    {
+      "home": "Celta",
+      "away": "Elche",
+      "round": 31,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=31&limit=100&contentLanguage=es",
+      "official_id": "102551"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Malaga",
+      "round": 31,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=31&limit=100&contentLanguage=es",
+      "official_id": "102552"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Real Madrid",
+      "round": 31,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=31&limit=100&contentLanguage=es",
+      "official_id": "102553"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Real Sociedad",
+      "round": 31,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=31&limit=100&contentLanguage=es",
+      "official_id": "102555"
+    },
+    {
+      "home": "Santander",
+      "away": "Barcelona",
+      "round": 31,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=31&limit=100&contentLanguage=es",
+      "official_id": "102554"
+    },
+    {
+      "home": "Sevilla",
+      "away": "La Coruna",
+      "round": 31,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=31&limit=100&contentLanguage=es",
+      "official_id": "102556"
+    },
+    {
+      "home": "Valencia",
+      "away": "Getafe",
+      "round": 31,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=31&limit=100&contentLanguage=es",
+      "official_id": "102557"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Athletic Club",
+      "round": 31,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=31&limit=100&contentLanguage=es",
+      "official_id": "102558"
+    },
+    {
+      "home": "Alavés",
+      "away": "Rayo Vallecano",
+      "round": 32,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=32&limit=100&contentLanguage=es",
+      "official_id": "102559"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Sevilla",
+      "round": 32,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=32&limit=100&contentLanguage=es",
+      "official_id": "102560"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Espanyol",
+      "round": 32,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=32&limit=100&contentLanguage=es",
+      "official_id": "102564"
+    },
+    {
+      "home": "Elche",
+      "away": "Osasuna",
+      "round": 32,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=32&limit=100&contentLanguage=es",
+      "official_id": "102563"
+    },
+    {
+      "home": "Getafe",
+      "away": "Real Madrid",
+      "round": 32,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=32&limit=100&contentLanguage=es",
+      "official_id": "102565"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Celta",
+      "round": 32,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=32&limit=100&contentLanguage=es",
+      "official_id": "102562"
+    },
+    {
+      "home": "Levante",
+      "away": "Villarreal",
+      "round": 32,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=32&limit=100&contentLanguage=es",
+      "official_id": "102566"
+    },
+    {
+      "home": "Malaga",
+      "away": "Valencia",
+      "round": 32,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=32&limit=100&contentLanguage=es",
+      "official_id": "102567"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Athletic Club",
+      "round": 32,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=32&limit=100&contentLanguage=es",
+      "official_id": "102561"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Santander",
+      "round": 32,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=32&limit=100&contentLanguage=es",
+      "official_id": "102568"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "La Coruna",
+      "round": 33,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=33&limit=100&contentLanguage=es",
+      "official_id": "102569"
+    },
+    {
+      "home": "Celta",
+      "away": "Barcelona",
+      "round": 33,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=33&limit=100&contentLanguage=es",
+      "official_id": "102570"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Real Sociedad",
+      "round": 33,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=33&limit=100&contentLanguage=es",
+      "official_id": "102571"
+    },
+    {
+      "home": "Getafe",
+      "away": "Real Betis",
+      "round": 33,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=33&limit=100&contentLanguage=es",
+      "official_id": "102572"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Alavés",
+      "round": 33,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=33&limit=100&contentLanguage=es",
+      "official_id": "102573"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Elche",
+      "round": 33,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=33&limit=100&contentLanguage=es",
+      "official_id": "102575"
+    },
+    {
+      "home": "Santander",
+      "away": "Malaga",
+      "round": 33,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=33&limit=100&contentLanguage=es",
+      "official_id": "102574"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Levante",
+      "round": 33,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=33&limit=100&contentLanguage=es",
+      "official_id": "102576"
+    },
+    {
+      "home": "Valencia",
+      "away": "Rayo Vallecano",
+      "round": 33,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=33&limit=100&contentLanguage=es",
+      "official_id": "102577"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Atlético de Madrid",
+      "round": 33,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=33&limit=100&contentLanguage=es",
+      "official_id": "102578"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Alavés",
+      "round": 34,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=34&limit=100&contentLanguage=es",
+      "official_id": "102579"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Osasuna",
+      "round": 34,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=34&limit=100&contentLanguage=es",
+      "official_id": "102584"
+    },
+    {
+      "home": "Celta",
+      "away": "Sevilla",
+      "round": 34,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=34&limit=100&contentLanguage=es",
+      "official_id": "102581"
+    },
+    {
+      "home": "Elche",
+      "away": "Espanyol",
+      "round": 34,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=34&limit=100&contentLanguage=es",
+      "official_id": "102583"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Santander",
+      "round": 34,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=34&limit=100&contentLanguage=es",
+      "official_id": "102582"
+    },
+    {
+      "home": "Levante",
+      "away": "Real Madrid",
+      "round": 34,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=34&limit=100&contentLanguage=es",
+      "official_id": "102585"
+    },
+    {
+      "home": "Malaga",
+      "away": "Getafe",
+      "round": 34,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=34&limit=100&contentLanguage=es",
+      "official_id": "102586"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Villarreal",
+      "round": 34,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=34&limit=100&contentLanguage=es",
+      "official_id": "102587"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Valencia",
+      "round": 34,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=34&limit=100&contentLanguage=es",
+      "official_id": "102580"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Athletic Club",
+      "round": 34,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=34&limit=100&contentLanguage=es",
+      "official_id": "102588"
+    },
+    {
+      "home": "Alavés",
+      "away": "Levante",
+      "round": 35,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=35&limit=100&contentLanguage=es",
+      "official_id": "102589"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Malaga",
+      "round": 35,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=35&limit=100&contentLanguage=es",
+      "official_id": "102590"
+    },
+    {
+      "home": "Getafe",
+      "away": "Elche",
+      "round": 35,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=35&limit=100&contentLanguage=es",
+      "official_id": "102592"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Real Sociedad",
+      "round": 35,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=35&limit=100&contentLanguage=es",
+      "official_id": "102593"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "La Coruna",
+      "round": 35,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=35&limit=100&contentLanguage=es",
+      "official_id": "102595"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Espanyol",
+      "round": 35,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=35&limit=100&contentLanguage=es",
+      "official_id": "102591"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Barcelona",
+      "round": 35,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=35&limit=100&contentLanguage=es",
+      "official_id": "102596"
+    },
+    {
+      "home": "Santander",
+      "away": "Sevilla",
+      "round": 35,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=35&limit=100&contentLanguage=es",
+      "official_id": "102594"
+    },
+    {
+      "home": "Valencia",
+      "away": "Atlético de Madrid",
+      "round": 35,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=35&limit=100&contentLanguage=es",
+      "official_id": "102597"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Celta",
+      "round": 35,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=35&limit=100&contentLanguage=es",
+      "official_id": "102598"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Rayo Vallecano",
+      "round": 36,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=36&limit=100&contentLanguage=es",
+      "official_id": "102599"
+    },
+    {
+      "home": "Elche",
+      "away": "Athletic Club",
+      "round": 36,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=36&limit=100&contentLanguage=es",
+      "official_id": "102601"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Valencia",
+      "round": 36,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=36&limit=100&contentLanguage=es",
+      "official_id": "102602"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Alavés",
+      "round": 36,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=36&limit=100&contentLanguage=es",
+      "official_id": "102600"
+    },
+    {
+      "home": "Levante",
+      "away": "Getafe",
+      "round": 36,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=36&limit=100&contentLanguage=es",
+      "official_id": "102603"
+    },
+    {
+      "home": "Malaga",
+      "away": "Celta",
+      "round": 36,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=36&limit=100&contentLanguage=es",
+      "official_id": "102604"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Real Betis",
+      "round": 36,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=36&limit=100&contentLanguage=es",
+      "official_id": "102605"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "Santander",
+      "round": 36,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=36&limit=100&contentLanguage=es",
+      "official_id": "102606"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Barcelona",
+      "round": 36,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=36&limit=100&contentLanguage=es",
+      "official_id": "102607"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Villarreal",
+      "round": 36,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=36&limit=100&contentLanguage=es",
+      "official_id": "102608"
+    },
+    {
+      "home": "Alavés",
+      "away": "Real Madrid",
+      "round": 37,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=37&limit=100&contentLanguage=es",
+      "official_id": "102609"
+    },
+    {
+      "home": "Atlético de Madrid",
+      "away": "Athletic Club",
+      "round": 37,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=37&limit=100&contentLanguage=es",
+      "official_id": "102610"
+    },
+    {
+      "home": "Barcelona",
+      "away": "Malaga",
+      "round": 37,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=37&limit=100&contentLanguage=es",
+      "official_id": "102613"
+    },
+    {
+      "home": "Celta",
+      "away": "Real Sociedad",
+      "round": 37,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=37&limit=100&contentLanguage=es",
+      "official_id": "102611"
+    },
+    {
+      "home": "La Coruna",
+      "away": "Espanyol",
+      "round": 37,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=37&limit=100&contentLanguage=es",
+      "official_id": "102612"
+    },
+    {
+      "home": "Rayo Vallecano",
+      "away": "Real Betis",
+      "round": 37,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=37&limit=100&contentLanguage=es",
+      "official_id": "102615"
+    },
+    {
+      "home": "Santander",
+      "away": "Levante",
+      "round": 37,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=37&limit=100&contentLanguage=es",
+      "official_id": "102614"
+    },
+    {
+      "home": "Sevilla",
+      "away": "Getafe",
+      "round": 37,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=37&limit=100&contentLanguage=es",
+      "official_id": "102616"
+    },
+    {
+      "home": "Valencia",
+      "away": "Elche",
+      "round": 37,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=37&limit=100&contentLanguage=es",
+      "official_id": "102617"
+    },
+    {
+      "home": "Villarreal",
+      "away": "Osasuna",
+      "round": 37,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=37&limit=100&contentLanguage=es",
+      "official_id": "102618"
+    },
+    {
+      "home": "Athletic Club",
+      "away": "Rayo Vallecano",
+      "round": 38,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=38&limit=100&contentLanguage=es",
+      "official_id": "102619"
+    },
+    {
+      "home": "Elche",
+      "away": "Santander",
+      "round": 38,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=38&limit=100&contentLanguage=es",
+      "official_id": "102621"
+    },
+    {
+      "home": "Espanyol",
+      "away": "Alavés",
+      "round": 38,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=38&limit=100&contentLanguage=es",
+      "official_id": "102622"
+    },
+    {
+      "home": "Getafe",
+      "away": "Barcelona",
+      "round": 38,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=38&limit=100&contentLanguage=es",
+      "official_id": "102623"
+    },
+    {
+      "home": "Levante",
+      "away": "Celta",
+      "round": 38,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=38&limit=100&contentLanguage=es",
+      "official_id": "102624"
+    },
+    {
+      "home": "Malaga",
+      "away": "Sevilla",
+      "round": 38,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=38&limit=100&contentLanguage=es",
+      "official_id": "102625"
+    },
+    {
+      "home": "Osasuna",
+      "away": "Valencia",
+      "round": 38,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=38&limit=100&contentLanguage=es",
+      "official_id": "102626"
+    },
+    {
+      "home": "Real Betis",
+      "away": "Atlético de Madrid",
+      "round": 38,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=38&limit=100&contentLanguage=es",
+      "official_id": "102620"
+    },
+    {
+      "home": "Real Madrid",
+      "away": "La Coruna",
+      "round": 38,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=38&limit=100&contentLanguage=es",
+      "official_id": "102627"
+    },
+    {
+      "home": "Real Sociedad",
+      "away": "Villarreal",
+      "round": 38,
+      "source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=38&limit=100&contentLanguage=es",
+      "official_id": "102628"
+    }
+  ]
+}

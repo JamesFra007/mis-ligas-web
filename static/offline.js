@@ -2,6 +2,7 @@
 (() => {
   const bundle = JSON.parse(document.getElementById('offline-bundle').textContent);
   const rows = bundle.games;
+  const originalPosition = new Map(rows.map((game,index)=>[game.id,index]));
   const metadata = bundle.meta;
   metadata.offline = metadata.mode !== 'hosted_snapshot';
   metadata.auto_update = metadata.mode === 'hosted_snapshot';
@@ -15,6 +16,79 @@
   const capabilities = league => metadata.leagues?.find(item => item.id === league);
   const hasCorners = league => capabilities(league)?.corners !== false;
   const hasCards = league => Boolean(capabilities(league)?.cards);
+  const roundId = game => JSON.stringify([game.scope || 'all', game.phase || '', game.round === '' || game.round === undefined ? null : game.round]);
+  function roundLabel(game) {
+    const scope = ({all:'',first:'Primera vuelta',second:'Segunda vuelta'})[game.scope] ?? (game.scope || '');
+    const context = scope ? [scope] : [];
+    if (game.phase && !['LaLiga','NB I','Ekstraklasa','Liga BetPlay'].includes(game.phase) && !context.includes(game.phase)) context.push(game.phase);
+    context.push(game.round === null || game.round === undefined || game.round === '' ? 'Jornada pendiente' : `Jornada ${game.round}`);
+    return context.join(' · ');
+  }
+  function roundOptions(games) {
+    const options = new Map();
+    games.slice().sort((a,b)=>(a.source_order || 0)-(b.source_order || 0) || originalPosition.get(a.id)-originalPosition.get(b.id)).forEach(game=>{
+      const id = roundId(game);
+      if (!options.has(id)) options.set(id,{id,label:roundLabel(game),count:0});
+      options.get(id).count++;
+    });
+    return [...options.values()];
+  }
+  function selectRound(games,selected,options=roundOptions(games)) {
+    if (!selected) return {games,selected:''};
+    const id = options.some(item=>item.id===selected) ? selected : options[0]?.id || '';
+    return {games:games.filter(game=>roundId(game)===id),selected:id};
+  }
+  function observedDroughts(games,metric='ht') {
+    const htNote = 'Orden cronológico de los partidos finalizados de la selección. Los HT pendientes interrumpen la verificación. Los partidos simultáneos se agrupan; si falta una hora, se agrupa ese día. En bloques con algún ambos marcan, los demás partidos no se asignan a una racha. «Mínimo» indica un tramo verificado cuyo límite exacto es incierto.';
+    const note = metric==='ft' ? htNote.replace('Los HT pendientes','Los FT pendientes') : metric==='red' ? htNote.replace('Los HT pendientes','Los datos de tarjetas rojas pendientes').replace('con algún ambos marcan','con alguna tarjeta roja') : htNote;
+    const dateKnown = game=>Boolean(game.date) && game.date_confirmed!==false;
+    const timeKnown = game=>Boolean(game.time) && game.time_confirmed!==false;
+    const ref = game=>Object.fromEntries(['id','date','round','scope','phase','home','away','time'].map(key=>[key,key==='time' ? (timeKnown(game) ? game.time : null) : game[key] ?? null]));
+    const compare = (a,b)=>a<b ? -1 : a>b ? 1 : 0;
+    const keyCompare = (a,b)=>compare(a.date || '',b.date || '') || compare(timeKnown(a) ? a.time : '',timeKnown(b) ? b.time : '') || compare(String(a.id || ''),String(b.id || ''));
+    const observed = game=>metric==='red' ? Number.isInteger(game.red) && game.red>=0 : known(pair(game,metric));
+    const isCase = game=>metric==='red' ? observed(game) && game.red>0 : btts(pair(game,metric));
+    const played = games.filter(game=>game.status==='finished' && !game.administrative);
+    const missing = played.filter(game=>!observed(game)).length;
+    const result = {top:[],current:null,[metric==='ht' ? 'missing_ht' : 'missing_data']:missing,uncertain_order:played.filter(game=>!dateKnown(game) || !timeKnown(game)).length,eligible:played.length-missing,mixed_blocks:0,note};
+    if (played.some(game=>!dateKnown(game))) {
+      result.note = 'No se pueden certificar rachas continuas: hay partidos finalizados sin fecha confirmada. '+note;
+      return result;
+    }
+    const byDate = new Map(), blocks=[];
+    played.forEach(game=>{if (!byDate.has(game.date)) byDate.set(game.date,[]);byDate.get(game.date).push(game);});
+    [...byDate.keys()].sort().forEach(day=>{
+      const dayGames=byDate.get(day).slice().sort(keyCompare);
+      if (dayGames.some(game=>!timeKnown(game))) blocks.push(dayGames);
+      else {
+        const times=new Map();
+        dayGames.forEach(game=>{if(!times.has(game.time))times.set(game.time,[]);times.get(game.time).push(game);});
+        [...times.keys()].sort().forEach(time=>blocks.push(times.get(time)));
+      }
+    });
+    const spells=[];let active=[],leftUncertain=false;
+    function finish(state,{endedBy=null,interruptedBy=null,rightUncertain=false}={}) {
+      if (!active.length) return null;
+      const rounds=[],seen=new Set();
+      active.forEach(game=>{
+        const key=JSON.stringify([game.round ?? null,game.scope ?? null,game.phase ?? null]);
+        if (!seen.has(key)) {seen.add(key);rounds.push({round:game.round ?? null,scope:game.scope ?? null,phase:game.phase ?? null});}
+      });
+      const spell={count:active.length,start:ref(active[0]),end:ref(active.at(-1)),ended_by:endedBy ? ref(endedBy) : null,state,rounds,interrupted_by:interruptedBy ? ref(interruptedBy) : null,lower_bound:Boolean(leftUncertain || rightUncertain)};
+      spells.push(spell);active=[];return spell;
+    }
+    blocks.forEach(block=>{
+      const unknown=block.filter(game=>!observed(game)),hits=block.filter(isCase);
+      if (hits.length && hits.length!==block.length) result.mixed_blocks++;
+      if (unknown.length) {finish('interrupted',{interruptedBy:unknown[0],rightUncertain:true});leftUncertain=true;}
+      else if (hits.length) {const mixed=hits.length!==block.length;finish('closed',{endedBy:hits[0],rightUncertain:mixed});leftUncertain=mixed;}
+      else active.push(...block);
+    });
+    result.current=finish('current');
+    result.top=spells.sort((a,b)=>b.count-a.count || compare(a.start.date,b.start.date) || compare(a.start.time || '',b.start.time || '') || compare(String(a.start.id),String(b.start.id))).slice(0,3);
+    return result;
+  }
+  const htDroughts = games=>observedDroughts(games,'ht');
   function frequency(games,p) {
     const hits = games.map((g,i) => btts(pair(g,p)) ? i+1 : 0).filter(Boolean);
     const boundaries = [0,...hits,games.length+1];
@@ -56,9 +130,11 @@
     scopeValues.sort((a,b)=>Number(a.includes('Finalización'))-Number(b.includes('Finalización'))||(a<b?-1:a>b?1:0));
     const scopes=league==='spain'?[{id:'all',label:'Temporada completa'},{id:'first',label:'Primera vuelta'},{id:'second',label:'Segunda vuelta'}]:[{id:'all',label:'Temporada completa'},...scopeValues.map(s=>({id:s,label:s}))];
     const teams=[...new Set(all.flatMap(g=>[g.home,g.away]))].sort();const missing=league==='spain'?all.filter(g=>g.round===null||g.round===undefined).length:0;
-    const page_size=Math.min(200,Math.max(1,Number(params.get('page_size'))||40)),pages=Math.max(1,Math.ceil(games.length/page_size)),page=Math.min(pages,Math.max(1,Number(params.get('page'))||1));
-    const visible=games.slice((page-1)*page_size,page*page_size).map(g=>({...g,btts_ht:g.status==='finished'&&!g.administrative&&btts(pair(g,'ht'))}));
-    return {...summarize(games,team),options:{scopes,teams,scope_note:missing?`La fuente no informa la jornada de ${missing} partidos; esos encuentros solo aparecen en Temporada completa hasta poder confirmar su vuelta.`:null},games:visible,pagination:{page,page_size,total:games.length,pages},updated_at:metadata.updated_at};
+    const rounds=roundOptions(games), selection=selectRound(games,params.get('match_round'),rounds), matches=selection.games;
+    const page_size=Math.min(200,Math.max(1,Number(params.get('page_size'))||40)),pages=Math.max(1,Math.ceil(matches.length/page_size)),page=Math.min(pages,Math.max(1,Number(params.get('page'))||1));
+    const visible=matches.slice((page-1)*page_size,page*page_size).map(g=>({...g,btts_ht:g.status==='finished'&&!g.administrative&&btts(pair(g,'ht'))}));
+    const ht_droughts=htDroughts(games);
+    return {...summarize(games,team),ht_droughts,droughts:{ht:ht_droughts,ft:observedDroughts(games,'ft'),red:league==='spain' ? observedDroughts(games,'red') : null},options:{scopes,teams,scope_note:missing?`La fuente no informa la jornada de ${missing} partidos; se agrupan como «Jornada pendiente» hasta poder verificarla.`:null,rounds,selected_round:selection.selected},games:visible,pagination:{page,page_size,total:matches.length,pages},updated_at:metadata.updated_at};
   }
   window.__offlineDashboard=dashboard;
   window.__offlineFilters=new URLSearchParams();
@@ -82,7 +158,8 @@
       if(!file){const note=document.getElementById('notice');note.textContent='El archivo histórico de esta liga todavía no está disponible en esta copia.';note.className='notice';note.hidden=false;return;}
       const bytes=Uint8Array.from(atob(file.base64),c=>c.charCodeAt(0));download(new Blob([bytes],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}),file.name);
     }else if(link.id==='export-link'){
-      event.preventDefault();const {games,league,season}=filtered(window.__offlineFilters);
+      event.preventDefault();const selection=filtered(window.__offlineFilters),{league,season}=selection;
+      const {games}=selectRound(selection.games,window.__offlineFilters.get('match_round'));
       const headers=['N.º','Fecha COL','Hora COL','Jornada','Local','Visitante','HT','FT',...(hasCorners(league)?['Córners']:[]),...(hasCards(league)?['Amarillas','Rojas']:[]),'Torneo / vuelta','Fase','Estado'];
       const csv=[headers];const names={finished:'Finalizado',scheduled:'Programado',live:'En juego',postponed:'Aplazado',cancelled:'Cancelado'};
       games.forEach((g,i)=>{

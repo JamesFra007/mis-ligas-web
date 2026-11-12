@@ -2,8 +2,8 @@
 (() => {
   const $ = id => document.getElementById(id);
   const initial = new URLSearchParams(window.location.search);
-  const state = {league: initial.get('league') || 'spain', season: initial.get('season') || '', scope: initial.get('scope') || 'all', team: initial.get('team') || 'all', condition: initial.get('condition') || 'all', status: initial.get('status') || 'all', search: initial.get('search') || '', order: initial.get('order') === 'chronological' ? 'chronological' : 'round', page: 1, page_size: 40};
-  let meta = null, dashboard = null, controller = null, requestNumber = 0, searchTimer = null, syncing = false, forecastExpiryTimer = null;
+  const state = {league: initial.get('league') || 'spain', season: initial.get('season') || '', scope: initial.get('scope') || 'all', team: initial.get('team') || 'all', condition: initial.get('condition') || 'all', status: initial.get('status') || 'all', search: initial.get('search') || '', order: initial.get('order') === 'chronological' ? 'chronological' : 'round', match_round: initial.get('match_round') || 'auto', page: 1, page_size: 40};
+  let meta = null, dashboard = null, controller = null, requestNumber = 0, searchTimer = null, syncing = false, forecastExpiryTimer = null, loadedGames = [], loadingMatches = false;
   const number = new Intl.NumberFormat('es-CO', {maximumFractionDigits: 0});
   const decimal = new Intl.NumberFormat('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2});
   const percentage = new Intl.NumberFormat('es-CO', {style: 'percent', maximumFractionDigits: 1, minimumFractionDigits: 1});
@@ -16,7 +16,7 @@
   const hasCards = () => Boolean(currentLeague()?.cards);
   const hasCorners = () => currentLeague()?.corners !== false;
   const visibleColumnCount = () => 7 + (hasCorners() ? 1 : 0) + (hasCards() ? 2 : 0);
-  const query = () => {const params = new URLSearchParams(); Object.entries(state).forEach(([key, value]) => {if (value !== '') params.set(key, String(value));}); return params;};
+  const query = (overrides = {}) => {const params = new URLSearchParams(); const values = {...state, page_size: state.order === 'round' ? 200 : 40, match_round: state.order === 'round' ? state.match_round : '', ...overrides}; Object.entries(values).forEach(([key, value]) => {if (value !== '') params.set(key, String(value));}); return params;};
   const safeCount = value => Number.isFinite(Number(value)) ? Number(value) : 0;
   const isOffline = () => meta?.mode === 'offline' || Boolean(meta?.offline);
   const isHostedSnapshot = () => meta?.mode === 'hosted_snapshot';
@@ -107,16 +107,49 @@
     $('condition-select').value = state.condition; $('condition-select').disabled = state.team === 'all';
     $('status-select').value = state.status; $('search-input').value = state.search;
     document.querySelectorAll('[data-order]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.order === state.order)));
-    $('order-note').textContent = state.order === 'chronological' ? 'Fecha y hora de Colombia. Los horarios pendientes se identifican sin inventar una hora.' : 'Se conserva el orden de las jornadas del archivo; los encuentros nuevos mantienen la jornada informada por la fuente.';
+    $('round-filter').hidden = state.order !== 'round';
+    $('order-note').textContent = state.order === 'chronological' ? 'Todos los partidos por fecha y hora de Colombia. Pulsa «Ver más» para seguir bajando por la lista.' : 'Se muestran todos los encuentros de la jornada elegida. Las estadísticas de arriba conservan toda la selección.';
   }
+  function renderRounds(rounds) {
+    const root = $('round-buttons'); root.replaceChildren();
+    if (!rounds.length) {root.append(element('p', 'round-empty', 'Sin jornadas para estos filtros.')); return;}
+    const groups = new Map();
+    for (const item of rounds) {
+      let scope, phase, round;
+      try {[scope, phase, round] = JSON.parse(item.id);} catch {scope = ''; phase = ''; round = null;}
+      const scopeLabel = {all: '', first: 'Primera vuelta', second: 'Segunda vuelta'}[scope] ?? scope;
+      const phaseLabel = phase && !['LaLiga', 'NB I', 'Ekstraklasa', 'Liga BetPlay'].includes(phase) && phase !== scopeLabel ? phase : '';
+      const groupLabel = [scopeLabel, phaseLabel].filter(Boolean).join(' · ') || 'Jornadas';
+      if (!groups.has(groupLabel)) groups.set(groupLabel, []);
+      groups.get(groupLabel).push({item, round});
+    }
+    for (const [label, items] of groups) {
+      const roundNumber = value => value === null || value === undefined || value === '' || !Number.isFinite(Number(value)) ? Infinity : Number(value);
+      items.sort((a, b) => roundNumber(a.round) - roundNumber(b.round));
+      const group = element('div', 'round-group');
+      group.append(element('h3', 'round-group-title', label));
+      const buttons = element('div', 'round-number-list');
+      for (const {item, round} of items) {
+        const button = element('button', 'round-number', round === null || round === undefined || round === '' ? 'Pendiente' : String(round));
+        button.type = 'button'; button.dataset.roundId = item.id;
+        button.title = `${item.label} · ${integer(item.count)} partidos`;
+        button.setAttribute('aria-label', button.title); button.setAttribute('aria-pressed', String(item.id === state.match_round));
+        buttons.append(button);
+      }
+      group.append(buttons); root.append(group);
+    }
+  }
+  function resetMatchList() {clearTimeout(searchTimer); state.page = 1; state.match_round = state.order === 'round' ? 'auto' : '';}
   function resetFilters() {
     Object.assign(state, {scope: 'all', team: 'all', condition: 'all', status: 'all', search: '', page: 1});
+    resetMatchList();
     updateControls(); loadDashboard();
   }
   function changeLeague(id) {
     if (id === state.league) return;
     state.league = id; state.season = bestSeason(currentLeague());
     Object.assign(state, {scope: 'all', team: 'all', condition: 'all', status: 'all', search: '', page: 1});
+    resetMatchList();
     renderMeta(); updateControls(); renderForecast(null, 'Consultando el calendario de la liga…'); loadDashboard();
   }
   function kpi(label, value, subtitle, tone, icon, featured = false) {
@@ -313,15 +346,92 @@
       [['Amarillas / PJ', team.own_yellow_average, false], ['Rojas / PJ', team.own_red_average, true]].forEach(([label, value, red]) => {const item = element('div', 'team-stat own-card' + (red ? ' red' : '')); item.append(element('strong', '', average(value)), document.createTextNode(label)); root.append(item);});
     }
   }
-  function renderGames(games, pagination) {
-    const root = $('matches-body'); root.replaceChildren(); const paginationData = pagination || {page: 1, page_size: state.page_size, total: 0, pages: 1};
-    const total = safeCount(paginationData.total); const page = safeCount(paginationData.page) || 1; const pages = Math.max(1, safeCount(paginationData.pages));
+  function droughtRound(game) {
+    if (!game) return '';
+    const scope = {first: 'Primera vuelta', second: 'Segunda vuelta', all: ''}[game.scope] ?? game.scope;
+    const phase = game.phase && !['LaLiga', 'NB I', 'Ekstraklasa'].includes(game.phase) && game.phase !== scope ? game.phase : '';
+    return [game.round === null || game.round === undefined ? 'Jornada pendiente' : `Jornada ${game.round}`, scope, phase].filter(Boolean).join(' · ');
+  }
+  function droughtDates(streak) {
+    const start = streak?.start, end = streak?.end;
+    if (!start || !end) return 'Fechas pendientes';
+    return `${formatDate(start.date)} → ${formatDate(end.date)}`;
+  }
+  function droughtJornadas(streak) {
+    if (!streak?.rounds?.length) return droughtRound(streak?.end);
+    const groups = new Map();
+    for (const round of streak.rounds) {
+      const scope = {first: 'Primera vuelta', second: 'Segunda vuelta', all: ''}[round.scope] ?? round.scope;
+      const phase = round.phase && !['LaLiga', 'NB I', 'Ekstraklasa'].includes(round.phase) && round.phase !== scope ? round.phase : '';
+      const context = [scope, phase].filter(Boolean).join(' · ');
+      if (!groups.has(context)) groups.set(context, new Set());
+      groups.get(context).add(round.round === null || round.round === undefined ? 'pendiente' : round.round);
+    }
+    return [...groups].map(([context, rounds]) => `${rounds.size === 1 ? 'Jornada' : 'Jornadas'} ${[...rounds].join(', ')}${context ? ' · ' + context : ''}`).join(' | ');
+  }
+  function renderDroughts(data) {
+    const root = $('drought-content'); root.replaceChildren();
+    const metrics = [{key: 'ht', title: 'Sin ambos marcan · HT', short: 'ambos en HT', tone: 'gold'}, {key: 'ft', title: 'Sin ambos marcan · FT', short: 'ambos en FT', tone: 'purple'}];
+    if (state.league === 'spain' && hasCards()) metrics.push({key: 'red', title: 'Sin tarjeta roja', short: 'tarjeta roja', tone: 'red'});
+    const grid = element('div', 'drought-grid drought-metrics');
+    for (const metric of metrics) {
+      const report = data?.[metric.key], top = Array.isArray(report?.top) ? report.top.slice(0, 3) : [], record = top[0];
+      const card = element('article', 'drought-card drought-metric drought-' + metric.tone); card.dataset.droughtMetric = metric.key;
+      const heading = element('div', 'drought-card-heading');
+      heading.append(element('h3', 'drought-metric-title', metric.title), element('span', 'drought-state', 'MAYOR RACHA'));
+      card.append(heading);
+      if (record) {
+        const value = element('div', 'drought-value');
+        if (record.lower_bound) value.append(element('small', 'drought-minimum', 'Mínimo verificado'));
+        value.append(element('strong', '', integer(record.count)), element('span', '', 'partidos consecutivos'));
+        card.append(value, element('p', 'drought-dates', droughtDates(record)), element('p', 'drought-rounds', droughtJornadas(record)));
+      } else card.append(element('p', 'drought-empty', report?.eligible ? 'Sin una racha continua verificable en esta selección.' : 'Sin datos suficientes para calcular la racha.'));
+      const current = element('div', 'drought-metric-current');
+      current.append(element('span', '', 'Racha actual'));
+      if (report?.current) {
+        current.append(element('b', '', `${report.current.lower_bound ? 'Mínimo ' : ''}${integer(report.current.count)} partidos`), element('small', '', droughtDates(report.current)));
+      } else current.append(element('b', 'drought-no-current', 'Sin tramo abierto verificado'));
+      card.append(current);
+      const missing = safeCount(report?.missing_ht ?? report?.missing_data);
+      if (missing) card.append(element('p', 'drought-missing', `${integer(missing)} datos pendientes interrumpen la verificación.`));
+      if (top.length || report?.note) {
+        const details = element('details', 'drought-details');
+        details.append(element('summary', '', top.length ? `Ver las ${integer(top.length)} mayores y su detalle` : 'Ver criterio y cobertura'));
+        const list = element('ol', 'drought-top-list');
+        top.forEach(streak => {
+          const item = element('li');
+          const stateLabel = {closed: 'Terminada', current: 'Actual', interrupted: 'Verificación interrumpida'}[streak.state] || 'Verificada';
+          item.append(element('b', '', `${streak.lower_bound ? 'Mínimo ' : ''}${integer(streak.count)} partidos · ${stateLabel}`), element('span', '', droughtDates(streak)), element('span', '', droughtJornadas(streak)));
+          if (streak.ended_by) item.append(element('span', 'drought-ended', `Terminó con ${metric.short}: ${streak.ended_by.home} – ${streak.ended_by.away} · ${formatDate(streak.ended_by.date)} · ${droughtRound(streak.ended_by)}`));
+          if (streak.state === 'interrupted') item.append(element('span', 'drought-ended', 'Un dato pendiente interrumpe la continuidad verificable.'));
+          list.append(item);
+        });
+        if (top.length) details.append(list);
+        if (report?.current) details.append(element('p', 'drought-method', `Jornadas de la racha actual: ${droughtJornadas(report.current)}.`));
+        if (report?.note) details.append(element('p', 'drought-method', report.note));
+        if (safeCount(report?.uncertain_order)) details.append(element('p', 'drought-method', `Fechas u horas pendientes: ${integer(report.uncertain_order)}.`));
+        card.append(details);
+      }
+      grid.append(card);
+    }
+    root.append(grid);
+    $('drought-note').textContent = 'Se analiza toda la selección por fecha, aunque veas una sola jornada. Los datos pendientes interrumpen la verificación; los simultáneos se agrupan. «Mínimo» indica un tramo confirmado cuyo límite exacto es incierto. Las rachas describen lo ocurrido; no predicen el siguiente partido.';
+  }
+  function updateLoadMore() {
+    const more = state.order === 'chronological' && loadedGames.length < safeCount(dashboard?.pagination?.total);
+    $('load-more').hidden = !more;
+    $('load-more').disabled = loadingMatches;
+    $('load-more').textContent = loadingMatches ? 'Cargando…' : 'Ver más';
+  }
+  function renderGames(games, pagination, append = false) {
+    const root = $('matches-body'); if (!append) root.replaceChildren(); const paginationData = pagination || {page: 1, page_size: state.page_size, total: 0, pages: 1};
+    const total = safeCount(paginationData.total);
     $('match-count').textContent = integer(total);
-    if (!games?.length) {const row = element('tr'); const cell = element('td', 'table-empty', 'No hay partidos con estos filtros. Prueba otra selección o pulsa «Actualizar datos» para consultar la fuente.'); cell.colSpan = visibleColumnCount(); row.append(cell); root.append(row);}
+    if (!games?.length && !append) {const row = element('tr'); const cell = element('td', 'table-empty', 'No hay partidos con estos filtros. Prueba otra selección o pulsa «Actualizar datos» para consultar la fuente.'); cell.colSpan = visibleColumnCount(); row.append(cell); root.append(row);}
     const statusNames = {finished: 'Finalizado', scheduled: 'Por jugar', live: 'En juego', postponed: 'Aplazado', cancelled: 'Cancelado', suspended: 'Suspendido'};
     (games || []).forEach((game, index) => {
-      const row = element('tr');
-      const position = (page - 1) * (paginationData.page_size || state.page_size) + index + 1;
+      const row = element('tr'); row.dataset.gameId = game.id; row.dataset.matchId = game.id;
+      const position = loadedGames.length - (games?.length || 0) + index + 1;
       const numberCell = element('td', 'number-cell', integer(game.number ?? position));
       const date = element('td', 'date-cell', game.date_confirmed === false ? 'Fecha por confirmar' : formatDate(game.date));
       if (game.time && game.time_confirmed !== false) date.append(element('span', 'secondary-text', String(game.time) + ' COL'));
@@ -345,51 +455,75 @@
       if (hasCards()) row.append(cardCell(game.yellow), cardCell(game.red, true));
       const status = element('td'); status.append(element('span', 'match-state ' + (game.administrative ? 'admin' : (['live', 'scheduled', 'postponed'].includes(game.status) ? game.status : '')), game.administrative ? 'Administrativo' : (statusNames[game.status] || 'Por confirmar'))); row.append(status); root.append(row);
     });
-    const start = total ? (page - 1) * (paginationData.page_size || state.page_size) + 1 : 0;
-    const end = total ? Math.min(total, start + (games?.length || 0) - 1) : 0;
-    $('pagination-label').textContent = `${integer(start)}–${integer(end)} de ${integer(total)} partidos`;
-    $('page-label').textContent = `${integer(page)} / ${integer(pages)}`;
-    $('previous-page').disabled = page <= 1; $('next-page').disabled = page >= pages;
+    $('pagination-label').textContent = `${integer(loadedGames.length)} de ${integer(total)} partidos`;
+    updateLoadMore();
   }
   function showLoadError(error) {
     notice(error.message || 'No fue posible cargar los datos. Intenta de nuevo.', true);
-    $('scope-note').hidden = true; renderForecast(null); updateHeading(); renderKPIs({}); renderOutcomes({}); renderFrequency({}); renderScorelines({}); renderTeam(null);
+    loadedGames = []; dashboard = null;
+    $('scope-note').hidden = true; renderForecast(null); updateHeading(); renderKPIs({}); renderOutcomes({}); renderFrequency({}); renderScorelines({}); renderTeam(null); renderDroughts(null);
     const root = $('matches-body'); root.replaceChildren(); const row = element('tr'); const cell = element('td', 'table-empty', 'No se pudieron cargar los partidos. El archivo histórico sigue disponible para descargar.'); cell.colSpan = visibleColumnCount(); row.append(cell); root.append(row);
-    $('previous-page').disabled = true; $('next-page').disabled = true;
+    $('pagination-label').textContent = 'No se pudieron cargar los partidos'; $('load-more').hidden = true;
     $('kpi-grid').setAttribute('aria-busy', 'false');
   }
-  function renderDashboard(data) {
+  function renderDashboard(data, append = false) {
     dashboard = data;
     if (data.pagination?.page) state.page = data.pagination.page;
+    if (append) {
+      const ids = new Set(loadedGames.map(game => game.id));
+      const additions = (data.games || []).filter(game => !ids.has(game.id) && ids.add(game.id));
+      loadedGames.push(...additions); renderGames(additions, data.pagination, true);
+      history.replaceState(null, '', '?' + query()); return;
+    }
+    loadedGames = data.games || [];
+    state.match_round = state.order === 'round' ? (data.options?.selected_round || 'auto') : '';
     $('scope-note').textContent = data.options?.scope_note || ''; $('scope-note').hidden = !data.options?.scope_note;
     const scopes = [{id: 'all', label: 'Temporada completa'}, ...(data.options?.scopes || []).filter(scope => scope.id !== 'all')];
     setOptions($('scope-select'), scopes, state.scope);
     setOptions($('team-select'), [{id: 'all', label: 'Todos los equipos'}, ...(data.options?.teams || []).map(team => ({id: team, label: team}))], state.team);
+    renderRounds(data.options?.rounds || []);
     updateControls(); updateHeading();
     const scopeLabel = scopes.find(scope => scope.id === state.scope)?.label || 'Temporada completa';
     $('active-filter-label').textContent = `${scopeLabel} · ${state.team === 'all' ? 'Todos los equipos' : state.team}`.toUpperCase();
     $('data-timestamp').textContent = formatTimestamp(data.updated_at || meta?.updated_at);
-    renderTeam(data.team_stats); renderKPIs(data.summary); renderOutcomes(data.summary || {}); renderFrequency(data); renderScorelines(data.scorelines); renderGames(data.games, data.pagination);
+    renderTeam(data.team_stats); renderKPIs(data.summary); renderOutcomes(data.summary || {}); renderFrequency(data); renderScorelines(data.scorelines); renderDroughts(data.droughts || {ht: data.ht_droughts}); renderGames(data.games, data.pagination);
     history.replaceState(null, '', '?' + query());
   }
-  async function loadDashboard() {
+  async function loadDashboard({append = false} = {}) {
     if (!meta || !state.season) return;
+    if (append && (loadingMatches || state.order !== 'chronological' || loadedGames.length >= safeCount(dashboard?.pagination?.total))) return;
+    if (!append) state.page = 1;
     if (controller) controller.abort();
-    controller = new AbortController(); const request = ++requestNumber;
-    $('matches-table').classList.add('loading-table'); $('kpi-grid').setAttribute('aria-busy', 'true');
+    controller = new AbortController(); const signal = controller.signal, request = ++requestNumber;
+    const params = query({page: append ? state.page + 1 : 1});
+    loadingMatches = true; updateLoadMore();
+    $('matches-table').setAttribute('aria-busy', 'true');
+    if (!append) {$('matches-table').classList.add('loading-table'); $('kpi-grid').setAttribute('aria-busy', 'true');}
     try {
       const results = await Promise.allSettled([
-        fetchJSON('/api/dashboard?' + query(), {signal: controller.signal}),
-        fetchJSON('/api/forecast?' + new URLSearchParams({league: state.league}), {signal: controller.signal})
+        fetchJSON('/api/dashboard?' + params, {signal}),
+        append ? Promise.resolve(null) : fetchJSON('/api/forecast?' + new URLSearchParams({league: state.league}), {signal})
       ]);
       if (request !== requestNumber) return;
       if (results[0].status === 'rejected') throw results[0].reason;
-      renderDashboard(results[0].value);
-      if (results[1].status === 'fulfilled') renderForecast(results[1].value);
+      const data = results[0].value;
+      if (state.order === 'round' && safeCount(data.pagination?.pages) > 1) {
+        params.set('match_round', data.options?.selected_round || 'auto');
+        const seen = new Set((data.games || []).map(game => game.id));
+        for (let page = 2; page <= data.pagination.pages; page++) {
+          params.set('page', page); const next = await fetchJSON('/api/dashboard?' + params, {signal});
+          if (request !== requestNumber) return;
+          for (const game of next.games || []) if (!seen.has(game.id)) {data.games.push(game); seen.add(game.id);}
+        }
+      }
+      const scrollPosition = window.scrollY;
+      renderDashboard(data, append);
+      if (append) {notice(''); window.scrollTo({top: scrollPosition, behavior: 'instant'});}
+      else if (results[1].status === 'fulfilled') renderForecast(results[1].value);
       else renderForecast(null, 'No fue posible consultar el calendario y la estimación en este momento. Los datos históricos siguen disponibles.');
     }
-    catch (error) {if (error.name !== 'AbortError' && request === requestNumber) showLoadError(error);}
-    finally {if (request === requestNumber) {$('matches-table').classList.remove('loading-table'); $('kpi-grid').setAttribute('aria-busy', 'false');}}
+    catch (error) {if (error.name !== 'AbortError' && request === requestNumber) {if (append) notice('No se pudieron cargar más partidos. Los que ya ves se conservan; pulsa «Ver más» para intentarlo de nuevo.', true); else showLoadError(error);}}
+    finally {if (request === requestNumber) {loadingMatches = false; updateLoadMore(); $('matches-table').classList.remove('loading-table'); $('matches-table').setAttribute('aria-busy', 'false'); $('kpi-grid').setAttribute('aria-busy', 'false');}}
   }
   async function syncData() {
     if (syncing || isOffline()) return;
@@ -415,16 +549,16 @@
     (['hungary','poland'].includes(state.league) ? ['Ambos marcan · HT', 'Ambos marcan · FT', 'Goles por partido · FT', 'Goles por partido · HT', 'Partidos por jugar', 'Partidos analizados'] : ['Ambos marcan · HT', 'Ambos marcan · FT', 'Córners por partido', 'Goles por partido · FT', 'Goles por partido · HT', 'Tarjetas', 'Frecuencia', 'Partidos analizados']).forEach((label, index) => {const card = kpi(label, '—', 'Cargando datos…', index === 0 ? 'green' : 'blue', '·', index === 0); card.classList.add('loading'); root.append(card);});
   }
   $('filters').addEventListener('submit', event => event.preventDefault());
-  $('season-select').addEventListener('change', event => {state.season = event.target.value; state.scope = 'all'; state.team = 'all'; state.condition = 'all'; state.page = 1; loadDashboard();});
+  $('season-select').addEventListener('change', event => {state.season = event.target.value; state.scope = 'all'; state.team = 'all'; state.condition = 'all'; resetMatchList(); loadDashboard();});
   [['scope-select', 'scope'], ['team-select', 'team'], ['condition-select', 'condition'], ['status-select', 'status']].forEach(([id, key]) => {
-    $(id).addEventListener('change', event => {state[key] = event.target.value; if (key === 'team' && state.team === 'all') state.condition = 'all'; state.page = 1; loadDashboard();});
+    $(id).addEventListener('change', event => {state[key] = event.target.value; if (key === 'team' && state.team === 'all') state.condition = 'all'; resetMatchList(); loadDashboard();});
   });
-  document.querySelectorAll('[data-order]').forEach(button => button.addEventListener('click', () => {if (button.dataset.order !== state.order) {state.order = button.dataset.order; state.page = 1; updateControls(); loadDashboard();}}));
-  $('search-input').addEventListener('input', event => {clearTimeout(searchTimer); const value = event.target.value; searchTimer = setTimeout(() => {state.search = value; state.page = 1; loadDashboard();}, 300);});
+  document.querySelectorAll('[data-order]').forEach(button => button.addEventListener('click', () => {if (button.dataset.order !== state.order) {state.order = button.dataset.order; resetMatchList(); updateControls(); loadDashboard();}}));
+  $('round-buttons').addEventListener('click', event => {const button = event.target.closest('button[data-round-id]'); if (!button || button.dataset.roundId === state.match_round) return; state.match_round = button.dataset.roundId; state.page = 1; loadDashboard();});
+  $('search-input').addEventListener('input', event => {clearTimeout(searchTimer); state.search = event.target.value; searchTimer = setTimeout(() => {resetMatchList(); loadDashboard();}, 300);});
   $('reset-button').addEventListener('click', () => {notice(''); resetFilters();});
   $('sync-button').addEventListener('click', syncData);
-  $('previous-page').addEventListener('click', () => {if (state.page > 1) {state.page--; loadDashboard();}});
-  $('next-page').addEventListener('click', () => {if (state.page < safeCount(dashboard?.pagination?.pages)) {state.page++; loadDashboard();}});
+  $('load-more').addEventListener('click', () => loadDashboard({append: true}));
   ['export-link', 'history-link'].forEach(id => $(id).addEventListener('click', event => {if ($(id).getAttribute('aria-disabled') === 'true') event.preventDefault();}));
   initialSkeleton();
   (async () => {

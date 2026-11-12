@@ -32,6 +32,7 @@ async def run(url=None):
         else:await page.set_content((ROOT/'site/index.html').read_text(),wait_until='load')
         await page.wait_for_function("document.querySelectorAll('#league-nav button').length===4")
         assert await page.locator('#league-nav button').count()==len(LEAGUES);checks+=1
+        await page.locator('[data-order=chronological]').click()
         # Existing leagues retain their own columns and statistics.
         await page.wait_for_function("document.querySelectorAll('#matches-body tr').length===40")
         assert await page.locator('#kpi-grid article').count()==8;checks+=1
