@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-12T20:33:09.090637+00:00",
+  "captured_at": "2026-11-12T21:30:13.485372+00:00",
   "sources": [
     {
       "league": "spain",
@@ -44800,7 +44800,7 @@
       "season": "2026",
       "season_label": "2026",
       "date": "2026-11-12",
-      "time": "17:00",
+      "time": "18:00",
       "home": "Deportivo Pasto",
       "away": "Junior",
       "round": null,
@@ -44822,7 +44822,7 @@
       "source": "ESPN · Primera A",
       "source_order": 386,
       "espn_id": "401878034",
-      "kickoff": "2026-11-12T22:00:00+00:00",
+      "kickoff": "2026-11-12T23:00:00+00:00",
       "time_confirmed": true,
       "date_confirmed": true
     },
