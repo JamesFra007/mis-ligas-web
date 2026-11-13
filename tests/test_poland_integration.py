@@ -8,6 +8,7 @@ from unittest.mock import patch
 from fastapi.testclient import TestClient
 from openpyxl import load_workbook
 from app import db
+from app.leagues import LEAGUES
 from app.main import app,check
 from app.stats import summarize
 from scripts.export_hungary_history import export_history
@@ -33,7 +34,7 @@ class PolandIntegrationTests(unittest.TestCase):
             with patch.object(db,'DATA',root),patch.object(db,'DB_PATH',root/'test.sqlite3'):
                 db.initialize(seed);db.upsert([polish()])
                 with TestClient(app) as client:
-                    meta=client.get('/api/meta').json();self.assertEqual(len(meta['leagues']),4)
+                    meta=client.get('/api/meta').json();self.assertEqual(len(meta['leagues']),len(LEAGUES))
                     lg=next(x for x in meta['leagues'] if x['id']=='poland');self.assertFalse(lg['cards']);self.assertFalse(lg['corners']);self.assertEqual(lg['flag'],'🇵🇱')
                     data=client.get('/api/dashboard?league=poland&season=2018-19').json();self.assertEqual(data['summary']['finished'],1)
                     self.assertIn({'id':'Grupo por el título','label':'Grupo por el título'},data['options']['scopes'])

@@ -7,6 +7,7 @@ import subprocess
 import unittest
 
 from app.order import order_games
+from app.leagues import LEAGUES
 from app.rounds import round_id, round_options, select_round
 from app.stats import summarize
 from app.streaks import ht_droughts, ft_droughts, red_droughts
@@ -54,18 +55,18 @@ class HostedViewsTests(unittest.TestCase):
             samples.append(rows)
         cases = []
         for i,rows in enumerate(samples):
-            league = ('spain','colombia','hungary','poland')[i%4]
+            league = tuple(LEAGUES)[i%len(LEAGUES)]
             season = '2025' if league=='colombia' else '2025-26'
             rows = [{**row,'league':league,'season':season} for row in rows]
             for order in ('round','chronological'):
                 for selected in ('','auto',round_id(rows[-1]) if rows else 'stale'):
-                    cases.append({'games':rows,'params':{'league':league,'season':season,'order':order,'match_round':selected,'page':'2','page_size':'3'}})
+                    cases.append({'games':rows,'leagues':[{'id':key,**info} for key,info in LEAGUES.items()],'params':{'league':league,'season':season,'order':order,'match_round':selected,'page':'2','page_size':'3'}})
         runner = r"""
 const fs=require('fs'),vm=require('vm');
 const cases=JSON.parse(fs.readFileSync(0,'utf8'));
 const code=fs.readFileSync('static/offline.js','utf8');
 const results=cases.map(test=>{
-  const bundle={games:test.games,meta:{leagues:[{id:'spain',cards:true,corners:true},{id:'colombia',cards:false,corners:true},{id:'hungary',cards:false,corners:false},{id:'poland',cards:false,corners:false}],updated_at:null}};
+  const bundle={games:test.games,meta:{leagues:test.leagues,updated_at:null}};
   const context={document:{getElementById:()=>({textContent:JSON.stringify(bundle)}),addEventListener:()=>{}},window:{},URL,URLSearchParams,Response};
   vm.runInNewContext(code,context);
   return context.window.__offlineDashboard(new URLSearchParams(test.params));
@@ -83,7 +84,7 @@ process.stdout.write(JSON.stringify(results));
                 selected,key=select_round(ordered,params['match_round'],rounds)
                 pages=max(1,(len(selected)+2)//3);page=min(2,pages)
                 self.assertEqual(data['ht_droughts'],ht_droughts(rows))
-                self.assertEqual(data['droughts'],{'ht':ht_droughts(rows),'ft':ft_droughts(rows),'red':red_droughts(rows) if params['league']=='spain' else None})
+                self.assertEqual(data['droughts'],{'ht':ht_droughts(rows),'ft':ft_droughts(rows),'red':red_droughts(rows) if LEAGUES[params['league']]['cards'] else None})
                 self.assertEqual(data['options']['rounds'],rounds)
                 self.assertEqual(data['options']['selected_round'],key)
                 for field,value in summarize(ordered).items():

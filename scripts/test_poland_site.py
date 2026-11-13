@@ -30,7 +30,7 @@ async def run(url=None):
         page=await context.new_page();page.on('pageerror',lambda error:errors.append(str(error)))
         if url:await page.goto(url,wait_until='networkidle',timeout=60000)
         else:await page.set_content((ROOT/'site/index.html').read_text(),wait_until='load')
-        await page.wait_for_function("document.querySelectorAll('#league-nav button').length===4")
+        await page.wait_for_function("count=>document.querySelectorAll('#league-nav button').length===count",arg=len(LEAGUES))
         assert await page.locator('#league-nav button').count()==len(LEAGUES);checks+=1
         await page.locator('[data-order=chronological]').click()
         # Existing leagues retain their own columns and statistics.

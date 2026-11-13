@@ -69,7 +69,7 @@
     leagues.forEach(item => {
       const button = element('button', 'league-button' + (item.id === state.league ? ' active' : ''));
       button.type = 'button'; button.setAttribute('aria-pressed', String(item.id === state.league));
-      button.append(element('span', 'league-flag', item.flag || ({spain: '🇪🇸', colombia: '🇨🇴', hungary: '🇭🇺', poland: '🇵🇱'}[item.id] || '⚽')));
+      button.append(element('span', 'league-flag', item.flag || ({spain: '🇪🇸', colombia: '🇨🇴', hungary: '🇭🇺', poland: '🇵🇱', italy: '🇮🇹'}[item.id] || '⚽')));
       const label = element('span'); label.append(element('strong', '', item.name), element('small', '', item.country));
       button.append(label, element('span', 'league-chevron', '›'));
       button.addEventListener('click', () => changeLeague(item.id)); $('league-nav').append(button);
@@ -118,10 +118,10 @@
       let scope, phase, round;
       try {[scope, phase, round] = JSON.parse(item.id);} catch {scope = ''; phase = ''; round = null;}
       const scopeLabel = {all: '', first: 'Primera vuelta', second: 'Segunda vuelta'}[scope] ?? scope;
-      const phaseLabel = phase && !['LaLiga', 'NB I', 'Ekstraklasa', 'Liga BetPlay'].includes(phase) && phase !== scopeLabel ? phase : '';
+      const phaseLabel = phase && !['LaLiga', 'Serie A', 'NB I', 'Ekstraklasa', 'Liga BetPlay'].includes(phase) && phase !== scopeLabel ? phase : '';
       const groupLabel = [scopeLabel, phaseLabel].filter(Boolean).join(' · ') || 'Jornadas';
       if (!groups.has(groupLabel)) groups.set(groupLabel, []);
-      groups.get(groupLabel).push({item, round});
+      groups.get(groupLabel).push({item, round, phase});
     }
     for (const [label, items] of groups) {
       const roundNumber = value => value === null || value === undefined || value === '' || !Number.isFinite(Number(value)) ? Infinity : Number(value);
@@ -129,8 +129,8 @@
       const group = element('div', 'round-group');
       group.append(element('h3', 'round-group-title', label));
       const buttons = element('div', 'round-number-list');
-      for (const {item, round} of items) {
-        const button = element('button', 'round-number', round === null || round === undefined || round === '' ? 'Pendiente' : String(round));
+      for (const {item, round, phase} of items) {
+        const button = element('button', 'round-number', round === null || round === undefined || round === '' ? (phase === 'Desempate por la permanencia' ? 'Desempate' : 'Pendiente') : String(round));
         button.type = 'button'; button.dataset.roundId = item.id;
         button.title = `${item.label} · ${integer(item.count)} partidos`;
         button.setAttribute('aria-label', button.title); button.setAttribute('aria-pressed', String(item.id === state.match_round));
@@ -349,8 +349,8 @@
   function droughtRound(game) {
     if (!game) return '';
     const scope = {first: 'Primera vuelta', second: 'Segunda vuelta', all: ''}[game.scope] ?? game.scope;
-    const phase = game.phase && !['LaLiga', 'NB I', 'Ekstraklasa'].includes(game.phase) && game.phase !== scope ? game.phase : '';
-    return [game.round === null || game.round === undefined ? 'Jornada pendiente' : `Jornada ${game.round}`, scope, phase].filter(Boolean).join(' · ');
+    const phase = game.phase && !['LaLiga', 'Serie A', 'NB I', 'Ekstraklasa'].includes(game.phase) && game.phase !== scope ? game.phase : '';
+    return [game.round === null || game.round === undefined ? (game.phase === 'Desempate por la permanencia' ? 'Adicional' : 'Jornada pendiente') : `Jornada ${game.round}`, scope, phase].filter(Boolean).join(' · ');
   }
   function droughtDates(streak) {
     const start = streak?.start, end = streak?.end;
@@ -362,17 +362,17 @@
     const groups = new Map();
     for (const round of streak.rounds) {
       const scope = {first: 'Primera vuelta', second: 'Segunda vuelta', all: ''}[round.scope] ?? round.scope;
-      const phase = round.phase && !['LaLiga', 'NB I', 'Ekstraklasa'].includes(round.phase) && round.phase !== scope ? round.phase : '';
+      const phase = round.phase && !['LaLiga', 'Serie A', 'NB I', 'Ekstraklasa'].includes(round.phase) && round.phase !== scope ? round.phase : '';
       const context = [scope, phase].filter(Boolean).join(' · ');
       if (!groups.has(context)) groups.set(context, new Set());
-      groups.get(context).add(round.round === null || round.round === undefined ? 'pendiente' : round.round);
+      groups.get(context).add(round.round === null || round.round === undefined ? (round.phase === 'Desempate por la permanencia' ? 'Adicional' : 'pendiente') : round.round);
     }
-    return [...groups].map(([context, rounds]) => `${rounds.size === 1 ? 'Jornada' : 'Jornadas'} ${[...rounds].join(', ')}${context ? ' · ' + context : ''}`).join(' | ');
+    return [...groups].map(([context, rounds]) => `${rounds.size === 1 && rounds.has('Adicional') ? 'Adicional' : `${rounds.size === 1 ? 'Jornada' : 'Jornadas'} ${[...rounds].join(', ')}`}${context ? ' · ' + context : ''}`).join(' | ');
   }
   function renderDroughts(data) {
     const root = $('drought-content'); root.replaceChildren();
     const metrics = [{key: 'ht', title: 'Sin ambos marcan · HT', short: 'ambos en HT', tone: 'gold'}, {key: 'ft', title: 'Sin ambos marcan · FT', short: 'ambos en FT', tone: 'purple'}];
-    if (state.league === 'spain' && hasCards()) metrics.push({key: 'red', title: 'Sin tarjeta roja', short: 'tarjeta roja', tone: 'red'});
+    if (hasCards()) metrics.push({key: 'red', title: 'Sin tarjeta roja', short: 'tarjeta roja', tone: 'red'});
     const grid = element('div', 'drought-grid drought-metrics');
     for (const metric of metrics) {
       const report = data?.[metric.key], top = Array.isArray(report?.top) ? report.top.slice(0, 3) : [], record = top[0];

@@ -11,10 +11,11 @@ def round_label(game):
     scope = {'all':'', 'first':'Primera vuelta', 'second':'Segunda vuelta'}.get(game.get('scope'), game.get('scope') or '')
     phase = game.get('phase') or ''
     context = [scope] if scope else []
-    if phase and phase not in ('LaLiga', 'NB I', 'Ekstraklasa', 'Liga BetPlay') and phase not in context:
+    if phase and phase not in ('LaLiga', 'Serie A', 'NB I', 'Ekstraklasa', 'Liga BetPlay') and phase not in context:
         context.append(phase)
     number = game.get('round')
-    context.append('Jornada pendiente' if number is None or number == '' else f'Jornada {number}')
+    if not game.get('round_not_applicable'):
+        context.append('Jornada pendiente' if number is None or number == '' else f'Jornada {number}')
     return ' · '.join(context)
 
 

@@ -9,6 +9,7 @@ from fastapi.testclient import TestClient
 from openpyxl import load_workbook
 
 from app import db
+from app.leagues import LEAGUES
 from app.main import app, select_games
 from app.rounds import round_id, round_options
 from test_core import game
@@ -35,12 +36,12 @@ class MatchRoundTests(unittest.TestCase):
             self.assertEqual(stored['round'],match['round'])
             self.assertEqual(stored['scope'],'first' if match['round']<=19 else 'second')
 
-    def test_drought_metrics_apply_to_the_season_and_red_cards_only_to_spain(self):
+    def test_drought_metrics_apply_to_the_season_and_card_leagues(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);seed=root/'seed.json';seed.write_text('[]')
             with patch.object(db,'DATA',root),patch.object(db,'DB_PATH',root/'test.sqlite3'):
                 db.initialize(seed)
-                rows=[game(id=f'{league}:one',provider_id=f'{league}:one',league=league,season='2025' if league=='colombia' else '2025-26',ht_home=0,ht_away=0,ft_home=0,ft_away=0,red=0) for league in ('spain','colombia','hungary','poland')]
+                rows=[game(id=f'{league}:one',provider_id=f'{league}:one',league=league,season='2025' if league=='colombia' else '2025-26',ht_home=0,ht_away=0,ft_home=0,ft_away=0,red=0) for league in LEAGUES]
                 db.upsert(rows)
                 with TestClient(app) as client:
                     for row in rows:
@@ -51,7 +52,7 @@ class MatchRoundTests(unittest.TestCase):
                         self.assertEqual(data['droughts']['ht'],data['ht_droughts'])
                         self.assertEqual(data['droughts']['ht']['current']['count'],1)
                         self.assertEqual(data['droughts']['ft']['current']['count'],1)
-                        if row['league']=='spain':
+                        if LEAGUES[row['league']]['cards']:
                             self.assertEqual(data['droughts']['red']['current']['count'],1)
                         else:
                             self.assertIsNone(data['droughts']['red'])

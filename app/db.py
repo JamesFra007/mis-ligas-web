@@ -131,6 +131,10 @@ def upsert(incoming):
                         continue
             if row is None and new['league'] == 'spain':
                 row = con.execute('SELECT * FROM games WHERE league=? AND season=? AND home=? AND away=?', (new['league'], new['season'], new['home'], new['away'])).fetchone()
+            if row is None and new['league'] == 'italy':
+                # A relegation playoff may repeat a regular-season pairing.
+                # Keep the phase as part of cross-source fixture reconciliation.
+                row = con.execute("SELECT * FROM games WHERE league=? AND season=? AND home=? AND away=? AND json_extract(payload,'$.phase')=?", (new['league'], new['season'], new['home'], new['away'], new.get('phase'))).fetchone()
             if row is None:
                 new['id'] = new.get('id') or f"{new['league']}:{new['season']}:{new.get('provider_id') or new['date'] + ':' + new['home'] + ':' + new['away']}"
                 latest = con.execute('SELECT MAX(source_order) FROM games WHERE league=? AND season=?', (new['league'], new['season'])).fetchone()[0]
@@ -148,7 +152,7 @@ def upsert(incoming):
             for key, value in new.items():
                 if key == 'scope' and old.get('scope') and old.get('scope') != 'all' and value in ('all', 'Temporada'):
                     continue
-                if key == 'phase' and old.get('phase') and value in ('Liga BetPlay', 'LaLiga'):
+                if key == 'phase' and old.get('phase') and value in ('Liga BetPlay', 'LaLiga', 'Serie A'):
                     continue
                 if value is not None and key not in ('id', 'source_order', 'administrative'):
                     merged[key] = value
@@ -164,7 +168,7 @@ def upsert(incoming):
                 merged['date_confirmed'] = old.get('date_confirmed',True)
                 merged['time_confirmed'] = old.get('time_confirmed',bool(old.get('time')))
             merged['administrative'] = bool(old.get('administrative') or new.get('administrative'))
-            if new['league'] in ('hungary','poland') and new.get('administrative'):
+            if new['league'] in ('hungary','poland','italy') and new.get('administrative'):
                 merged['ht_home']=None
                 merged['ht_away']=None
             if old.get('administrative'):

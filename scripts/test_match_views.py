@@ -81,7 +81,7 @@ async def run(url=None):
             await page.goto(url, wait_until='networkidle', timeout=60000)
         else:
             await page.set_content((ROOT/'site/index.html').read_text(), wait_until='load')
-        await page.wait_for_function("document.querySelectorAll('#league-nav button').length === 4")
+        await page.wait_for_function("count=>document.querySelectorAll('#league-nav button').length===count",arg=len(LEAGUES))
         await page.wait_for_function("document.querySelectorAll('#round-buttons [data-round-id]').length >= 1")
         await page.wait_for_function("!document.querySelector('#matches-table').classList.contains('loading-table')")
         assert await page.locator('#previous-page, #next-page, #page-label').count() == 0
@@ -154,8 +154,8 @@ async def run(url=None):
                     assert await card.locator('.drought-rounds').inner_text()
                 checks += 2
             red = page.locator('#drought-content article[data-drought-metric=red]')
-            assert await red.count() == (1 if league == 'spain' else 0)
-            if league == 'spain':
+            assert await red.count() == (1 if LEAGUES[league]['cards'] else 0)
+            if LEAGUES[league]['cards']:
                 assert await red.is_visible()
                 assert target['droughts']['red'] is not None
                 assert await red.locator('.drought-value strong').inner_text() == str(target['droughts']['red']['top'][0]['count'])
@@ -224,6 +224,7 @@ async def run(url=None):
         # the same second page; an out-of-date append cannot cross a filter reset.
         league = 'poland'
         season = '2018-19'
+        await page.locator('#league-nav button').nth(list(LEAGUES).index(league)).click()
         await choose_season(page, season)
         ids = [g['id'] for g in expected(league, season, 'chronological', page_size=200)['games']]
         await wait_ids(page, ids[:40])

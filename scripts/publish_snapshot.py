@@ -80,6 +80,8 @@ def build_site(output_dir, *, refresh=False):
     for key,info in LEAGUES.items():
         if not info['corners'] and not info['cards']:
             export_history(league=key)
+    from scripts.export_italy_history import export_history as export_italy_history
+    export_italy_history()
     from scripts.build_offline import build
     build(output=output / 'index.html', hosted=True)
     rows = db.all_seasons()

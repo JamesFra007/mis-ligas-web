@@ -142,8 +142,10 @@ def select_games(league, season, scope='all', team='all', condition='all', statu
     except ValueError as error:
         raise HTTPException(400,str(error)) from error
     teams = sorted({g[k] for g in all_games for k in ('home','away')})
-    if league == 'spain':
+    if league in ('spain','italy'):
         scopes = [{'id':'all','label':'Temporada completa'}, {'id':'first','label':'Primera vuelta'}, {'id':'second','label':'Segunda vuelta'}]
+        extra_scopes = sorted({g['scope'] for g in all_games if g.get('scope') and g['scope'] not in ('all','first','second')})
+        scopes += [{'id':value,'label':value} for value in extra_scopes]
     else:
         values = sorted({g['scope'] for g in all_games if g.get('scope') and g['scope']!='all'},key=lambda x:('Finalización' in x,x))
         scopes = [{'id':'all','label':'Temporada completa'}]+[{'id':s,'label':s} for s in values]
@@ -159,7 +161,7 @@ def select_games(league, season, scope='all', team='all', condition='all', statu
     if search.strip():
         value=search.casefold().strip()
         rows=[g for g in rows if value in (g['home']+' '+g['away']).casefold()]
-    unknown_rounds = sum(g.get('round') is None for g in all_games) if league == 'spain' else 0
+    unknown_rounds = sum(g.get('round') is None and not g.get('round_not_applicable') for g in all_games) if league in ('spain','italy') else 0
     scope_note = f'La fuente no informa la jornada de {unknown_rounds} partidos; se agrupan como «Jornada pendiente» hasta poder verificarla.' if unknown_rounds else None
     selected_ids = {g['id'] for g in rows}
     rounds = round_options(g for g in original_games if g['id'] in selected_ids)
@@ -176,7 +178,7 @@ def dashboard(league: str='spain',season: str='2025-26',scope: str='all',team: s
     last=db.setting('last_sync')
     from .streaks import ht_droughts, ft_droughts, red_droughts
     ht_spells = ht_droughts(rows)
-    droughts = {'ht':ht_spells,'ft':ft_droughts(rows),'red':red_droughts(rows) if league == 'spain' else None}
+    droughts = {'ht':ht_spells,'ft':ft_droughts(rows),'red':red_droughts(rows) if LEAGUES[league]['cards'] else None}
     return {**summarize(rows,team),'ht_droughts':ht_spells,'droughts':droughts,'options':options,'games':visible,'pagination':{'page':page,'page_size':page_size,'total':total,'pages':pages},'updated_at':last['at'] if last else db.setting('imported_at')}
 
 

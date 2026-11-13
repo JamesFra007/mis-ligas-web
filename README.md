@@ -1,11 +1,11 @@
 # Mis Ligas
 
-Web en español con resultados, calendarios y estadísticas de LaLiga, la liga colombiana, Hungría (NB I) y Polonia (Ekstraklasa).
+Web en español con resultados, calendarios y estadísticas de LaLiga, la liga colombiana, Hungría (NB I), Polonia (Ekstraklasa) e Italia (Serie A).
 
 - Historial por temporada, equipo, torneo y local/visitante.
 - Jornadas numeradas para acceder directamente a sus encuentros y lista cronológica con «Ver más», sin pasar de página.
-- Mayores rachas sin ambos marcan en HT y FT, con fechas, jornadas y racha actual; en España también sin tarjetas rojas. Los datos pendientes interrumpen la verificación y los partidos simultáneos se agrupan.
-- HT y FT en las cuatro ligas; Hungría y Polonia se centran en resultados, sin córners ni tarjetas. Verdes cuando ambos marcaron en HT.
+- Mayores rachas sin ambos marcan en HT y FT, con fechas, jornadas y racha actual; en España e Italia también sin tarjetas rojas. Los datos pendientes interrumpen la verificación y los partidos simultáneos se agrupan.
+- HT y FT en las cinco ligas; Hungría y Polonia se centran en resultados, sin córners ni tarjetas. España e Italia incluyen córners, amarillas y rojas. Verdes cuando ambos marcaron en HT.
 - Próximos partidos con fecha y hora confirmadas, identificando los horarios pendientes.
 - Referencia estadística del siguiente ambos marcan en HT, con muestra, incertidumbre y aviso de caducidad. Es una referencia compartida de liga, no un pronóstico específico por equipo ni una garantía.
 - Descarga de los Excel históricos y exportación de datos filtrados a CSV.
@@ -23,6 +23,8 @@ Los datos se conservan en JSON versionado. El sitio público contiene únicament
 Football-Data (CSV SP1) y ESPN aportan estadísticas y calendario de España y Colombia. La fuente de Hungría es el centro de partidos oficial de la federación húngara (MLSZ). Hungría incluye nueve temporadas desde 2018/19, con dos incidencias históricas señaladas: un resultado administrativo y un abandono con repetición. Polonia utiliza el centro de partidos oficial de la Ekstraklasa para el calendario actual y BetExplorer para el histórico desde 2018/19, contrastado con RSSSF y 90minut. Las temporadas 2018/19 y 2019/20 incluyen la fase regular y ambos grupos finales. Los datos faltantes se indican y no se convierten en cero. Los partidos futuros, en juego y administrativos no se usan como encuentros terminados en los resúmenes. La hora se muestra en Colombia. No se inventan jornadas ni horarios pendientes.
 
 Las 38 jornadas de España 2026/27 se verificaron con el calendario oficial de LaLiga, contrastando los 380 partidos por local y visitante, fechas confirmadas y resultados finales disponibles. La correspondencia se conserva en `data/laliga_2026_27_rounds.json`; esta incorporación solo completa la jornada y la vuelta, sin alterar marcadores.
+
+Italia abarca 2018/19–2026/27: Football-Data I1 aporta marcadores, córners y tarjetas; ESPN aporta el calendario y los nuevos resultados, y BetExplorer las jornadas explícitas y las horas históricas ausentes del CSV. El histórico se contrastó con RSSSF. Se conserva el desempate Spezia–Verona de 2022/23 como partido adicional, y Verona–Roma de 2020/21 como resultado administrativo 3–0, excluido del análisis. El Excel italiano mantiene cada temporada en su hoja, con las fuentes y excepciones en «Notas».
 
 ## Desarrollo local
 

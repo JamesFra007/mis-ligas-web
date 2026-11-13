@@ -20,9 +20,9 @@
   function roundLabel(game) {
     const scope = ({all:'',first:'Primera vuelta',second:'Segunda vuelta'})[game.scope] ?? (game.scope || '');
     const context = scope ? [scope] : [];
-    if (game.phase && !['LaLiga','NB I','Ekstraklasa','Liga BetPlay'].includes(game.phase) && !context.includes(game.phase)) context.push(game.phase);
-    context.push(game.round === null || game.round === undefined || game.round === '' ? 'Jornada pendiente' : `Jornada ${game.round}`);
-    return context.join(' · ');
+    if (game.phase && !['LaLiga','Serie A','NB I','Ekstraklasa','Liga BetPlay'].includes(game.phase) && !context.includes(game.phase)) context.push(game.phase);
+    if (!game.round_not_applicable || (game.round !== null && game.round !== undefined && game.round !== '')) context.push(game.round === null || game.round === undefined || game.round === '' ? 'Jornada pendiente' : `Jornada ${game.round}`);
+    return context.join(' · ') || 'Partido adicional';
   }
   function roundOptions(games) {
     const options = new Map();
@@ -128,13 +128,14 @@
   function dashboard(params){
     const {all,games,league,team}=filtered(params);const scopeValues=[...new Set(all.map(g=>g.scope).filter(s=>s&&s!=='all'))];
     scopeValues.sort((a,b)=>Number(a.includes('Finalización'))-Number(b.includes('Finalización'))||(a<b?-1:a>b?1:0));
-    const scopes=league==='spain'?[{id:'all',label:'Temporada completa'},{id:'first',label:'Primera vuelta'},{id:'second',label:'Segunda vuelta'}]:[{id:'all',label:'Temporada completa'},...scopeValues.map(s=>({id:s,label:s}))];
-    const teams=[...new Set(all.flatMap(g=>[g.home,g.away]))].sort();const missing=league==='spain'?all.filter(g=>g.round===null||g.round===undefined).length:0;
+    const halves=['spain','italy'].includes(league);
+    const scopes=halves?[{id:'all',label:'Temporada completa'},{id:'first',label:'Primera vuelta'},{id:'second',label:'Segunda vuelta'},...scopeValues.filter(s=>!['first','second'].includes(s)).map(s=>({id:s,label:s}))]:[{id:'all',label:'Temporada completa'},...scopeValues.map(s=>({id:s,label:s}))];
+    const teams=[...new Set(all.flatMap(g=>[g.home,g.away]))].sort();const missing=halves?all.filter(g=>(g.round===null||g.round===undefined)&&!g.round_not_applicable).length:0;
     const rounds=roundOptions(games), selection=selectRound(games,params.get('match_round'),rounds), matches=selection.games;
     const page_size=Math.min(200,Math.max(1,Number(params.get('page_size'))||40)),pages=Math.max(1,Math.ceil(matches.length/page_size)),page=Math.min(pages,Math.max(1,Number(params.get('page'))||1));
     const visible=matches.slice((page-1)*page_size,page*page_size).map(g=>({...g,btts_ht:g.status==='finished'&&!g.administrative&&btts(pair(g,'ht'))}));
     const ht_droughts=htDroughts(games);
-    return {...summarize(games,team),ht_droughts,droughts:{ht:ht_droughts,ft:observedDroughts(games,'ft'),red:league==='spain' ? observedDroughts(games,'red') : null},options:{scopes,teams,scope_note:missing?`La fuente no informa la jornada de ${missing} partidos; se agrupan como «Jornada pendiente» hasta poder verificarla.`:null,rounds,selected_round:selection.selected},games:visible,pagination:{page,page_size,total:matches.length,pages},updated_at:metadata.updated_at};
+    return {...summarize(games,team),ht_droughts,droughts:{ht:ht_droughts,ft:observedDroughts(games,'ft'),red:hasCards(league) ? observedDroughts(games,'red') : null},options:{scopes,teams,scope_note:missing?`La fuente no informa la jornada de ${missing} partidos; se agrupan como «Jornada pendiente» hasta poder verificarla.`:null,rounds,selected_round:selection.selected},games:visible,pagination:{page,page_size,total:matches.length,pages},updated_at:metadata.updated_at};
   }
   window.__offlineDashboard=dashboard;
   window.__offlineFilters=new URLSearchParams();
