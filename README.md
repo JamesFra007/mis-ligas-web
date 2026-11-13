@@ -26,6 +26,8 @@ Las 38 jornadas de España 2026/27 se verificaron con el calendario oficial de L
 
 Italia abarca 2018/19–2026/27: Football-Data I1 aporta marcadores, córners y tarjetas; ESPN aporta el calendario y los nuevos resultados, y BetExplorer las jornadas explícitas y las horas históricas ausentes del CSV. El histórico se contrastó con RSSSF. Se conserva el desempate Spezia–Verona de 2022/23 como partido adicional, y Verona–Roma de 2020/21 como resultado administrativo 3–0, excluido del análisis. El Excel italiano mantiene cada temporada en su hoja, con las fuentes y excepciones en «Notas».
 
+La actualización italiana puede reutilizar las jornadas ya verificadas de la misma temporada, siempre que los 380 partidos coincidan con el calendario consultado de ESPN. Los resultados, estadísticas y horarios se siguen consultando en sus fuentes. Una captura incompleta o de otra temporada no sustituye la comprobación de jornadas.
+
 ## Desarrollo local
 
 Requiere Python 3.12 o posterior.

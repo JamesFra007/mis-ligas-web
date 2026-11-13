@@ -6,13 +6,14 @@ metadata is reconciled by canonical fixture, never by date or inferred round.
 from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from collections import Counter
 import csv
 from datetime import date, datetime, timezone
 from html import unescape
 import io
 import logging
 import re
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 from zoneinfo import ZoneInfo
 
 from .providers import ProviderError, _fetch, _json, _integer, _total, _espn_clock, _espn_status, _stats
@@ -256,7 +257,49 @@ def get_coverage():
     return dict(_COVERAGE)
 
 
-def sync_games(season):
+def verified_saved_rounds(records, season, pairs):
+    """Reuse an observed complete season calendar, never a partial/inferred one.
+
+    Scores and kickoffs are intentionally absent from the returned metadata:
+    Football-Data and ESPN must still supply their current observations.
+    """
+    if not isinstance(records, (list, tuple)) or len(records) != 380:
+        return None
+    mapping = {}
+    for game in records:
+        if not isinstance(game, dict) or game.get('league') != 'italy' or game.get('season') != str(season) or game.get('phase') != 'Serie A':
+            return None
+        home, away, rnd = game.get('home'), game.get('away'), game.get('round')
+        if not isinstance(home, str) or not isinstance(away, str) or not home or not away or home == away or type(rnd) is not int or not 1 <= rnd <= 38:
+            return None
+        key = home, away
+        if key in mapping:
+            return None
+        source, source_url = game.get('round_source'), game.get('round_source_url')
+        if not isinstance(source, str) or not source.strip() or not isinstance(source_url, str):
+            return None
+        try:
+            url = urlsplit(source_url)
+            host = (url.hostname or '').lower()
+            trusted = any(host == name or host.endswith('.' + name) for name in ('betexplorer.com','legaseriea.it','legaseriea.com'))
+            if url.scheme not in ('http','https') or not trusted or url.username or url.password:
+                return None
+        except ValueError:
+            return None
+        mapping[key] = {'round':rnd, 'round_source':source, 'round_source_url':source_url}
+        if game.get('match_source_url'):
+            mapping[key]['match_source_url'] = game['match_source_url']
+    if set(mapping) != pairs or len({team for pair in mapping for team in pair}) != 20:
+        return None
+    if Counter(info['round'] for info in mapping.values()) != Counter({rnd:10 for rnd in range(1,39)}):
+        return None
+    for rnd in range(1,39):
+        if len({team for pair, info in mapping.items() if info['round'] == rnd for team in pair}) != 20:
+            return None
+    return mapping
+
+
+def sync_games(season, *, saved_rounds=None):
     year=season_year(season);warnings=[]
     _COVERAGE.clear()
     try:rows=football_data(season)
@@ -273,10 +316,13 @@ def sync_games(season):
     if len(regular)!=380 or len(pairs)!=380 or len(teams)!=20:
         _COVERAGE.update(fixtures_available=False,warnings=['La fuente no publicó los 380 encuentros de la Serie A.'])
         raise ProviderError('El calendario italiano no está completo; se conservan los datos guardados.')
-    try:rounds=round_calendar(season)
-    except ProviderError as error:
-        _COVERAGE.update(fixtures_available=False,warnings=['No se pudo verificar el calendario italiano por jornadas.'])
-        raise ProviderError('No se pudieron verificar las jornadas italianas; se conservan los datos guardados.') from error
+    rounds = verified_saved_rounds(saved_rounds, season, pairs)
+    rounds_source = 'verified-season-snapshot' if rounds is not None else 'BetExplorer'
+    if rounds is None:
+        try:rounds=round_calendar(season)
+        except ProviderError as error:
+            _COVERAGE.update(fixtures_available=False,warnings=['No se pudo verificar el calendario italiano por jornadas.'])
+            raise ProviderError('No se pudieron verificar las jornadas italianas; se conservan los datos guardados.') from error
     if set(rounds)!=pairs:
         raise ProviderError('Las fuentes italianas discrepan en el calendario por jornadas; se conservan los datos anteriores.')
     for event in regular:
@@ -320,5 +366,5 @@ def sync_games(season):
             try:future.result()
             except ProviderError as error:
                 warnings.append(f"Datos pendientes del partido {jobs[future].get('espn_id')}: {error}")
-    _COVERAGE.update(fixtures_available=True,source='Football-Data I1, ESPN y BetExplorer (jornadas)',matches=len(rows),scheduled=sum(g['status']=='scheduled' for g in rows),confirmed_upcoming=sum(g['status']=='scheduled' and g.get('time_confirmed',False) and datetime.fromisoformat(g['kickoff'])>datetime.now(timezone.utc) for g in rows),missing_ht=sum(g['status']=='finished' and not g.get('administrative') and (g.get('ht_home') is None or g.get('ht_away') is None) for g in rows),warnings=warnings)
+    _COVERAGE.update(fixtures_available=True,source='Football-Data I1, ESPN y jornadas verificadas de BetExplorer',rounds_source=rounds_source,matches=len(rows),scheduled=sum(g['status']=='scheduled' for g in rows),confirmed_upcoming=sum(g['status']=='scheduled' and g.get('time_confirmed',False) and datetime.fromisoformat(g['kickoff'])>datetime.now(timezone.utc) for g in rows),missing_ht=sum(g['status']=='finished' and not g.get('administrative') and (g.get('ht_home') is None or g.get('ht_away') is None) for g in rows),warnings=warnings)
     return rows

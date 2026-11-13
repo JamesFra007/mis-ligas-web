@@ -40,7 +40,79 @@ def round_html(records,season='2026/2027'):
     return f'<meta name="keywords" content="Serie A {season}, results"><table class="table-main">'+''.join(rows)+'</table>'
 
 
+def saved_calendar():
+    rows=[]
+    for i,(home,away,rnd) in enumerate(schedule()):
+        row=p.parse_espn_event(event(str(i+1),home,away),'2026-27')
+        row.update(round=rnd,round_source='BetExplorer · tabla verificada',round_source_url='https://www.betexplorer.com/football/italy/serie-a/results/')
+        rows.append(row)
+    return rows
+
+
 class ItalyProviderTests(unittest.TestCase):
+    def test_coordinator_forwards_only_same_season_regular_snapshot(self):
+        from app import db, providers
+        saved=saved_calendar()
+        playoff={**saved[0],'phase':'Desempate por la permanencia','round':None}
+        with patch.object(db,'DB_PATH') as path,patch.object(db,'games',return_value=saved+[playoff]) as load,patch.object(p,'sync_games',return_value=[]) as fetch:
+            path.exists.return_value=True
+            self.assertEqual(providers.sync_games('italy','2026-27'),[])
+        load.assert_called_once_with('italy','2026-27')
+        fetch.assert_called_once_with('2026-27',saved_rounds=saved)
+
+    def test_verified_saved_season_avoids_archive_but_refreshes_scores_and_kickoffs(self):
+        saved=saved_calendar()
+        saved[0].update(ft_home=9,ft_away=9,time='00:00',kickoff='2026-08-15T05:00:00+00:00')
+        fixtures=[p.parse_espn_event(event(str(i+1),home,away),'2026-27') for i,(home,away,_) in enumerate(schedule())]
+        observed=p.parse_football_data(HEADER+'15/08/2026,20:00,Team00,Team19,1,0,0,0,0,2,1,2,0,0\n','2026-27')
+        with patch.object(p,'football_data',return_value=observed),patch.object(p,'calendar',return_value=fixtures),patch.object(p,'round_calendar',side_effect=p.ProviderError('archive unavailable')) as archive:
+            rows=p.sync_games('2026-27',saved_rounds=saved)
+        archive.assert_not_called()
+        first=next(g for g in rows if (g['home'],g['away'])==('Team00','Team19'))
+        self.assertEqual((first['ft_home'],first['ft_away'],first['round'],first['time']),(1,0,1,'13:00'))
+        self.assertEqual(p.get_coverage()['rounds_source'],'verified-season-snapshot')
+        self.assertTrue(p.get_coverage()['fixtures_available'])
+
+    def test_incomplete_or_other_season_snapshot_requires_a_live_archive(self):
+        complete=saved_calendar()
+        other=deepcopy(complete)
+        for row in other:row['season']='2025-26'
+        mapping=p.parse_round_tables([(round_html(schedule()),'https://www.betexplorer.com/results/')],'2026-27')
+        for bad in (complete[:-1],other):
+            with self.subTest(size=len(bad),season=bad[0]['season']):
+                fixtures=[p.parse_espn_event(event(str(i+1),home,away),'2026-27') for i,(home,away,_) in enumerate(schedule())]
+                with patch.object(p,'football_data',return_value=[]),patch.object(p,'calendar',return_value=fixtures),patch.object(p,'round_calendar',return_value=mapping) as archive:
+                    rows=p.sync_games('2026-27',saved_rounds=bad)
+                archive.assert_called_once_with('2026-27')
+                self.assertEqual(len(rows),380)
+                self.assertEqual(p.get_coverage()['rounds_source'],'BetExplorer')
+
+    def test_saved_calendar_rejects_duplicates_fixture_mismatch_and_unverified_rounds(self):
+        original=saved_calendar();pairs={(g['home'],g['away']) for g in original}
+        invalid=[]
+        duplicate=deepcopy(original);duplicate[-1]=deepcopy(duplicate[0]);invalid.append(duplicate)
+        different=deepcopy(original);different[0]['home']='Other team';invalid.append(different)
+        boolean=deepcopy(original);boolean[0]['round']=True;invalid.append(boolean)
+        no_source=deepcopy(original);no_source[0].pop('round_source_url');invalid.append(no_source)
+        private_source=deepcopy(original);private_source[0]['round_source_url']='http://localhost/calendar';invalid.append(private_source)
+        conflicting=deepcopy(original);conflicting[0]['round']=2;invalid.append(conflicting)
+        for rows in invalid:
+            with self.subTest(first=rows[0],last=rows[-1]):
+                self.assertIsNone(p.verified_saved_rounds(rows,'2026-27',pairs))
+        self.assertEqual(len(p.verified_saved_rounds(original,'2026-27',pairs)),380)
+
+    def test_saved_calendar_does_not_hide_live_calendar_failure(self):
+        with patch.object(p,'football_data',return_value=[]),patch.object(p,'calendar',side_effect=p.ProviderError('calendar unavailable')),patch.object(p,'round_calendar') as archive:
+            with self.assertRaises(p.ProviderError):p.sync_games('2026-27',saved_rounds=saved_calendar())
+        archive.assert_not_called()
+        self.assertFalse(p.get_coverage()['fixtures_available'])
+
+    def test_saved_rounds_cannot_override_a_contradictory_live_week(self):
+        saved=saved_calendar();fixtures=deepcopy(saved);fixtures[0]['round']=2
+        with patch.object(p,'football_data',return_value=[]),patch.object(p,'calendar',return_value=fixtures),patch.object(p,'round_calendar') as archive:
+            with self.assertRaises(p.ProviderError):p.sync_games('2026-27',saved_rounds=saved)
+        archive.assert_not_called()
+
     def test_shared_team_aliases_keep_fixture_identity(self):
         for alias,wanted in [('Internazionale','Inter'),('AC Milan','Milan'),('AS Roma','Roma'),('Hellas Verona','Verona'),('SPAL','Spal'),('Unknown Club','Unknown Club')]:
             self.assertEqual(normalize_team(alias),wanted)

@@ -451,7 +451,9 @@ def sync_games(league: str, season: str) -> list[dict]:
     """Fetch a season snapshot; callers upsert by stable IDs without deleting rows."""
     if league == 'italy':
         from .italy import sync_games as italy_sync
-        return italy_sync(season)
+        from . import db
+        stored = db.games(league, season) if db.DB_PATH.exists() else []
+        return italy_sync(season, saved_rounds=[g for g in stored if g.get('phase') == 'Serie A'])
     if league == 'poland':
         from .poland import sync_games as poland_sync
         from . import db
