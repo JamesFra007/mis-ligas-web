@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-13T16:01:15.799769+00:00",
+  "captured_at": "2026-11-13T17:07:47.914700+00:00",
   "sources": [
     {
       "league": "spain",
@@ -62,7 +62,8 @@
       "ok": true,
       "coverage": {
         "fixtures_available": true,
-        "source": "Football-Data I1, ESPN y BetExplorer (jornadas)",
+        "source": "Football-Data I1, ESPN y jornadas verificadas de BetExplorer",
+        "rounds_source": "verified-season-snapshot",
         "matches": 380,
         "scheduled": 270,
         "confirmed_upcoming": 80,
