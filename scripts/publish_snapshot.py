@@ -58,6 +58,9 @@ def refresh_sources():
         if 'missing_ht' in source['coverage']:
             stored = db.games(source['league'], source['season'])
             source['coverage']['missing_ht'] = sum(g['status']=='finished' and not g.get('administrative') and (g.get('ht_home') is None or g.get('ht_away') is None) for g in stored)
+        if 'corners_missing' in source['coverage']:
+            stored = db.games(source['league'], source['season'])
+            source['coverage']['corners_missing'] = sum(g['status']=='finished' and not g.get('administrative') and g.get('corners') is None for g in stored)
     captured = datetime.now(timezone.utc).isoformat()
     snapshot = {'captured_at': captured, 'sources': sources, 'games': persisted_games()}
     target = ROOT / 'data/current.json'
@@ -82,6 +85,8 @@ def build_site(output_dir, *, refresh=False):
             export_history(league=key)
     from scripts.export_italy_history import export_history as export_italy_history
     export_italy_history()
+    from scripts.export_paraguay_history import export_history as export_paraguay_history
+    export_paraguay_history()
     from scripts.build_offline import build
     build(output=output / 'index.html', hosted=True)
     rows = db.all_seasons()

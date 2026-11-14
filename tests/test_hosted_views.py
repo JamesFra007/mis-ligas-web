@@ -56,7 +56,7 @@ class HostedViewsTests(unittest.TestCase):
         cases = []
         for i,rows in enumerate(samples):
             league = tuple(LEAGUES)[i%len(LEAGUES)]
-            season = '2025' if league=='colombia' else '2025-26'
+            season = '2025-26' if LEAGUES[league]['split_season'] else '2025'
             rows = [{**row,'league':league,'season':season} for row in rows]
             for order in ('round','chronological'):
                 for selected in ('','auto',round_id(rows[-1]) if rows else 'stale'):

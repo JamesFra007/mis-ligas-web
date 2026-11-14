@@ -1,0 +1,563 @@
+{
+  "captured_at": "2026-11-14T16:58:44.805926+00:00",
+  "league": "paraguay",
+  "seasons": {
+    "2018": {
+      "matches": 264,
+      "played": 263,
+      "administrative": 1,
+      "scheduled": 0,
+      "ht_known": 263,
+      "ft_known": 263,
+      "corners_known": 0,
+      "corners_missing": 263
+    },
+    "2019": {
+      "matches": 264,
+      "played": 263,
+      "administrative": 1,
+      "scheduled": 0,
+      "ht_known": 263,
+      "ft_known": 263,
+      "corners_known": 0,
+      "corners_missing": 263
+    },
+    "2020": {
+      "matches": 205,
+      "played": 204,
+      "administrative": 1,
+      "scheduled": 0,
+      "ht_known": 204,
+      "ft_known": 204,
+      "corners_known": 0,
+      "corners_missing": 204
+    },
+    "2021": {
+      "matches": 182,
+      "played": 182,
+      "administrative": 0,
+      "scheduled": 0,
+      "ht_known": 182,
+      "ft_known": 182,
+      "corners_known": 0,
+      "corners_missing": 182
+    },
+    "2022": {
+      "matches": 264,
+      "played": 264,
+      "administrative": 0,
+      "scheduled": 0,
+      "ht_known": 264,
+      "ft_known": 264,
+      "corners_known": 0,
+      "corners_missing": 264
+    },
+    "2023": {
+      "matches": 264,
+      "played": 264,
+      "administrative": 0,
+      "scheduled": 0,
+      "ht_known": 264,
+      "ft_known": 264,
+      "corners_known": 0,
+      "corners_missing": 264
+    },
+    "2024": {
+      "matches": 264,
+      "played": 263,
+      "administrative": 1,
+      "scheduled": 0,
+      "ht_known": 263,
+      "ft_known": 263,
+      "corners_known": 96,
+      "corners_missing": 167
+    },
+    "2025": {
+      "matches": 264,
+      "played": 264,
+      "administrative": 0,
+      "scheduled": 0,
+      "ht_known": 264,
+      "ft_known": 264,
+      "corners_known": 264,
+      "corners_missing": 0
+    },
+    "2026": {
+      "matches": 264,
+      "played": 245,
+      "administrative": 1,
+      "scheduled": 18,
+      "ht_known": 245,
+      "ft_known": 245,
+      "corners_known": 242,
+      "corners_missing": 3,
+      "confirmed_upcoming": 6,
+      "upcoming_time_pending": 12
+    }
+  },
+  "total_matches": 2235,
+  "explicit_ht_ft_reports": 2212,
+  "corner_records_added": 453,
+  "matching_corner_sources": 66,
+  "source_method": "ESPN calendario y estadísticas; BetExplorer jornadas y marcadores explícitos HT/FT contrastados partido por partido; RSSSF resultados históricos independientes; TotalCorner córners cruzados por equipos, instante UTC y FT. Cuatro diferencias de horario se conciliaron individualmente: mismo local, visitante y fecha, y coincidencia de HT y FT explícitos con BetExplorer; se mantiene el horario de ESPN/BetExplorer.",
+  "unpublished_values": "null; se muestran como N/D, nunca cero. Los resultados administrativos se excluyen de los análisis.",
+  "round_notes": "Las jornadas 17 y 18 del Clausura 2019 se conservan según las jornadas explícitas de BetExplorer, aunque el archivo RSSSF las enumera en orden cronológico inverso.",
+  "ht_corrections": [
+    {
+      "id": "paraguay:espn:519010",
+      "date": "2018-11-10",
+      "home": "Libertad",
+      "away": "Sol de América",
+      "previous": [
+        2,
+        0
+      ],
+      "previous_source": "https://www.rsssf.org/tablesp/para2018.html",
+      "verified": [
+        1,
+        0
+      ],
+      "source_url": "https://www.betexplorer.com/football/paraguay/primera-division-2018/libertad-asuncion-sol-de-america/p2DL06ib/"
+    },
+    {
+      "id": "paraguay:espn:518986",
+      "date": "2018-12-08",
+      "home": "Guaraní",
+      "away": "Sportivo Luqueño",
+      "previous": [
+        1,
+        0
+      ],
+      "previous_source": "https://www.rsssf.org/tablesp/para2018.html",
+      "verified": [
+        0,
+        0
+      ],
+      "source_url": "https://www.betexplorer.com/football/paraguay/primera-division-2018/guarani-sp-luqueno/tW3hO0kM/"
+    },
+    {
+      "id": "paraguay:espn:583169",
+      "date": "2020-10-18",
+      "home": "River Plate",
+      "away": "12 de Octubre",
+      "previous": [
+        0,
+        1
+      ],
+      "previous_source": "https://www.rsssf.org/tablesp/para2020.html",
+      "verified": [
+        0,
+        2
+      ],
+      "source_url": "https://www.betexplorer.com/football/paraguay/primera-division-2020/club-river-plate-12-de-octubre/vV5a16i3/"
+    },
+    {
+      "id": "paraguay:espn:587606",
+      "date": "2020-10-30",
+      "home": "Nacional",
+      "away": "12 de Octubre",
+      "previous": [
+        0,
+        0
+      ],
+      "previous_source": "https://www.rsssf.org/tablesp/para2020.html",
+      "verified": [
+        0,
+        1
+      ],
+      "source_url": "https://www.betexplorer.com/football/paraguay/primera-division-2020/nacional-asuncion-12-de-octubre/CjnOkc04/"
+    },
+    {
+      "id": "paraguay:espn:587951",
+      "date": "2020-11-14",
+      "home": "Guaireña",
+      "away": "General Díaz",
+      "previous": [
+        0,
+        1
+      ],
+      "previous_source": "https://www.rsssf.org/tablesp/para2020.html",
+      "verified": [
+        1,
+        0
+      ],
+      "source_url": "https://www.betexplorer.com/football/paraguay/primera-division-2020/guairena-fc-diaz/dW3OaBo6/"
+    },
+    {
+      "id": "paraguay:espn:619274",
+      "date": "2021-09-17",
+      "home": "River Plate",
+      "away": "Libertad",
+      "previous": [
+        0,
+        1
+      ],
+      "previous_source": "https://www.rsssf.org/tablesp/para2021.html",
+      "verified": [
+        0,
+        0
+      ],
+      "source_url": "https://www.betexplorer.com/football/paraguay/primera-division-2021/club-river-plate-libertad-asuncion/tOubrWVF/"
+    },
+    {
+      "id": "paraguay:espn:728910",
+      "date": "2025-03-24",
+      "home": "Atlético Tembetary",
+      "away": "Sportivo Ameliano",
+      "previous": [
+        1,
+        0
+      ],
+      "previous_source": "https://www.rsssf.org/tablesp/para2025.html",
+      "verified": [
+        0,
+        0
+      ],
+      "source_url": "https://www.betexplorer.com/football/paraguay/copa-de-primera-2025/atletico-tembetary-sportivo-ameliano/OOtOh7CU/"
+    },
+    {
+      "id": "paraguay:espn:728961",
+      "date": "2025-05-11",
+      "home": "Sportivo Luqueño",
+      "away": "Libertad",
+      "previous": [
+        1,
+        0
+      ],
+      "previous_source": "https://www.rsssf.org/tablesp/para2025.html",
+      "verified": [
+        0,
+        0
+      ],
+      "source_url": "https://www.betexplorer.com/football/paraguay/copa-de-primera-2025/sp-luqueno-libertad-asuncion/bZSp31qS/"
+    },
+    {
+      "id": "paraguay:espn:749843",
+      "date": "2025-09-07",
+      "home": "2 de Mayo",
+      "away": "Olimpia",
+      "previous": [
+        2,
+        1
+      ],
+      "previous_source": "https://www.rsssf.org/tablesp/para2025.html",
+      "verified": [
+        1,
+        1
+      ],
+      "source_url": "https://www.betexplorer.com/football/paraguay/copa-de-primera-2025/2-de-mayo-olimpia-asuncion/Ug1hihJ7/"
+    }
+  ],
+  "corner_conflicts": [
+    {
+      "id": "paraguay:espn:401888680",
+      "differences": {
+        "corners": {
+          "espn": 9,
+          "totalcorner": 8
+        },
+        "corners_home": {
+          "espn": 7,
+          "totalcorner": 6
+        }
+      },
+      "record": {
+        "id": "paraguay:espn:401888680",
+        "espn_id": "401888680",
+        "league": "paraguay",
+        "season": "2026",
+        "home": "Sportivo Ameliano",
+        "away": "2 de Mayo",
+        "date": "2026-08-01",
+        "time": "14:00",
+        "kickoff": "2026-08-01T19:00:00+00:00",
+        "scope": "Clausura",
+        "ft_home": 1,
+        "ft_away": 1,
+        "corners": 8,
+        "corners_home": 6,
+        "corners_away": 2,
+        "corners_source": "TotalCorner · estadísticas FT publicadas",
+        "corners_source_url": "https://www.totalcorner.com/stats/sportivo-ameliano-vs-2-de-mayo/198724223",
+        "totalcorner_id": "198724223",
+        "list_source_url": "https://www.totalcorner.com/league/view/302/page:3",
+        "match_validation": "Exact canonical teams, UTC kickoff and FT score."
+      },
+      "espn_source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/summary?event=401888680"
+    },
+    {
+      "id": "paraguay:espn:401888624",
+      "differences": {
+        "corners": {
+          "espn": 4,
+          "totalcorner": 3
+        },
+        "corners_away": {
+          "espn": 1,
+          "totalcorner": 0
+        }
+      },
+      "record": {
+        "id": "paraguay:espn:401888624",
+        "espn_id": "401888624",
+        "league": "paraguay",
+        "season": "2026",
+        "home": "Libertad",
+        "away": "Sportivo Trinidense",
+        "date": "2026-08-10",
+        "time": "16:30",
+        "kickoff": "2026-08-10T21:30:00+00:00",
+        "scope": "Clausura",
+        "ft_home": 2,
+        "ft_away": 1,
+        "corners": 3,
+        "corners_home": 3,
+        "corners_away": 0,
+        "corners_source": "TotalCorner · estadísticas FT publicadas",
+        "corners_source_url": "https://www.totalcorner.com/stats/libertad-asuncion-vs-sportivo-trinidense/199039126",
+        "totalcorner_id": "199039126",
+        "list_source_url": "https://www.totalcorner.com/league/view/302/page:3",
+        "match_validation": "Exact canonical teams, UTC kickoff and FT score."
+      },
+      "espn_source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/summary?event=401888624"
+    },
+    {
+      "id": "paraguay:espn:401888609",
+      "differences": {
+        "corners_away": {
+          "espn": 0,
+          "totalcorner": 6
+        }
+      },
+      "record": {
+        "id": "paraguay:espn:401888609",
+        "espn_id": "401888609",
+        "league": "paraguay",
+        "season": "2026",
+        "home": "Deportivo Recoleta",
+        "away": "Olimpia",
+        "date": "2026-08-29",
+        "time": "16:30",
+        "kickoff": "2026-08-29T21:30:00+00:00",
+        "scope": "Clausura",
+        "ft_home": 1,
+        "ft_away": 2,
+        "corners": 10,
+        "corners_home": 4,
+        "corners_away": 6,
+        "corners_source": "TotalCorner · estadísticas FT publicadas",
+        "corners_source_url": "https://www.totalcorner.com/stats/deportivo-recoleta-vs-olimpia-asuncion/199743651",
+        "totalcorner_id": "199743651",
+        "list_source_url": "https://www.totalcorner.com/league/view/302/page:3",
+        "match_validation": "Exact canonical teams, UTC kickoff and FT score."
+      },
+      "espn_source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/summary?event=401888609"
+    },
+    {
+      "id": "paraguay:espn:401888607",
+      "differences": {
+        "corners": {
+          "espn": 16,
+          "totalcorner": 15
+        },
+        "corners_away": {
+          "espn": 9,
+          "totalcorner": 8
+        }
+      },
+      "record": {
+        "id": "paraguay:espn:401888607",
+        "espn_id": "401888607",
+        "league": "paraguay",
+        "season": "2026",
+        "home": "2 de Mayo",
+        "away": "Sportivo Luqueño",
+        "date": "2026-09-01",
+        "time": "16:30",
+        "kickoff": "2026-09-01T21:30:00+00:00",
+        "scope": "Clausura",
+        "ft_home": 2,
+        "ft_away": 2,
+        "corners": 15,
+        "corners_home": 7,
+        "corners_away": 8,
+        "corners_source": "TotalCorner · estadísticas FT publicadas",
+        "corners_source_url": "https://www.totalcorner.com/stats/2-de-mayo-vs-sportivo-luqueno/200164559",
+        "totalcorner_id": "200164559",
+        "list_source_url": "https://www.totalcorner.com/league/view/302/page:3",
+        "match_validation": "Exact canonical teams, UTC kickoff and FT score."
+      },
+      "espn_source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/summary?event=401888607"
+    },
+    {
+      "id": "paraguay:espn:401888571",
+      "differences": {
+        "corners": {
+          "espn": 11,
+          "totalcorner": 10
+        },
+        "corners_away": {
+          "espn": 4,
+          "totalcorner": 3
+        }
+      },
+      "record": {
+        "id": "paraguay:espn:401888571",
+        "espn_id": "401888571",
+        "league": "paraguay",
+        "season": "2026",
+        "home": "Sportivo San Lorenzo",
+        "away": "Libertad",
+        "date": "2026-10-31",
+        "time": "17:30",
+        "kickoff": "2026-10-31T22:30:00+00:00",
+        "scope": "Clausura",
+        "ft_home": 2,
+        "ft_away": 1,
+        "corners": 10,
+        "corners_home": 7,
+        "corners_away": 3,
+        "corners_source": "TotalCorner · estadísticas FT publicadas",
+        "corners_source_url": "https://www.totalcorner.com/stats/sportivo-san-lorenzo-vs-libertad-asuncion/202817897",
+        "totalcorner_id": "202817897",
+        "list_source_url": "https://www.totalcorner.com/league/view/302",
+        "match_validation": "Exact canonical teams, UTC kickoff and FT score."
+      },
+      "espn_source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/summary?event=401888571"
+    },
+    {
+      "id": "paraguay:espn:401888574",
+      "differences": {
+        "corners": {
+          "espn": 10,
+          "totalcorner": 12
+        },
+        "corners_home": {
+          "espn": 10,
+          "totalcorner": 12
+        }
+      },
+      "record": {
+        "id": "paraguay:espn:401888574",
+        "espn_id": "401888574",
+        "league": "paraguay",
+        "season": "2026",
+        "home": "Cerro Porteño",
+        "away": "Olimpia",
+        "date": "2026-11-01",
+        "time": "15:00",
+        "kickoff": "2026-11-01T20:00:00+00:00",
+        "scope": "Clausura",
+        "ft_home": 0,
+        "ft_away": 2,
+        "corners": 12,
+        "corners_home": 12,
+        "corners_away": 0,
+        "corners_source": "TotalCorner · estadísticas FT publicadas",
+        "corners_source_url": "https://www.totalcorner.com/stats/cerro-porteno-vs-olimpia-asuncion/202817887",
+        "totalcorner_id": "202817887",
+        "list_source_url": "https://www.totalcorner.com/league/view/302",
+        "match_validation": "Exact canonical teams, UTC kickoff and FT score."
+      },
+      "espn_source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/summary?event=401888574"
+    }
+  ],
+  "reviewed_time_discrepancies": [
+    {
+      "id": "paraguay:espn:749906",
+      "date": "2025-11-21",
+      "home": "Sportivo Luqueño",
+      "away": "Olimpia",
+      "ht": [
+        2,
+        1
+      ],
+      "ft": [
+        2,
+        4
+      ],
+      "corners": 7,
+      "corner_sides": [
+        6,
+        1
+      ],
+      "kickoff_espn_and_betexplorer": "2025-11-21T20:00:00+00:00",
+      "kickoff_totalcorner": "2025-11-21T21:00:00+00:00",
+      "totalcorner_url": "https://www.totalcorner.com/stats/sportivo-luqueno-vs-olimpia-asuncion/184228782",
+      "betexplorer_url": "https://www.betexplorer.com/football/paraguay/copa-de-primera-2025/sp-luqueno-olimpia-asuncion/QXArZkFE/",
+      "validation": "Unique canonical home/away pair on the same Colombia date; explicit HT and FT match BetExplorer and ESPN; source kickoffs differ by at most 60 minutes."
+    },
+    {
+      "id": "paraguay:espn:401848181",
+      "date": "2026-02-06",
+      "home": "Sportivo Luqueño",
+      "away": "Sportivo Ameliano",
+      "ht": [
+        0,
+        0
+      ],
+      "ft": [
+        0,
+        1
+      ],
+      "corners": 6,
+      "corner_sides": [
+        2,
+        4
+      ],
+      "kickoff_espn_and_betexplorer": "2026-02-06T23:30:00+00:00",
+      "kickoff_totalcorner": "2026-02-06T23:15:00+00:00",
+      "totalcorner_url": "https://www.totalcorner.com/stats/sportivo-luqueno-vs-sportivo-ameliano/188808526",
+      "betexplorer_url": "https://www.betexplorer.com/football/paraguay/copa-de-primera/sp-luqueno-sportivo-ameliano/2BJw5oDj/",
+      "validation": "Unique canonical home/away pair on the same Colombia date; explicit HT and FT match BetExplorer and ESPN; source kickoffs differ by at most 60 minutes."
+    },
+    {
+      "id": "paraguay:espn:401848179",
+      "date": "2026-02-08",
+      "home": "Nacional",
+      "away": "Olimpia",
+      "ht": [
+        1,
+        1
+      ],
+      "ft": [
+        1,
+        2
+      ],
+      "corners": 7,
+      "corner_sides": [
+        5,
+        2
+      ],
+      "kickoff_espn_and_betexplorer": "2026-02-08T23:30:00+00:00",
+      "kickoff_totalcorner": "2026-02-08T23:15:00+00:00",
+      "totalcorner_url": "https://www.totalcorner.com/stats/nacional-asuncion-vs-olimpia-asuncion/188808511",
+      "betexplorer_url": "https://www.betexplorer.com/football/paraguay/copa-de-primera/nacional-asuncion-olimpia-asuncion/rRx7A7kT/",
+      "validation": "Unique canonical home/away pair on the same Colombia date; explicit HT and FT match BetExplorer and ESPN; source kickoffs differ by at most 60 minutes."
+    },
+    {
+      "id": "paraguay:espn:401888589",
+      "date": "2026-09-28",
+      "home": "Libertad",
+      "away": "Olimpia",
+      "ht": [
+        0,
+        1
+      ],
+      "ft": [
+        0,
+        1
+      ],
+      "corners": 8,
+      "corner_sides": [
+        3,
+        5
+      ],
+      "kickoff_espn_and_betexplorer": "2026-09-28T22:15:00+00:00",
+      "kickoff_totalcorner": "2026-09-28T22:00:00+00:00",
+      "totalcorner_url": "https://www.totalcorner.com/stats/libertad-asuncion-vs-olimpia-asuncion/200609079",
+      "betexplorer_url": "https://www.betexplorer.com/football/paraguay/copa-de-primera/libertad-asuncion-olimpia-asuncion/ncLYFSqS/",
+      "validation": "Unique canonical home/away pair on the same Colombia date; explicit HT and FT match BetExplorer and ESPN; source kickoffs differ by at most 60 minutes."
+    }
+  ]
+}

@@ -41,7 +41,7 @@ class MatchRoundTests(unittest.TestCase):
             root=Path(directory);seed=root/'seed.json';seed.write_text('[]')
             with patch.object(db,'DATA',root),patch.object(db,'DB_PATH',root/'test.sqlite3'):
                 db.initialize(seed)
-                rows=[game(id=f'{league}:one',provider_id=f'{league}:one',league=league,season='2025' if league=='colombia' else '2025-26',ht_home=0,ht_away=0,ft_home=0,ft_away=0,red=0) for league in LEAGUES]
+                rows=[game(id=f'{league}:one',provider_id=f'{league}:one',league=league,season='2025-26' if LEAGUES[league]['split_season'] else '2025',ht_home=0,ht_away=0,ft_home=0,ft_away=0,red=0) for league in LEAGUES]
                 db.upsert(rows)
                 with TestClient(app) as client:
                     for row in rows:

@@ -141,7 +141,7 @@ async def run(url=None):
             assert await buttons.count() == len(target['options']['rounds'])
             assert await page.locator('#round-buttons [aria-pressed=true]').get_attribute('data-round-id') == target['options']['selected_round']
             assert await buttons.evaluate_all("nodes => nodes.every(node => node.getBoundingClientRect().width > 0 && node.getBoundingClientRect().height > 0)")
-            assert await buttons.evaluate_all("nodes => nodes.every(node => { const n=JSON.parse(node.dataset.roundId)[2]; return n === null ? /pendiente/i.test(node.innerText) : node.innerText.trim() === String(n); })")
+            assert await buttons.evaluate_all("nodes => nodes.every(node => { const n=JSON.parse(node.dataset.roundId)[2],text=node.innerText.trim(); return n === null ? Boolean(text) && !/^\\d+$/.test(text) : text === String(n); })")
             assert await numbered_order_is_valid(page)
             assert not await page.locator('#round-select').count()
             for metric in ('ht', 'ft'):
@@ -178,6 +178,13 @@ async def run(url=None):
                 assert any('Apertura' in label for label in labels)
                 assert any('Finalización' in label for label in labels)
                 checks += 2
+            if league == 'paraguay':
+                labels = await buttons.evaluate_all("nodes => nodes.map(node => node.getAttribute('aria-label') || node.title)")
+                assert any('Apertura' in label for label in labels)
+                assert any('Clausura' in label for label in labels)
+                assert await page.locator('#matches-table th:visible').count() == 8
+                assert not await page.locator('.tiny-card').count()
+                checks += 4
             if league == 'poland':
                 async with page.expect_download() as event:
                     await page.locator('#export-link').click()

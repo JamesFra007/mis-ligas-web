@@ -69,7 +69,7 @@
     leagues.forEach(item => {
       const button = element('button', 'league-button' + (item.id === state.league ? ' active' : ''));
       button.type = 'button'; button.setAttribute('aria-pressed', String(item.id === state.league));
-      button.append(element('span', 'league-flag', item.flag || ({spain: '🇪🇸', colombia: '🇨🇴', hungary: '🇭🇺', poland: '🇵🇱', italy: '🇮🇹'}[item.id] || '⚽')));
+      button.append(element('span', 'league-flag', item.flag || ({spain: '🇪🇸', colombia: '🇨🇴', hungary: '🇭🇺', poland: '🇵🇱', italy: '🇮🇹', paraguay: '🇵🇾'}[item.id] || '⚽')));
       const label = element('span'); label.append(element('strong', '', item.name), element('small', '', item.country));
       button.append(label, element('span', 'league-chevron', '›'));
       button.addEventListener('click', () => changeLeague(item.id)); $('league-nav').append(button);
@@ -130,7 +130,8 @@
       group.append(element('h3', 'round-group-title', label));
       const buttons = element('div', 'round-number-list');
       for (const {item, round, phase} of items) {
-        const button = element('button', 'round-number', round === null || round === undefined || round === '' ? (phase === 'Desempate por la permanencia' ? 'Desempate' : 'Pendiente') : String(round));
+        const knownFinal = state.league === 'paraguay' && !item.label.includes('Jornada pendiente');
+        const button = element('button', 'round-number', round === null || round === undefined || round === '' ? (phase === 'Desempate por la permanencia' ? 'Desempate' : knownFinal ? (phase || 'Eliminatoria') : 'Pendiente') : String(round));
         button.type = 'button'; button.dataset.roundId = item.id;
         button.title = `${item.label} · ${integer(item.count)} partidos`;
         button.setAttribute('aria-label', button.title); button.setAttribute('aria-pressed', String(item.id === state.match_round));
@@ -350,7 +351,8 @@
     if (!game) return '';
     const scope = {first: 'Primera vuelta', second: 'Segunda vuelta', all: ''}[game.scope] ?? game.scope;
     const phase = game.phase && !['LaLiga', 'Serie A', 'NB I', 'Ekstraklasa'].includes(game.phase) && game.phase !== scope ? game.phase : '';
-    return [game.round === null || game.round === undefined ? (game.phase === 'Desempate por la permanencia' ? 'Adicional' : 'Jornada pendiente') : `Jornada ${game.round}`, scope, phase].filter(Boolean).join(' · ');
+    const finalPhase = state.league === 'paraguay' && ['Cuartos de final','Semifinal','Final','Promoción'].includes(game.phase);
+    return [game.round === null || game.round === undefined ? (game.phase === 'Desempate por la permanencia' ? 'Adicional' : finalPhase ? 'Eliminatoria' : 'Jornada pendiente') : `Jornada ${game.round}`, scope, phase].filter(Boolean).join(' · ');
   }
   function droughtDates(streak) {
     const start = streak?.start, end = streak?.end;
@@ -365,9 +367,10 @@
       const phase = round.phase && !['LaLiga', 'Serie A', 'NB I', 'Ekstraklasa'].includes(round.phase) && round.phase !== scope ? round.phase : '';
       const context = [scope, phase].filter(Boolean).join(' · ');
       if (!groups.has(context)) groups.set(context, new Set());
-      groups.get(context).add(round.round === null || round.round === undefined ? (round.phase === 'Desempate por la permanencia' ? 'Adicional' : 'pendiente') : round.round);
+      const finalPhase = state.league === 'paraguay' && ['Cuartos de final','Semifinal','Final','Promoción'].includes(round.phase);
+      groups.get(context).add(round.round === null || round.round === undefined ? (round.phase === 'Desempate por la permanencia' ? 'Adicional' : finalPhase ? 'Eliminatoria' : 'pendiente') : round.round);
     }
-    return [...groups].map(([context, rounds]) => `${rounds.size === 1 && rounds.has('Adicional') ? 'Adicional' : `${rounds.size === 1 ? 'Jornada' : 'Jornadas'} ${[...rounds].join(', ')}`}${context ? ' · ' + context : ''}`).join(' | ');
+    return [...groups].map(([context, rounds]) => `${rounds.size === 1 && rounds.has('Adicional') ? 'Adicional' : rounds.size === 1 && rounds.has('Eliminatoria') ? 'Eliminatoria' : `${rounds.size === 1 ? 'Jornada' : 'Jornadas'} ${[...rounds].join(', ')}`}${context ? ' · ' + context : ''}`).join(' | ');
   }
   function renderDroughts(data) {
     const root = $('drought-content'); root.replaceChildren();
@@ -546,7 +549,8 @@
   }
   function initialSkeleton() {
     const root = $('kpi-grid'); root.replaceChildren();
-    (['hungary','poland'].includes(state.league) ? ['Ambos marcan · HT', 'Ambos marcan · FT', 'Goles por partido · FT', 'Goles por partido · HT', 'Partidos por jugar', 'Partidos analizados'] : ['Ambos marcan · HT', 'Ambos marcan · FT', 'Córners por partido', 'Goles por partido · FT', 'Goles por partido · HT', 'Tarjetas', 'Frecuencia', 'Partidos analizados']).forEach((label, index) => {const card = kpi(label, '—', 'Cargando datos…', index === 0 ? 'green' : 'blue', '·', index === 0); card.classList.add('loading'); root.append(card);});
+    const labels = ['hungary','poland'].includes(state.league) ? ['Ambos marcan · HT', 'Ambos marcan · FT', 'Goles por partido · FT', 'Goles por partido · HT', 'Partidos por jugar', 'Partidos analizados'] : ['colombia','paraguay'].includes(state.league) ? ['Ambos marcan · HT', 'Ambos marcan · FT', 'Córners por partido', 'Goles por partido · FT', 'Goles por partido · HT', 'Córners pendientes', 'Partidos por jugar', 'Partidos analizados'] : ['Ambos marcan · HT', 'Ambos marcan · FT', 'Córners por partido', 'Goles por partido · FT', 'Goles por partido · HT', 'Tarjetas', 'Frecuencia', 'Partidos analizados'];
+    labels.forEach((label, index) => {const card = kpi(label, '—', 'Cargando datos…', index === 0 ? 'green' : 'blue', '·', index === 0); card.classList.add('loading'); root.append(card);});
   }
   $('filters').addEventListener('submit', event => event.preventDefault());
   $('season-select').addEventListener('change', event => {state.season = event.target.value; state.scope = 'all'; state.team = 'all'; state.condition = 'all'; resetMatchList(); loadDashboard();});

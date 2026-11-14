@@ -51,6 +51,9 @@ _COVERAGE = {}
 
 def get_coverage(league: str) -> dict:
     """Coverage of the latest fetch, for a visible source warning in the UI."""
+    if league == 'paraguay':
+        from .paraguay import get_coverage as paraguay_coverage
+        return paraguay_coverage()
     if league == 'italy':
         from .italy import get_coverage as italy_coverage
         return italy_coverage()
@@ -449,6 +452,11 @@ def _spain(season: str, year: int) -> list[dict]:
 
 def sync_games(league: str, season: str) -> list[dict]:
     """Fetch a season snapshot; callers upsert by stable IDs without deleting rows."""
+    if league == 'paraguay':
+        from .paraguay import sync_games as paraguay_sync
+        from . import db
+        stored = db.games(league, season) if db.DB_PATH.exists() else []
+        return paraguay_sync(season, saved_rounds=stored)
     if league == 'italy':
         from .italy import sync_games as italy_sync
         from . import db
