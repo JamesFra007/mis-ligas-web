@@ -55,6 +55,7 @@ class RefreshSourcesTests(unittest.TestCase):
         publisher.db.upsert.assert_called_once_with([{"id": "spain:new", "status": "finished"}])
 
     def test_all_feeds_unavailable_still_fails_safely(self):
+        publisher.db.games.side_effect = lambda league, season: [{"id": f"{league}:saved"}]
         with patch.object(publisher, "sync_games", side_effect=publisher.ProviderError("Sin conexión")):
             with self.assertRaisesRegex(RuntimeError, "Ninguna fuente"):
                 publisher.refresh_sources()
