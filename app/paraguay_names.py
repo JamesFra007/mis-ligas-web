@@ -24,7 +24,7 @@ GROUPS={
     'Sol de América':['Sol de America','Club Sol de América'],
     'Deportivo Capiatá':['Deportivo Capiata','Dep. Capiata','Capiata','Capiatá'],
     'Deportivo Santaní':['Deportivo Santani','Dep. Santani','Santani','Santaní'],
-    'General Díaz':['General Diaz','Gral. Diaz','Diaz'],
+    'General Díaz':['General Diaz','Gral. Diaz','Diaz','Club General Diaz'],
     'General Caballero JLM':['General Caballero','General Caballero JLM','General Caballero SC','General Caballero de Juan León Mallorquín'],
     'Independiente FBC':['Independiente F.B.C.','Independiente Campo Grande','Independiente'],
     'River Plate':['Club River Plate','River Plate Asuncion','River Plate (Asunción)'],

@@ -1,0 +1,1025 @@
+{
+  "observations": 2039,
+  "unique_observed_matches": 1606,
+  "new_matches": 1572,
+  "new_by_year": {
+    "2018": 259,
+    "2019": 262,
+    "2020": 199,
+    "2021": 177,
+    "2022": 259,
+    "2023": 259,
+    "2024": 154,
+    "2026": 3
+  },
+  "changes": 1573,
+  "known_matches_reviewed": 4,
+  "official_corrections": [
+    {
+      "id": "paraguay:espn:401888624",
+      "date": "2026-08-10",
+      "home": "Libertad",
+      "away": "Sportivo Trinidense",
+      "before": {
+        "corners_home": 3,
+        "corners_away": 1,
+        "corners": 4
+      },
+      "before_source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/scoreboard?dates=2026&limit=1000",
+      "after": {
+        "corners_home": 3,
+        "corners_away": 0,
+        "corners": 3
+      },
+      "official_source_url": "https://www.apf.org.py/partidos/temporada-2026-paraguay-primera-division-clausura-4-libertad-vs-trinidense-840",
+      "reason": "Córners ganados publicados explícitamente por la APF; corrección de la fuente secundaria."
+    }
+  ],
+  "totals_confirmed_with_uncertain_sides": [
+    {
+      "id": "paraguay:espn:674954",
+      "corners": 14,
+      "sources": [
+        "https://www.totalcorner.com/stats/nacional-asuncion-vs-general-caballero-jlm/142122318",
+        "https://www.flashscore.com/match/4v0kmmyt/"
+      ],
+      "reason": "Fuentes coinciden en el total del partido, discrepan en el reparto local/visitante; se conserva únicamente el total."
+    },
+    {
+      "id": "paraguay:espn:675029",
+      "corners": 8,
+      "sources": [
+        "https://www.totalcorner.com/stats/tacuary-vs-sportivo-trinidense/145992236",
+        "https://www.flashscore.com/match/tM682ybf/"
+      ],
+      "reason": "Fuentes coinciden en el total del partido, discrepan en el reparto local/visitante; se conserva únicamente el total."
+    },
+    {
+      "id": "paraguay:espn:695774",
+      "corners": 9,
+      "sources": [
+        "https://www.totalcorner.com/stats/general-caballero-jlm-vs-2-de-mayo/155951813",
+        "https://www.flashscore.com/match/EPPSCYnm/"
+      ],
+      "reason": "Fuentes coinciden en el total del partido, discrepan en el reparto local/visitante; se conserva únicamente el total."
+    },
+    {
+      "id": "paraguay:espn:711393",
+      "corners": 16,
+      "sources": [
+        "https://www.totalcorner.com/stats/nacional-asuncion-vs-cerro-porteno/164223427",
+        "https://www.flashscore.com/match/ziWW4vHP/"
+      ],
+      "reason": "Fuentes coinciden en el total del partido, discrepan en el reparto local/visitante; se conserva únicamente el total."
+    }
+  ],
+  "unresolved_new_conflicts": [
+    {
+      "id": "paraguay:espn:591380",
+      "date": "2020-12-30",
+      "home": "Guaraní",
+      "away": "Olimpia",
+      "observations": [
+        {
+          "corners_home": 4,
+          "corners_away": 11,
+          "corners": 15,
+          "corners_source": "TotalCorner · tabla histórica pública con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/guarani-asuncion-vs-olimpia-asuncion/97218854"
+        },
+        {
+          "corners_home": 4,
+          "corners_away": 10,
+          "corners": 14,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/IJmbTwOm/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:593265",
+      "date": "2021-02-15",
+      "home": "Sol de América",
+      "away": "River Plate",
+      "observations": [
+        {
+          "corners_home": 5,
+          "corners_away": 5,
+          "corners": 10,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sol-de-america-vs-river-plate-asuncion/98572541"
+        },
+        {
+          "corners_home": 5,
+          "corners_away": 4,
+          "corners": 9,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/U7UXcEFo/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:593244",
+      "date": "2021-05-16",
+      "home": "River Plate",
+      "away": "Cerro Porteño",
+      "observations": [
+        {
+          "corners_home": 5,
+          "corners_away": 8,
+          "corners": 13,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/river-plate-asuncion-vs-cerro-porteno/102731530"
+        },
+        {
+          "corners_home": 5,
+          "corners_away": 7,
+          "corners": 12,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/0bBs1Op0/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:619274",
+      "date": "2021-09-17",
+      "home": "River Plate",
+      "away": "Libertad",
+      "observations": [
+        {
+          "corners_home": 5,
+          "corners_away": 5,
+          "corners": 10,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/river-plate-asuncion-vs-libertad-asuncion/108009762"
+        },
+        {
+          "corners_home": 6,
+          "corners_away": 5,
+          "corners": 11,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/tOubrWVF/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:619283",
+      "date": "2021-09-27",
+      "home": "Sol de América",
+      "away": "Guaraní",
+      "observations": [
+        {
+          "corners_home": 3,
+          "corners_away": 4,
+          "corners": 7,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sol-de-america-vs-guarani-asuncion/108009757"
+        },
+        {
+          "corners_home": 3,
+          "corners_away": 6,
+          "corners": 9,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/hOzvZRh2/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:621354",
+      "date": "2021-11-21",
+      "home": "Sol de América",
+      "away": "Olimpia",
+      "observations": [
+        {
+          "corners_home": 6,
+          "corners_away": 5,
+          "corners": 11,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sol-de-america-vs-olimpia-asuncion/110345519"
+        },
+        {
+          "corners_home": 6,
+          "corners_away": 3,
+          "corners": 9,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/l0Ns3ROu/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:627006",
+      "date": "2022-02-27",
+      "home": "Tacuary",
+      "away": "Libertad",
+      "observations": [
+        {
+          "corners_home": 3,
+          "corners_away": 3,
+          "corners": 6,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/tacuary-vs-libertad-asuncion/115178482"
+        },
+        {
+          "corners_home": 2,
+          "corners_away": 3,
+          "corners": 5,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/W6VBEXQL/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:627024",
+      "date": "2022-03-21",
+      "home": "Tacuary",
+      "away": "Nacional",
+      "observations": [
+        {
+          "corners_home": 4,
+          "corners_away": 7,
+          "corners": 11,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/tacuary-vs-nacional-asuncion/116513721"
+        },
+        {
+          "corners_home": 4,
+          "corners_away": 5,
+          "corners": 9,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/zZrCrRch/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:627051",
+      "date": "2022-04-25",
+      "home": "Nacional",
+      "away": "Sol de América",
+      "observations": [
+        {
+          "corners_home": 9,
+          "corners_away": 2,
+          "corners": 11,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/nacional-asuncion-vs-sol-de-america/117850398"
+        },
+        {
+          "corners_home": 11,
+          "corners_away": 2,
+          "corners": 13,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/bZhUqGMN/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:647609",
+      "date": "2022-10-05",
+      "home": "Olimpia",
+      "away": "Tacuary",
+      "observations": [
+        {
+          "corners_home": 7,
+          "corners_away": 10,
+          "corners": 17,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/olimpia-asuncion-vs-tacuary/125896758"
+        },
+        {
+          "corners_home": 7,
+          "corners_away": 9,
+          "corners": 16,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/SlFwy5DH/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:647617",
+      "date": "2022-10-12",
+      "home": "Tacuary",
+      "away": "General Caballero JLM",
+      "observations": [
+        {
+          "corners_home": 5,
+          "corners_away": 1,
+          "corners": 6,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/tacuary-vs-general-caballero-jlm/126241498"
+        },
+        {
+          "corners_home": 4,
+          "corners_away": 1,
+          "corners": 5,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/88zDk4SA/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:659451",
+      "date": "2023-02-05",
+      "home": "Sportivo Luqueño",
+      "away": "General Caballero JLM",
+      "observations": [
+        {
+          "corners_home": 3,
+          "corners_away": 4,
+          "corners": 7,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sportivo-luqueno-vs-general-caballero-jlm/131889689"
+        },
+        {
+          "corners_home": 2,
+          "corners_away": 0,
+          "corners": 2,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/xCt50T5e/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:659471",
+      "date": "2023-02-25",
+      "home": "Libertad",
+      "away": "Tacuary",
+      "observations": [
+        {
+          "corners_home": 9,
+          "corners_away": 0,
+          "corners": 9,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/libertad-asuncion-vs-tacuary/133362040"
+        },
+        {
+          "corners_home": 10,
+          "corners_away": 0,
+          "corners": 10,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/WIDcLhK9/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:659497",
+      "date": "2023-03-26",
+      "home": "Sportivo Luqueño",
+      "away": "Tacuary",
+      "observations": [
+        {
+          "corners_home": 4,
+          "corners_away": 4,
+          "corners": 8,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sportivo-luqueno-vs-tacuary/134832242"
+        },
+        {
+          "corners_home": 5,
+          "corners_away": 5,
+          "corners": 10,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/Mk3i9lNC/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:659501",
+      "date": "2023-03-31",
+      "home": "Tacuary",
+      "away": "Nacional",
+      "observations": [
+        {
+          "corners_home": 5,
+          "corners_away": 11,
+          "corners": 16,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/tacuary-vs-nacional-asuncion/134832248"
+        },
+        {
+          "corners_home": 6,
+          "corners_away": 11,
+          "corners": 17,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/GlprWBUP/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:675042",
+      "date": "2023-12-01",
+      "home": "Cerro Porteño",
+      "away": "Guaraní",
+      "observations": [
+        {
+          "corners_home": 4,
+          "corners_away": 8,
+          "corners": 12,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/cerro-porteno-vs-guarani-asuncion/146985161"
+        },
+        {
+          "corners_home": 3,
+          "corners_away": 8,
+          "corners": 11,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/Ag2Jqswg/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:690693",
+      "date": "2024-01-20",
+      "home": "General Caballero JLM",
+      "away": "Tacuary",
+      "observations": [
+        {
+          "corners_home": 4,
+          "corners_away": 8,
+          "corners": 12,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/general-caballero-jlm-vs-tacuary/149636438"
+        },
+        {
+          "corners_home": 4,
+          "corners_away": 7,
+          "corners": 11,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/rwT3Sk2s/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695680",
+      "date": "2024-02-02",
+      "home": "Nacional",
+      "away": "Guaraní",
+      "observations": [
+        {
+          "corners_home": 12,
+          "corners_away": 7,
+          "corners": 19,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/nacional-asuncion-vs-guarani-asuncion/150266967"
+        },
+        {
+          "corners_home": 11,
+          "corners_away": 7,
+          "corners": 18,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/xAJDxfPs/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695683",
+      "date": "2024-02-03",
+      "home": "Tacuary",
+      "away": "Sportivo Luqueño",
+      "observations": [
+        {
+          "corners_home": 4,
+          "corners_away": 11,
+          "corners": 15,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/tacuary-vs-sportivo-luqueno/150266971"
+        },
+        {
+          "corners_home": 3,
+          "corners_away": 10,
+          "corners": 13,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/ANHLzYgf/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695692",
+      "date": "2024-02-17",
+      "home": "Olimpia",
+      "away": "Cerro Porteño",
+      "observations": [
+        {
+          "corners_home": 3,
+          "corners_away": 6,
+          "corners": 9,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/olimpia-asuncion-vs-cerro-porteno/150953345"
+        },
+        {
+          "corners_home": 4,
+          "corners_away": 7,
+          "corners": 11,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/825b12Wl/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695706",
+      "date": "2024-03-02",
+      "home": "Sportivo Ameliano",
+      "away": "2 de Mayo",
+      "observations": [
+        {
+          "corners_home": 4,
+          "corners_away": 2,
+          "corners": 6,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sportivo-ameliano-vs-2-de-mayo/151690588"
+        },
+        {
+          "corners_home": 3,
+          "corners_away": 2,
+          "corners": 5,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/0YLbkIpc/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695709",
+      "date": "2024-03-08",
+      "home": "2 de Mayo",
+      "away": "General Caballero JLM",
+      "observations": [
+        {
+          "corners_home": 5,
+          "corners_away": 1,
+          "corners": 6,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/2-de-mayo-vs-general-caballero-jlm/151991948"
+        },
+        {
+          "corners_home": 4,
+          "corners_away": 1,
+          "corners": 5,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/8CpxL39l/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695715",
+      "date": "2024-03-16",
+      "home": "General Caballero JLM",
+      "away": "Libertad",
+      "observations": [
+        {
+          "corners_home": 8,
+          "corners_away": 6,
+          "corners": 14,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/general-caballero-jlm-vs-libertad-asuncion/152043108"
+        },
+        {
+          "corners_home": 7,
+          "corners_away": 5,
+          "corners": 12,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/W4YrvqGQ/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695736",
+      "date": "2024-04-14",
+      "home": "Sportivo Luqueño",
+      "away": "Libertad",
+      "observations": [
+        {
+          "corners_home": 1,
+          "corners_away": 5,
+          "corners": 6,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sportivo-luqueno-vs-libertad-asuncion/431969"
+        },
+        {
+          "corners_home": 1,
+          "corners_away": 0,
+          "corners": 1,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/jqWpjtUp/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695748",
+      "date": "2024-04-27",
+      "home": "Sportivo Luqueño",
+      "away": "Tacuary",
+      "observations": [
+        {
+          "corners_home": 5,
+          "corners_away": 9,
+          "corners": 14,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sportivo-luqueno-vs-tacuary/154200381"
+        },
+        {
+          "corners_home": 5,
+          "corners_away": 8,
+          "corners": 13,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/2opT8zdn/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695762",
+      "date": "2024-05-17",
+      "home": "Nacional",
+      "away": "2 de Mayo",
+      "observations": [
+        {
+          "corners_home": 5,
+          "corners_away": 9,
+          "corners": 14,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/nacional-asuncion-vs-2-de-mayo/155593354"
+        },
+        {
+          "corners_home": 5,
+          "corners_away": 10,
+          "corners": 15,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/6gPq0RUQ/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695766",
+      "date": "2024-05-17",
+      "home": "Sportivo Ameliano",
+      "away": "Sportivo Trinidense",
+      "observations": [
+        {
+          "corners_home": 11,
+          "corners_away": 2,
+          "corners": 13,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sportivo-ameliano-vs-sportivo-trinidense/155593347"
+        },
+        {
+          "corners_home": 10,
+          "corners_away": 2,
+          "corners": 12,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/ni9r2m0E/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695778",
+      "date": "2024-05-26",
+      "home": "Sportivo Ameliano",
+      "away": "Libertad",
+      "observations": [
+        {
+          "corners_home": 4,
+          "corners_away": 9,
+          "corners": 13,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sportivo-ameliano-vs-libertad-asuncion/155951810"
+        },
+        {
+          "corners_home": 4,
+          "corners_away": 8,
+          "corners": 12,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/IgvcIfPP/"
+        }
+      ]
+    },
+    {
+      "id": "paraguay:espn:695791",
+      "date": "2024-06-05",
+      "home": "Sportivo Luqueño",
+      "away": "Sportivo Trinidense",
+      "observations": [
+        {
+          "corners_home": 2,
+          "corners_away": 3,
+          "corners": 5,
+          "corners_source": "TotalCorner · H2H público con HT/FT y córners por equipo",
+          "corners_source_url": "https://www.totalcorner.com/stats/sportivo-luqueno-vs-sportivo-trinidense/156331827"
+        },
+        {
+          "corners_home": 2,
+          "corners_away": 2,
+          "corners": 4,
+          "corners_source": "Flashscore · estadísticas explícitas del partido completo",
+          "corners_source_url": "https://www.flashscore.com/match/OIXrczim/"
+        }
+      ]
+    }
+  ],
+  "existing_source_disagreements": [
+    {
+      "id": "paraguay:espn:401888624",
+      "before": {
+        "corners_home": 3,
+        "corners_away": 1,
+        "corners": 4
+      },
+      "source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/scoreboard?dates=2026&limit=1000",
+      "observations": [
+        {
+          "corners_home": 3,
+          "corners_away": 0,
+          "corners": 3,
+          "corners_source": "APF · informe oficial, córners ganados (wonCorners) y etiqueta pública Corners",
+          "corners_source_url": "https://www.apf.org.py/partidos/temporada-2026-paraguay-primera-division-clausura-4-libertad-vs-trinidense-840"
+        }
+      ]
+    }
+  ],
+  "invalid_observations": [],
+  "reviewed_at": "2026-11-14",
+  "published": false,
+  "note": "Actualización preparada localmente; publicación pendiente por instrucción del usuario.",
+  "remaining_without_source": [
+    {
+      "id": "paraguay:espn:561118",
+      "season": "2020",
+      "date": "2020-03-02",
+      "home": "Sol de América",
+      "away": "Sportivo San Lorenzo",
+      "ht_home": 0,
+      "ht_away": 1,
+      "ft_home": 2,
+      "ft_away": 1
+    },
+    {
+      "id": "paraguay:espn:561334",
+      "season": "2020",
+      "date": "2020-09-15",
+      "home": "Cerro Porteño",
+      "away": "Nacional",
+      "ht_home": 0,
+      "ht_away": 0,
+      "ft_home": 1,
+      "ft_away": 0
+    },
+    {
+      "id": "paraguay:espn:586714",
+      "season": "2020",
+      "date": "2020-10-24",
+      "home": "Guaireña",
+      "away": "Olimpia",
+      "ht_home": 0,
+      "ht_away": 1,
+      "ft_home": 2,
+      "ft_away": 1
+    },
+    {
+      "id": "paraguay:espn:588559",
+      "season": "2020",
+      "date": "2020-11-20",
+      "home": "River Plate",
+      "away": "Cerro Porteño",
+      "ht_home": 1,
+      "ht_away": 2,
+      "ft_home": 1,
+      "ft_away": 2
+    },
+    {
+      "id": "paraguay:espn:530368",
+      "season": "2019",
+      "date": "2019-05-16",
+      "home": "Sportivo Luqueño",
+      "away": "Cerro Porteño",
+      "ht_home": 2,
+      "ht_away": 1,
+      "ft_home": 2,
+      "ft_away": 1
+    },
+    {
+      "id": "paraguay:espn:501202",
+      "season": "2018",
+      "date": "2018-03-04",
+      "home": "Deportivo Santaní",
+      "away": "Olimpia",
+      "ht_home": 0,
+      "ht_away": 1,
+      "ft_home": 1,
+      "ft_away": 5
+    },
+    {
+      "id": "paraguay:espn:501172",
+      "season": "2018",
+      "date": "2018-04-01",
+      "home": "Deportivo Santaní",
+      "away": "Nacional",
+      "ht_home": 0,
+      "ht_away": 0,
+      "ft_home": 1,
+      "ft_away": 1
+    },
+    {
+      "id": "paraguay:espn:519088",
+      "season": "2018",
+      "date": "2018-08-10",
+      "home": "General Díaz",
+      "away": "Sportivo Luqueño",
+      "ht_home": 0,
+      "ht_away": 1,
+      "ft_home": 2,
+      "ft_away": 2
+    },
+    {
+      "id": "paraguay:espn:519085",
+      "season": "2018",
+      "date": "2018-08-10",
+      "home": "Nacional",
+      "away": "Deportivo Santaní",
+      "ht_home": 1,
+      "ht_away": 0,
+      "ft_home": 3,
+      "ft_away": 1
+    }
+  ],
+  "reviewed_existing_differences": [
+    {
+      "id": "paraguay:espn:711294",
+      "season": "2024",
+      "date": "2024-07-26",
+      "home": "Sportivo Trinidense",
+      "away": "Guaraní",
+      "corners": 8,
+      "corners_home": 6,
+      "corners_away": 2,
+      "corners_source_url": "https://www.flashscore.com/match/rJS0hQ0J/",
+      "previous_corners": 7,
+      "previous_corners_home": 6,
+      "previous_corners_away": 1
+    },
+    {
+      "id": "paraguay:espn:711292",
+      "season": "2024",
+      "date": "2024-07-27",
+      "home": "Sportivo Ameliano",
+      "away": "Tacuary",
+      "corners": 11,
+      "corners_home": 3,
+      "corners_away": 8,
+      "corners_source_url": "https://www.flashscore.com/match/hWWMyMVo/",
+      "previous_corners": 12,
+      "previous_corners_home": 3,
+      "previous_corners_away": 9
+    },
+    {
+      "id": "paraguay:espn:711296",
+      "season": "2024",
+      "date": "2024-08-04",
+      "home": "Cerro Porteño",
+      "away": "Sportivo Luqueño",
+      "corners": 7,
+      "corners_home": 3,
+      "corners_away": 4,
+      "corners_source_url": "https://www.flashscore.com/match/Y7ZtUsvR/",
+      "previous_corners": 8,
+      "previous_corners_home": 4,
+      "previous_corners_away": 4
+    },
+    {
+      "id": "paraguay:espn:711314",
+      "season": "2024",
+      "date": "2024-08-18",
+      "home": "Cerro Porteño",
+      "away": "Olimpia",
+      "corners": 8,
+      "corners_home": 7,
+      "corners_away": 1,
+      "corners_source_url": "https://www.flashscore.com/match/tlgk6CrA/",
+      "previous_corners": 7,
+      "previous_corners_home": 6,
+      "previous_corners_away": 1
+    },
+    {
+      "id": "paraguay:espn:711321",
+      "season": "2024",
+      "date": "2024-08-23",
+      "home": "Sportivo Trinidense",
+      "away": "Sportivo Luqueño",
+      "corners": 10,
+      "corners_home": 7,
+      "corners_away": 3,
+      "corners_source_url": "https://www.flashscore.com/match/6VxUbUzp/",
+      "previous_corners": 11,
+      "previous_corners_home": 8,
+      "previous_corners_away": 3
+    },
+    {
+      "id": "paraguay:espn:711325",
+      "season": "2024",
+      "date": "2024-08-28",
+      "home": "Sportivo Luqueño",
+      "away": "Libertad",
+      "corners": 7,
+      "corners_home": 2,
+      "corners_away": 5,
+      "corners_source_url": "https://www.flashscore.com/match/tMUvDKef/",
+      "previous_corners": 6,
+      "previous_corners_home": 2,
+      "previous_corners_away": 4
+    },
+    {
+      "id": "paraguay:espn:711331",
+      "season": "2024",
+      "date": "2024-09-02",
+      "home": "Sportivo Ameliano",
+      "away": "Sportivo Luqueño",
+      "corners": 11,
+      "corners_home": 5,
+      "corners_away": 6,
+      "corners_source_url": "https://www.flashscore.com/match/xxtwMFvP/",
+      "previous_corners": 13,
+      "previous_corners_home": 7,
+      "previous_corners_away": 6
+    },
+    {
+      "id": "paraguay:espn:711347",
+      "season": "2024",
+      "date": "2024-09-17",
+      "home": "Sportivo Ameliano",
+      "away": "Sol de América",
+      "corners": 11,
+      "corners_home": 6,
+      "corners_away": 5,
+      "corners_source_url": "https://www.flashscore.com/match/YXOBLcbJ/",
+      "previous_corners": 12,
+      "previous_corners_home": 7,
+      "previous_corners_away": 5
+    },
+    {
+      "id": "paraguay:espn:711352",
+      "season": "2024",
+      "date": "2024-09-21",
+      "home": "Sportivo Ameliano",
+      "away": "Cerro Porteño",
+      "corners": 8,
+      "corners_home": 5,
+      "corners_away": 3,
+      "corners_source_url": "https://www.flashscore.com/match/r7YzMR9a/",
+      "previous_corners": 9,
+      "previous_corners_home": 6,
+      "previous_corners_away": 3
+    },
+    {
+      "id": "paraguay:espn:711355",
+      "season": "2024",
+      "date": "2024-09-29",
+      "home": "Cerro Porteño",
+      "away": "2 de Mayo",
+      "corners": 12,
+      "corners_home": 11,
+      "corners_away": 1,
+      "corners_source_url": "https://www.flashscore.com/match/W6g2BFRO/",
+      "previous_corners": 13,
+      "previous_corners_home": 12,
+      "previous_corners_away": 1
+    },
+    {
+      "id": "paraguay:espn:401888624",
+      "season": "2026",
+      "date": "2026-08-10",
+      "home": "Libertad",
+      "away": "Sportivo Trinidense",
+      "corners": 3,
+      "corners_home": 3,
+      "corners_away": 0,
+      "corners_source_url": "https://www.flashscore.com/match/AFWK2b23/",
+      "previous_corners": 4,
+      "previous_corners_home": 3,
+      "previous_corners_away": 1
+    },
+    {
+      "id": "paraguay:espn:401888607",
+      "season": "2026",
+      "date": "2026-09-01",
+      "home": "2 de Mayo",
+      "away": "Sportivo Luqueño",
+      "corners": 15,
+      "corners_home": 7,
+      "corners_away": 8,
+      "corners_source_url": "https://www.flashscore.com/match/pQ6F1H7K/",
+      "previous_corners": 16,
+      "previous_corners_home": 7,
+      "previous_corners_away": 9
+    },
+    {
+      "id": "paraguay:espn:401888571",
+      "season": "2026",
+      "date": "2026-10-31",
+      "home": "Sportivo San Lorenzo",
+      "away": "Libertad",
+      "corners": 10,
+      "corners_home": 7,
+      "corners_away": 3,
+      "corners_source_url": "https://www.flashscore.com/match/6LMbDTOM/",
+      "previous_corners": 11,
+      "previous_corners_home": 7,
+      "previous_corners_away": 4
+    }
+  ]
+}

@@ -293,6 +293,26 @@ def _retain_verified_half(game,old):
         if key in old:game[key]=old[key]
 
 
+def _retain_official_corners(game,old):
+    """Keep an audited APF observation when a secondary feed still disagrees."""
+    if not old or old.get('corners_primary_verified') is not True or game.get('administrative'):
+        return
+    identity=('id','league','season','scope','date','home','away','status','ft_home','ft_away')
+    if game.get('status')!='finished' or any(game.get(key)!=old.get(key) for key in identity):
+        return
+    values=[old.get(key) for key in ('corners_home','corners_away','corners')]
+    if any(type(value) is not int or not 0<=value<=100 for value in values) or sum(values[:2])!=values[2]:
+        return
+    try:source=urlsplit(old.get('corners_source_url') or '')
+    except ValueError:return
+    if source.scheme!='https' or source.hostname not in ('apf.org.py','www.apf.org.py') or source.username or source.password:
+        return
+    for key in ('corners_home','corners_away','corners','corners_source','corners_source_url',
+                'corners_primary_verified','corners_verification','corners_verification_urls',
+                'corners_reviewed_at','corners_evidence_sha256','corners_correction_note'):
+        if key in old:game[key]=old[key]
+
+
 def sync_games(season, *, saved_rounds=None, enrich_limit=MAX_SUMMARIES):
     """Fetch an annual calendar without conflating the two tournaments."""
     year=year_number(season);_COVERAGE.clear()
@@ -332,7 +352,10 @@ def sync_games(season, *, saved_rounds=None, enrich_limit=MAX_SUMMARIES):
             try:enriched[g['id']]=future.result()
             except ProviderError as error:warnings.append(f"Datos pendientes de {g['espn_id']}: {error}")
     games=[enriched.get(g['id'],g) for g in games]
-    for game in games:_retain_verified_half(game,saved.get(game['id']))
+    for game in games:
+        previous=saved.get(game['id'])
+        _retain_verified_half(game,previous)
+        _retain_official_corners(game,previous)
     now=datetime.now(timezone.utc)
     _COVERAGE.update(fixtures_available=True,source='ESPN · Primera División de Paraguay',matches=len(games),rounds_verified=sum(g.get('round') is not None or g.get('round_not_applicable') is True for g in games),scheduled=sum(g['status']=='scheduled' for g in games),confirmed_upcoming=sum(bool(g['status']=='scheduled' and g.get('kickoff') and datetime.fromisoformat(g['kickoff'])>now) for g in games),missing_ht=sum(g['status']=='finished' and not g.get('administrative') and (g.get('ht_home') is None or g.get('ht_away') is None) for g in games),corners_missing=sum(g['status']=='finished' and not g.get('administrative') and g.get('corners') is None for g in games),warnings=warnings)
     return games

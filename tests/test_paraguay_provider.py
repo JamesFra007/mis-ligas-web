@@ -115,6 +115,23 @@ class ParaguayProviderTests(unittest.TestCase):
                     report({**source,'awayTeam':{'name':'Libertad'}}),report({**source,'url':'https://www.betexplorer.com/wrong/'})]:
             with self.assertRaises(ValueError):parse_report(bad,game)
 
+    def test_official_corner_correction_survives_secondary_refresh_for_same_game(self):
+        fresh=p.parse_espn_event(event(),'2026')
+        fresh.update(corners_home=3,corners_away=1,corners=4,
+                     corners_source='ESPN',corners_source_url=p.BASE+'/scoreboard')
+        official={**fresh,'corners_home':3,'corners_away':0,'corners':3,
+                  'corners_primary_verified':True,'corners_source':'APF',
+                  'corners_source_url':'https://www.apf.org.py/partidos/informe-oficial'}
+        updated=dict(fresh);p._retain_official_corners(updated,official)
+        self.assertEqual((updated['corners_home'],updated['corners_away'],updated['corners']),(3,0,3))
+        self.assertEqual(updated['corners_source'],'APF')
+        for change in ({'ft_home':3},{'scope':'Clausura'},{'date':'2026-02-02'},
+                       {'home':'Other club'},{'corners_primary_verified':False},
+                       {'corners':4},{'corners_home':True},
+                       {'corners_source_url':'https://unrelated.invalid/partidos/1'}):
+            updated=dict(fresh);p._retain_official_corners(updated,{**official,**change})
+            self.assertEqual((updated['corners_home'],updated['corners_away'],updated['corners']),(3,1,4))
+
     def test_rsssf_goal_logs_never_guess_a_boundary_minute(self):
         html='Torneo Apertura 2025\nRound 1\nOlimpia 2-1 Libertad\n  [Player 45+3, Player 65; Other 10]\n'
         row=parse_results(html,2025)[0]

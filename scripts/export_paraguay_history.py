@@ -226,6 +226,9 @@ def export_history(output=None):
                     cell.number_format = '@'
             ws.row_dimensions[row].height = 25
             notices = list(missing)
+            for field in ('corners_review_note','corners_correction_note'):
+                if game.get(field):
+                    notices.append(game[field])
             if game.get('round') is None and not game.get('round_not_applicable'):
                 notices.append('Jornada pendiente')
             if game.get('date_confirmed') is False:
@@ -235,12 +238,21 @@ def export_history(output=None):
             if game.get('administrative'):
                 notices.append(observation)
             if notices:
-                notes.append([key, game['date'], game['home'] + ' vs ' + game['away'], '; '.join(notices), game['id'], game.get('source_url') or ''])
+                notice_urls = list(game.get('corners_review_urls',[]))
+                if game.get('corners_correction_note') or game.get('corners_review_note'):
+                    notice_urls.extend(game.get('corners_verification_urls',[]))
+                if not notice_urls:
+                    notice_urls = [game.get('source_url') or '']
+                notes.append([key, game['date'], game['home'] + ' vs ' + game['away'], '; '.join(notices), game['id'], '\n'.join(dict.fromkeys(notice_urls))])
             if game.get('source'):
                 sources.add(game['source'])
+            if game.get('corners_source'):
+                sources.add(game['corners_source'])
             for field in ('source_url', 'round_source_url', 'ht_source_url', 'ht_verification_url', 'ft_verification_url', 'result_source_url', 'time_source_url', 'corners_source_url'):
                 if game.get(field):
                     source_urls.add(game[field])
+            for url in game.get('corners_verification_urls',[]) + game.get('corners_review_urls',[]):
+                source_urls.add(url)
         ws.auto_filter.ref = f'A{header_row}:L{header_row + len(games)}'
         _team_table(ws, header_row + len(games) + 4, games)
         for col, width in enumerate([7, 26, 12, 27, 27, 10, 10, 12, 25, 27, 18, 48], 1):
@@ -260,6 +272,9 @@ def export_history(output=None):
         'N/D significa dato no encontrado, nunca cero. Los córners conocidos como cero se conservan como cero.',
         'Los futuros quedan sin resultados ni estadísticas de juego; los administrativos se conservan y se excluyen del análisis.',
         'Las medias usan solo partidos finalizados con el dato conocido. Los córners son el total de ambos equipos.',
+        'Revisión de córners: se contrastan equipos, fecha y marcadores del partido. Los totales contradictorios quedan N/D; la incidencia se detalla al final de esta hoja.',
+        'Cuando las fuentes coinciden en el total y discrepan en el reparto por equipo, solo se confirma el total. No se inventa la distribución.',
+        'Las fuentes pueden distinguir córners ganados y córners cobrados. Se prioriza el informe oficial de la APF cuando está disponible y verificado.',
         'Las rachas se calculan por fecha y hora de Colombia; los datos desconocidos interrumpen la continuidad y los simultáneos se agrupan.',
         'La racha al cierre corresponde al final de los datos de esa temporada. No predice el próximo partido.',
         'Se conserva el orden por jornada/listado original. Ninguna hoja inmoviliza filas ni columnas.',

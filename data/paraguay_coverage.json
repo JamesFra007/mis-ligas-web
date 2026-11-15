@@ -9,8 +9,8 @@
       "scheduled": 0,
       "ht_known": 263,
       "ft_known": 263,
-      "corners_known": 0,
-      "corners_missing": 263
+      "corners_known": 259,
+      "corners_missing": 4
     },
     "2019": {
       "matches": 264,
@@ -19,8 +19,8 @@
       "scheduled": 0,
       "ht_known": 263,
       "ft_known": 263,
-      "corners_known": 0,
-      "corners_missing": 263
+      "corners_known": 262,
+      "corners_missing": 1
     },
     "2020": {
       "matches": 205,
@@ -29,8 +29,8 @@
       "scheduled": 0,
       "ht_known": 204,
       "ft_known": 204,
-      "corners_known": 0,
-      "corners_missing": 204
+      "corners_known": 199,
+      "corners_missing": 5
     },
     "2021": {
       "matches": 182,
@@ -39,8 +39,8 @@
       "scheduled": 0,
       "ht_known": 182,
       "ft_known": 182,
-      "corners_known": 0,
-      "corners_missing": 182
+      "corners_known": 177,
+      "corners_missing": 5
     },
     "2022": {
       "matches": 264,
@@ -49,8 +49,8 @@
       "scheduled": 0,
       "ht_known": 264,
       "ft_known": 264,
-      "corners_known": 0,
-      "corners_missing": 264
+      "corners_known": 259,
+      "corners_missing": 5
     },
     "2023": {
       "matches": 264,
@@ -59,8 +59,8 @@
       "scheduled": 0,
       "ht_known": 264,
       "ft_known": 264,
-      "corners_known": 0,
-      "corners_missing": 264
+      "corners_known": 259,
+      "corners_missing": 5
     },
     "2024": {
       "matches": 264,
@@ -69,8 +69,8 @@
       "scheduled": 0,
       "ht_known": 263,
       "ft_known": 263,
-      "corners_known": 96,
-      "corners_missing": 167
+      "corners_known": 250,
+      "corners_missing": 13
     },
     "2025": {
       "matches": 264,
@@ -89,8 +89,8 @@
       "scheduled": 18,
       "ht_known": 245,
       "ft_known": 245,
-      "corners_known": 242,
-      "corners_missing": 3,
+      "corners_known": 245,
+      "corners_missing": 0,
       "confirmed_upcoming": 6,
       "upcoming_time_pending": 12
     }
@@ -99,8 +99,8 @@
   "explicit_ht_ft_reports": 2212,
   "corner_records_added": 453,
   "matching_corner_sources": 66,
-  "source_method": "ESPN calendario y estadísticas; BetExplorer jornadas y marcadores explícitos HT/FT contrastados partido por partido; RSSSF resultados históricos independientes; TotalCorner córners cruzados por equipos, instante UTC y FT. Cuatro diferencias de horario se conciliaron individualmente: mismo local, visitante y fecha, y coincidencia de HT y FT explícitos con BetExplorer; se mantiene el horario de ESPN/BetExplorer.",
-  "unpublished_values": "null; se muestran como N/D, nunca cero. Los resultados administrativos se excluyen de los análisis.",
+  "source_method": "ESPN calendario y estadísticas; BetExplorer HT/FT y jornadas; RSSSF resultados históricos; informes oficiales APF, estadísticas Match/Overall de Flashscore, historiales H2H e informes Stats de TotalCorner para córners. Cada dato añadido coincide con la identidad del partido, equipos, fecha, año y marcador final. Se rechazan ceros provisionales y se dejan N/D los totales contradictorios.",
+  "unpublished_values": "N/D incluye nueve partidos sin dato verificable y 29 con cifras contradictorias. Cuatro encuentros conservan solo el total coincidente porque el reparto por equipo difiere. Los partidos futuros y administrativos no forman parte de la base de 2212 disputados.",
   "round_notes": "Las jornadas 17 y 18 del Clausura 2019 se conservan según las jornadas explícitas de BetExplorer, aunque el archivo RSSSF las enumera en orden cronológico inverso.",
   "ht_corrections": [
     {
@@ -559,5 +559,37 @@
       "betexplorer_url": "https://www.betexplorer.com/football/paraguay/copa-de-primera/libertad-asuncion-olimpia-asuncion/ncLYFSqS/",
       "validation": "Unique canonical home/away pair on the same Colombia date; explicit HT and FT match BetExplorer and ESPN; source kickoffs differ by at most 60 minutes."
     }
-  ]
+  ],
+  "corners_retry": {
+    "reviewed_at": "2026-11-14",
+    "before_known": 602,
+    "added": 1572,
+    "after_known": 2174,
+    "played": 2212,
+    "pending": 38,
+    "unpublished": 9,
+    "source_conflicts_pending": 29,
+    "totals_with_unknown_distribution": 4,
+    "official_corrections": [
+      {
+        "id": "paraguay:espn:401888624",
+        "date": "2026-08-10",
+        "home": "Libertad",
+        "away": "Sportivo Trinidense",
+        "before": {
+          "corners_home": 3,
+          "corners_away": 1,
+          "corners": 4
+        },
+        "before_source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/scoreboard?dates=2026&limit=1000",
+        "after": {
+          "corners_home": 3,
+          "corners_away": 0,
+          "corners": 3
+        },
+        "official_source_url": "https://www.apf.org.py/partidos/temporada-2026-paraguay-primera-division-clausura-4-libertad-vs-trinidense-840",
+        "reason": "Córners ganados publicados explícitamente por la APF; corrección de la fuente secundaria."
+      }
+    ]
+  }
 }
