@@ -35,7 +35,7 @@ def persisted_games():
 
 
 def refresh_sources():
-    """Fail closed before changing the persisted snapshot if a source fails."""
+    """Refresh available leagues and retain verified records for temporarily unavailable ones."""
     incoming, sources, errors = [], [], []
     for league, season in current_seasons().items():
         try:
@@ -45,16 +45,30 @@ def refresh_sources():
             coverage = get_coverage(league)
             if coverage.get('fixtures_available') is False:
                 raise ProviderError('No está disponible el calendario de próximos partidos; se conserva la publicación anterior.')
-            incoming.extend(records)
-            sources.append({'league': league, 'season': season, 'received': len(records), 'ok': True, 'coverage': coverage})
         except (ProviderError, OSError, ValueError) as error:
-            errors.append(f'{league} {season}: {error}')
+            saved = db.games(league, season)
+            if not saved:
+                errors.append(f'{league} {season}: {error}')
+                continue
+            # An unresponsive provider is not an empty matchday. Keep its last
+            # audited season without mixing in any incomplete current response.
+            print(f'::notice::{league} {season}: se conservan {len(saved)} partidos guardados; {error}')
+            sources.append({
+                'league': league, 'season': season, 'received': 0,
+                'saved': len(saved), 'ok': False, 'stale': True,
+                'coverage': {'fixtures_available': False, 'warnings': [str(error)]},
+            })
+            continue
+        incoming.extend(records)
+        sources.append({'league': league, 'season': season, 'received': len(records), 'ok': True, 'stale': False, 'coverage': coverage})
     if errors:
-        # In Actions the previous website remains deployed. The retained timestamp
-        # is preferable to marking only one successfully queried league as fresh.
-        raise RuntimeError('No se publicó una actualización parcial: ' + ' | '.join(errors))
+        raise RuntimeError('No se publicó una actualización parcial sin datos guardados: ' + ' | '.join(errors))
+    if not incoming:
+        raise RuntimeError('Ninguna fuente pudo actualizarse; se mantiene la última publicación.')
     changes = db.upsert(incoming)
     for source in sources:
+        if not source['ok']:
+            continue
         if 'missing_ht' in source['coverage']:
             stored = db.games(source['league'], source['season'])
             source['coverage']['missing_ht'] = sum(g['status']=='finished' and not g.get('administrative') and (g.get('ht_home') is None or g.get('ht_away') is None) for g in stored)
@@ -68,7 +82,6 @@ def refresh_sources():
     temporary.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + '\n')
     temporary.replace(target)
     return changes
-
 
 def build_site(output_dir, *, refresh=False):
     db.initialize()
