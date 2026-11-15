@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-15T03:00:32.078422+00:00",
+  "captured_at": "2026-11-15T03:06:45.307545+00:00",
   "sources": [
     {
       "league": "spain",
@@ -68375,7 +68375,7 @@
       "ft_away": 2,
       "corners": 10,
       "corners_home": 4,
-      "corners_away": 6,
+      "corners_away": 0,
       "yellow": null,
       "red": null,
       "yellow_home": null,
