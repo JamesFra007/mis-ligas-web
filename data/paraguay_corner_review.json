@@ -735,8 +735,6 @@
   ],
   "invalid_observations": [],
   "reviewed_at": "2026-11-14",
-  "published": false,
-  "note": "Actualización preparada localmente; publicación pendiente por instrucción del usuario.",
   "remaining_without_source": [
     {
       "id": "paraguay:espn:561118",
