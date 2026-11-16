@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-16T12:27:30.851873+00:00",
+  "captured_at": "2026-11-16T15:43:31.766106+00:00",
   "sources": [
     {
       "league": "spain",
@@ -56,7 +56,9 @@
         "scheduled": 182,
         "confirmed_upcoming": 29,
         "missing_ht": 1,
-        "warnings": []
+        "warnings": [
+          "HT pendiente del partido ad3b9801-f247-45fe-aacc-c725690af805: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan."
+        ]
       }
     },
     {
