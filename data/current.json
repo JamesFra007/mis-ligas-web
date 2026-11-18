@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-18T12:46:01.643661+00:00",
+  "captured_at": "2026-11-18T13:58:39.157010+00:00",
   "sources": [
     {
       "league": "spain",
@@ -30,15 +30,17 @@
     {
       "league": "hungary",
       "season": "2026-27",
-      "received": 0,
-      "saved": 198,
-      "ok": false,
-      "stale": true,
+      "received": 198,
+      "ok": true,
+      "stale": false,
       "coverage": {
-        "fixtures_available": false,
-        "warnings": [
-          "No se pudo consultar todo el calendario húngaro; se conservan los datos guardados."
-        ]
+        "fixtures_available": true,
+        "scheduled": 121,
+        "confirmed_upcoming": 31,
+        "warnings": [],
+        "source": "MLSZ",
+        "matches": 198,
+        "missing_ht": 0
       }
     },
     {
