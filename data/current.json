@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-20T15:10:50.605546+00:00",
+  "captured_at": "2026-11-20T16:11:22.019757+00:00",
   "sources": [
     {
       "league": "spain",
@@ -3062,8 +3062,8 @@
     },
     {
       "id": "hungary:fixture:67:33586:14:328184:328189",
-      "provider_id": "fixture:67:33586:14:328184:328189",
-      "mlsz_id": null,
+      "provider_id": "mlsz:2186457",
+      "mlsz_id": "2186457",
       "fixture_key": "mlsz:67:33586:14:328184:328189",
       "home_club_id": "328184",
       "away_club_id": "328189",
@@ -3095,13 +3095,13 @@
       "administrative": false,
       "administrative_reason": null,
       "source": "MLSZ · NB I",
-      "source_url": "https://adatbank.mlsz.hu/league/67/0/33586/14.html",
+      "source_url": "https://adatbank.mlsz.hu/match/67/0/33586/14/2186457.html",
       "source_order": 79
     },
     {
       "id": "hungary:fixture:67:33586:14:328191:328187",
-      "provider_id": "fixture:67:33586:14:328191:328187",
-      "mlsz_id": null,
+      "provider_id": "mlsz:2186458",
+      "mlsz_id": "2186458",
       "fixture_key": "mlsz:67:33586:14:328191:328187",
       "home_club_id": "328191",
       "away_club_id": "328187",
@@ -3133,13 +3133,13 @@
       "administrative": false,
       "administrative_reason": null,
       "source": "MLSZ · NB I",
-      "source_url": "https://adatbank.mlsz.hu/league/67/0/33586/14.html",
+      "source_url": "https://adatbank.mlsz.hu/match/67/0/33586/14/2186458.html",
       "source_order": 80
     },
     {
       "id": "hungary:fixture:67:33586:14:328180:328183",
-      "provider_id": "fixture:67:33586:14:328180:328183",
-      "mlsz_id": null,
+      "provider_id": "mlsz:2186460",
+      "mlsz_id": "2186460",
       "fixture_key": "mlsz:67:33586:14:328180:328183",
       "home_club_id": "328180",
       "away_club_id": "328183",
@@ -3171,7 +3171,7 @@
       "administrative": false,
       "administrative_reason": null,
       "source": "MLSZ · NB I",
-      "source_url": "https://adatbank.mlsz.hu/league/67/0/33586/14.html",
+      "source_url": "https://adatbank.mlsz.hu/match/67/0/33586/14/2186460.html",
       "source_order": 81
     },
     {
