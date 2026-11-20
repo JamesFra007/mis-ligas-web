@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-20T18:11:29.983416+00:00",
+  "captured_at": "2026-11-20T19:17:33.158368+00:00",
   "sources": [
     {
       "league": "spain",
@@ -27260,11 +27260,11 @@
       "round": 15,
       "scope": "all",
       "phase": "Ekstraklasa",
-      "status": "live",
-      "ht_home": null,
-      "ht_away": null,
-      "ft_home": null,
-      "ft_away": null,
+      "status": "finished",
+      "ht_home": 1,
+      "ht_away": 0,
+      "ft_home": 2,
+      "ft_away": 0,
       "corners": null,
       "yellow": null,
       "red": null,
@@ -27276,7 +27276,8 @@
       "administrative_reason": null,
       "source": "Ekstraklasa · sitio oficial",
       "source_url": "https://ekstraklasa.org/mecz/6a33a43f-1e2d-4fc6-9265-4ea37de87140/piast-gliwice-korona-kielce/przeglad/",
-      "source_order": 127
+      "source_order": 127,
+      "ht_source": "Marcador de descanso publicado o registro completo de goles por periodo del centro oficial."
     },
     {
       "id": "poland:ek:73cf84c5-b60c-4387-8757-f5b7d7e3fad8",
