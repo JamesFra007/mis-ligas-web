@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-20T19:17:33.158368+00:00",
+  "captured_at": "2026-11-20T20:16:55.165617+00:00",
   "sources": [
     {
       "league": "spain",
@@ -9,8 +9,8 @@
       "stale": false,
       "coverage": {
         "fixtures_available": true,
-        "scheduled": 260,
-        "confirmed_upcoming": 32,
+        "scheduled": 259,
+        "confirmed_upcoming": 31,
         "warnings": []
       }
     },
@@ -53,8 +53,8 @@
         "fixtures_available": true,
         "source": "Ekstraklasa oficial",
         "matches": 306,
-        "scheduled": 181,
-        "confirmed_upcoming": 37,
+        "scheduled": 180,
+        "confirmed_upcoming": 36,
         "missing_ht": 1,
         "warnings": []
       }
@@ -27296,7 +27296,7 @@
       "round": 15,
       "scope": "all",
       "phase": "Ekstraklasa",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
@@ -37726,7 +37726,7 @@
       "round": 13,
       "scope": "first",
       "phase": "LaLiga",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
