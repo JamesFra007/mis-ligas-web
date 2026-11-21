@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-21T11:00:18.520475+00:00",
+  "captured_at": "2026-11-21T11:58:29.434030+00:00",
   "sources": [
     {
       "league": "spain",
@@ -37,7 +37,21 @@
         "fixtures_available": true,
         "scheduled": 121,
         "confirmed_upcoming": 31,
-        "warnings": [],
+        "warnings": [
+          "HT pendiente del partido 2186432: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186430: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186428: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186427: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186426: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186422: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186423: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186419: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186424: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186418: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186420: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186416: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan.",
+          "HT pendiente del partido 2186414: No fue posible conectar con la fuente de resultados. Inténtalo de nuevo; los datos guardados se conservan."
+        ],
         "source": "MLSZ",
         "matches": 198,
         "missing_ht": 0
