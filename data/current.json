@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-21T19:57:42.013589+00:00",
+  "captured_at": "2026-11-21T20:55:43.964611+00:00",
   "sources": [
     {
       "league": "spain",
@@ -9,8 +9,8 @@
       "stale": false,
       "coverage": {
         "fixtures_available": true,
-        "scheduled": 256,
-        "confirmed_upcoming": 28,
+        "scheduled": 255,
+        "confirmed_upcoming": 27,
         "warnings": []
       }
     },
@@ -3176,8 +3176,8 @@
     },
     {
       "id": "hungary:fixture:67:33586:14:328188:328181",
-      "provider_id": "fixture:67:33586:14:328188:328181",
-      "mlsz_id": null,
+      "provider_id": "mlsz:2186455",
+      "mlsz_id": "2186455",
       "fixture_key": "mlsz:67:33586:14:328188:328181",
       "home_club_id": "328188",
       "away_club_id": "328181",
@@ -3209,13 +3209,13 @@
       "administrative": false,
       "administrative_reason": null,
       "source": "MLSZ · NB I",
-      "source_url": "https://adatbank.mlsz.hu/league/67/0/33586/14.html",
+      "source_url": "https://adatbank.mlsz.hu/match/67/0/33586/14/2186455.html",
       "source_order": 82
     },
     {
       "id": "hungary:fixture:67:33586:14:328185:328190",
-      "provider_id": "fixture:67:33586:14:328185:328190",
-      "mlsz_id": null,
+      "provider_id": "mlsz:2186459",
+      "mlsz_id": "2186459",
       "fixture_key": "mlsz:67:33586:14:328185:328190",
       "home_club_id": "328185",
       "away_club_id": "328190",
@@ -3247,13 +3247,13 @@
       "administrative": false,
       "administrative_reason": null,
       "source": "MLSZ · NB I",
-      "source_url": "https://adatbank.mlsz.hu/league/67/0/33586/14.html",
+      "source_url": "https://adatbank.mlsz.hu/match/67/0/33586/14/2186459.html",
       "source_order": 83
     },
     {
       "id": "hungary:fixture:67:33586:14:328182:328186",
-      "provider_id": "fixture:67:33586:14:328182:328186",
-      "mlsz_id": null,
+      "provider_id": "mlsz:2186456",
+      "mlsz_id": "2186456",
       "fixture_key": "mlsz:67:33586:14:328182:328186",
       "home_club_id": "328182",
       "away_club_id": "328186",
@@ -3285,7 +3285,7 @@
       "administrative": false,
       "administrative_reason": null,
       "source": "MLSZ · NB I",
-      "source_url": "https://adatbank.mlsz.hu/league/67/0/33586/14.html",
+      "source_url": "https://adatbank.mlsz.hu/match/67/0/33586/14/2186456.html",
       "source_order": 84
     },
     {
@@ -37869,7 +37869,7 @@
       "round": 13,
       "scope": "first",
       "phase": "LaLiga",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
