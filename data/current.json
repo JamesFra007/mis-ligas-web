@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-21T13:14:51.362585+00:00",
+  "captured_at": "2026-11-21T14:14:32.953497+00:00",
   "sources": [
     {
       "league": "spain",
@@ -53,8 +53,8 @@
         "fixtures_available": true,
         "source": "Ekstraklasa oficial",
         "matches": 306,
-        "scheduled": 180,
-        "confirmed_upcoming": 36,
+        "scheduled": 179,
+        "confirmed_upcoming": 35,
         "missing_ht": 1,
         "warnings": []
       }
@@ -70,8 +70,8 @@
         "source": "Football-Data I1, ESPN y jornadas verificadas de BetExplorer",
         "rounds_source": "verified-season-snapshot",
         "matches": 380,
-        "scheduled": 270,
-        "confirmed_upcoming": 80,
+        "scheduled": 268,
+        "confirmed_upcoming": 78,
         "missing_ht": 0,
         "warnings": []
       }
@@ -11927,7 +11927,7 @@
       "round": 12,
       "scope": "first",
       "phase": "Serie A",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
@@ -11967,7 +11967,7 @@
       "round": 12,
       "scope": "first",
       "phase": "Serie A",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
@@ -27332,7 +27332,7 @@
       "round": 15,
       "scope": "all",
       "phase": "Ekstraklasa",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
