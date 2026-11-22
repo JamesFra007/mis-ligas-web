@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-22T14:10:36.153866+00:00",
+  "captured_at": "2026-11-22T15:00:35.936568+00:00",
   "sources": [
     {
       "league": "spain",
@@ -35,8 +35,8 @@
       "stale": false,
       "coverage": {
         "fixtures_available": true,
-        "scheduled": 118,
-        "confirmed_upcoming": 27,
+        "scheduled": 117,
+        "confirmed_upcoming": 26,
         "warnings": [],
         "source": "MLSZ",
         "matches": 198,
@@ -3194,11 +3194,11 @@
       "round": 14,
       "scope": "all",
       "phase": "NB I",
-      "status": "scheduled",
-      "ht_home": null,
-      "ht_away": null,
-      "ft_home": null,
-      "ft_away": null,
+      "status": "finished",
+      "ht_home": 0,
+      "ht_away": 0,
+      "ft_home": 0,
+      "ft_away": 0,
       "corners": null,
       "yellow": null,
       "red": null,
