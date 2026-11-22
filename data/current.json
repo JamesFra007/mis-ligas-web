@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-22T11:55:54.661382+00:00",
+  "captured_at": "2026-11-22T13:12:14.608583+00:00",
   "sources": [
     {
       "league": "spain",
@@ -9,8 +9,8 @@
       "stale": false,
       "coverage": {
         "fixtures_available": true,
-        "scheduled": 255,
-        "confirmed_upcoming": 27,
+        "scheduled": 254,
+        "confirmed_upcoming": 26,
         "warnings": []
       }
     },
@@ -36,7 +36,7 @@
       "coverage": {
         "fixtures_available": true,
         "scheduled": 118,
-        "confirmed_upcoming": 28,
+        "confirmed_upcoming": 27,
         "warnings": [],
         "source": "MLSZ",
         "matches": 198,
@@ -27440,11 +27440,11 @@
       "round": 15,
       "scope": "all",
       "phase": "Ekstraklasa",
-      "status": "live",
-      "ht_home": null,
-      "ht_away": null,
-      "ft_home": null,
-      "ft_away": null,
+      "status": "finished",
+      "ht_home": 1,
+      "ht_away": 0,
+      "ft_home": 3,
+      "ft_away": 1,
       "corners": null,
       "yellow": null,
       "red": null,
@@ -27456,7 +27456,8 @@
       "administrative_reason": null,
       "source": "Ekstraklasa · sitio oficial",
       "source_url": "https://ekstraklasa.org/mecz/7b654cb9-5edc-47c6-8dcf-b8f1ceb1ad9e/rakow-czestochowa-widzew-lodz/przeglad/",
-      "source_order": 132
+      "source_order": 132,
+      "ht_source": "Marcador de descanso publicado o registro completo de goles por periodo del centro oficial."
     },
     {
       "id": "poland:ek:2143d594-ad18-427c-b526-2e43c2fd1ea3",
@@ -37905,7 +37906,7 @@
       "round": 13,
       "scope": "first",
       "phase": "LaLiga",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
