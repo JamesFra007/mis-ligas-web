@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-23T20:35:57.967216+00:00",
+  "captured_at": "2026-11-23T21:35:03.411294+00:00",
   "sources": [
     {
       "league": "spain",
@@ -87,8 +87,8 @@
         "source": "ESPN · Primera División de Paraguay",
         "matches": 264,
         "rounds_verified": 264,
-        "scheduled": 14,
-        "confirmed_upcoming": 2,
+        "scheduled": 13,
+        "confirmed_upcoming": 1,
         "missing_ht": 0,
         "corners_missing": 0,
         "warnings": []
@@ -72388,7 +72388,7 @@
       "round": 20,
       "scope": "Clausura",
       "phase": "Fase regular",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
