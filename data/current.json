@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-23T19:47:42.215329+00:00",
+  "captured_at": "2026-11-23T20:35:57.967216+00:00",
   "sources": [
     {
       "league": "spain",
@@ -9,8 +9,8 @@
       "stale": false,
       "coverage": {
         "fixtures_available": true,
-        "scheduled": 251,
-        "confirmed_upcoming": 33,
+        "scheduled": 250,
+        "confirmed_upcoming": 32,
         "warnings": []
       }
     },
@@ -27548,11 +27548,11 @@
       "round": 15,
       "scope": "all",
       "phase": "Ekstraklasa",
-      "status": "live",
-      "ht_home": null,
-      "ht_away": null,
-      "ft_home": null,
-      "ft_away": null,
+      "status": "finished",
+      "ht_home": 1,
+      "ht_away": 1,
+      "ft_home": 2,
+      "ft_away": 1,
       "corners": null,
       "yellow": null,
       "red": null,
@@ -27564,7 +27564,8 @@
       "administrative_reason": null,
       "source": "Ekstraklasa · sitio oficial",
       "source_url": "https://ekstraklasa.org/mecz/fbc9685c-bbc3-4074-926e-6643e109b9e4/wieczysta-krakow-motor-lublin/przeglad/",
-      "source_order": 135
+      "source_order": 135,
+      "ht_source": "Marcador de descanso publicado o registro completo de goles por periodo del centro oficial."
     },
     {
       "id": "poland:ek:b103f5dd-4561-4bbd-84ec-70f601a089bc",
@@ -38048,7 +38049,7 @@
       "round": 13,
       "scope": "first",
       "phase": "LaLiga",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
