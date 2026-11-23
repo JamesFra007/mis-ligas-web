@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-23T17:42:03.954426+00:00",
+  "captured_at": "2026-11-23T18:38:16.455356+00:00",
   "sources": [
     {
       "league": "spain",
@@ -53,8 +53,8 @@
         "fixtures_available": true,
         "source": "Ekstraklasa oficial",
         "matches": 306,
-        "scheduled": 174,
-        "confirmed_upcoming": 30,
+        "scheduled": 173,
+        "confirmed_upcoming": 29,
         "missing_ht": 1,
         "warnings": []
       }
@@ -27548,7 +27548,7 @@
       "round": 15,
       "scope": "all",
       "phase": "Ekstraklasa",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
