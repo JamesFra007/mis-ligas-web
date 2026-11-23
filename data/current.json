@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-23T22:36:28.868516+00:00",
+  "captured_at": "2026-11-23T23:35:36.848338+00:00",
   "sources": [
     {
       "league": "spain",
@@ -87,8 +87,8 @@
         "source": "ESPN · Primera División de Paraguay",
         "matches": 264,
         "rounds_verified": 264,
-        "scheduled": 13,
-        "confirmed_upcoming": 1,
+        "scheduled": 12,
+        "confirmed_upcoming": 0,
         "missing_ht": 0,
         "corners_missing": 0,
         "warnings": []
@@ -72388,14 +72388,14 @@
       "round": 20,
       "scope": "Clausura",
       "phase": "Fase regular",
-      "status": "live",
-      "ht_home": null,
-      "ht_away": null,
-      "ft_home": null,
-      "ft_away": null,
-      "corners": null,
-      "corners_home": null,
-      "corners_away": null,
+      "status": "finished",
+      "ht_home": 0,
+      "ht_away": 0,
+      "ft_home": 1,
+      "ft_away": 1,
+      "corners": 12,
+      "corners_home": 5,
+      "corners_away": 7,
       "yellow": null,
       "red": null,
       "yellow_home": null,
@@ -72410,7 +72410,11 @@
       "round_source_url": "https://www.betexplorer.com/football/paraguay/copa-de-primera/fixtures/?stage=Aw9eYWFF",
       "archive_url": "https://www.betexplorer.com/football/paraguay/copa-de-primera/2-de-mayo-san-lorenzo/YomoZ42t/",
       "archive_id": "YomoZ42t",
-      "source_order": 251
+      "source_order": 251,
+      "corners_source": "ESPN · estadísticas del partido",
+      "corners_source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/summary?event=401888561",
+      "ht_source": "ESPN · registro poblado y completo de goles por periodo, contrastado con FT",
+      "ht_source_url": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/summary?event=401888561"
     },
     {
       "id": "paraguay:espn:401888562",
@@ -72429,7 +72433,7 @@
       "round": 20,
       "scope": "Clausura",
       "phase": "Fase regular",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
