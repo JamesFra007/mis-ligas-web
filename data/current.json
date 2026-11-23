@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-23T18:38:16.455356+00:00",
+  "captured_at": "2026-11-23T19:47:42.215329+00:00",
   "sources": [
     {
       "league": "spain",
@@ -70,8 +70,8 @@
         "source": "Football-Data I1, ESPN y jornadas verificadas de BetExplorer",
         "rounds_source": "verified-season-snapshot",
         "matches": 380,
-        "scheduled": 261,
-        "confirmed_upcoming": 71,
+        "scheduled": 260,
+        "confirmed_upcoming": 70,
         "missing_ht": 0,
         "warnings": []
       }
@@ -12287,7 +12287,7 @@
       "round": 12,
       "scope": "first",
       "phase": "Serie A",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
