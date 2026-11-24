@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-23T23:35:36.848338+00:00",
+  "captured_at": "2026-11-24T00:34:43.315768+00:00",
   "sources": [
     {
       "league": "spain",
@@ -12272,7 +12272,7 @@
     },
     {
       "id": "italy:espn:401875009",
-      "provider_id": "espn:401875009",
+      "provider_id": "fd:2627:Monza:Fiorentina",
       "espn_id": "401875009",
       "league": "italy",
       "season": "2026-27",
@@ -12303,8 +12303,8 @@
       "red_away": 0,
       "administrative": false,
       "administrative_reason": null,
-      "source": "ESPN · Serie A",
-      "source_url": "https://www.espn.com/soccer/match/_/gameId/401875009",
+      "source": "Football-Data · CSV I1",
+      "source_url": "https://www.football-data.co.uk/mmz4281/2627/I1.csv",
       "round_source": "BetExplorer · tabla de jornadas Serie A",
       "round_source_url": "https://www.betexplorer.com/football/italy/serie-a/fixtures/",
       "match_source_url": "https://www.betexplorer.com/football/italy/serie-a/monza-fiorentina/xQYBZbDG/",
@@ -38034,7 +38034,7 @@
     },
     {
       "id": "spain:401882802",
-      "provider_id": "espn:401882802",
+      "provider_id": "fd:2627:Levante:Elche",
       "espn_id": "401882802",
       "league": "spain",
       "season": "2026-27",
@@ -38062,7 +38062,7 @@
       "red_home": 0,
       "red_away": 0,
       "administrative": false,
-      "source": "ESPN · LaLiga",
+      "source": "Football-Data · CSV SP1",
       "source_order": 129,
       "round_source": "LaLiga · calendario oficial",
       "round_source_url": "https://apim.laliga.com/public-service/api/v1/matches?subscriptionSlug=laliga-easports-2026&week=13&limit=100&contentLanguage=es"
