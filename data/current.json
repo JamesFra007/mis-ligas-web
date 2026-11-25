@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-24T23:59:42.674250+00:00",
+  "captured_at": "2026-11-25T01:34:47.417832+00:00",
   "sources": [
     {
       "league": "spain",
@@ -22,8 +22,8 @@
       "stale": false,
       "coverage": {
         "fixtures_available": true,
-        "scheduled": 3,
-        "confirmed_upcoming": 3,
+        "scheduled": 2,
+        "confirmed_upcoming": 2,
         "warnings": []
       }
     },
@@ -60377,12 +60377,12 @@
       "round": null,
       "scope": "Temporada",
       "phase": "Liga BetPlay",
-      "status": "live",
-      "ht_home": null,
-      "ht_away": null,
-      "ft_home": null,
-      "ft_away": null,
-      "corners": null,
+      "status": "finished",
+      "ht_home": 2,
+      "ht_away": 1,
+      "ft_home": 4,
+      "ft_away": 1,
+      "corners": 10,
       "yellow": null,
       "red": null,
       "yellow_home": null,
@@ -60410,7 +60410,7 @@
       "round": null,
       "scope": "Temporada",
       "phase": "Liga BetPlay",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
