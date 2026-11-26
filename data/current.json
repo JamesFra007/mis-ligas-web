@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-26T14:30:09.516028+00:00",
+  "captured_at": "2026-11-26T15:42:56.265291+00:00",
   "sources": [
     {
       "league": "spain",
@@ -3290,8 +3290,8 @@
     },
     {
       "id": "hungary:fixture:67:33586:15:328183:328190",
-      "provider_id": "fixture:67:33586:15:328183:328190",
-      "mlsz_id": null,
+      "provider_id": "mlsz:2186461",
+      "mlsz_id": "2186461",
       "fixture_key": "mlsz:67:33586:15:328183:328190",
       "home_club_id": "328183",
       "away_club_id": "328190",
@@ -3323,7 +3323,7 @@
       "administrative": false,
       "administrative_reason": null,
       "source": "MLSZ · NB I",
-      "source_url": "https://adatbank.mlsz.hu/league/67/0/33586/15.html",
+      "source_url": "https://adatbank.mlsz.hu/match/67/0/33586/15/2186461.html",
       "source_order": 85
     },
     {
