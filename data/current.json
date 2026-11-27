@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-27T19:45:01.061823+00:00",
+  "captured_at": "2026-11-27T20:40:00.418564+00:00",
   "sources": [
     {
       "league": "spain",
@@ -9,8 +9,8 @@
       "stale": false,
       "coverage": {
         "fixtures_available": true,
-        "scheduled": 251,
-        "confirmed_upcoming": 33,
+        "scheduled": 250,
+        "confirmed_upcoming": 32,
         "warnings": []
       }
     },
@@ -70,8 +70,8 @@
         "source": "Football-Data I1, ESPN y jornadas verificadas de BetExplorer",
         "rounds_source": "verified-season-snapshot",
         "matches": 380,
-        "scheduled": 260,
-        "confirmed_upcoming": 70,
+        "scheduled": 259,
+        "confirmed_upcoming": 69,
         "missing_ht": 0,
         "warnings": []
       }
@@ -87,8 +87,8 @@
         "source": "ESPN · Primera División de Paraguay",
         "matches": 264,
         "rounds_verified": 264,
-        "scheduled": 6,
-        "confirmed_upcoming": 6,
+        "scheduled": 5,
+        "confirmed_upcoming": 5,
         "missing_ht": 0,
         "corners_missing": 0,
         "warnings": []
@@ -12327,7 +12327,7 @@
       "round": 13,
       "scope": "first",
       "phase": "Serie A",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
@@ -38085,7 +38085,7 @@
       "round": 14,
       "scope": "first",
       "phase": "LaLiga",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
@@ -72907,7 +72907,7 @@
       "round": 21,
       "scope": "Clausura",
       "phase": "Fase regular",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
