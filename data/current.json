@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-27T17:39:09.391294+00:00",
+  "captured_at": "2026-11-27T18:35:51.696521+00:00",
   "sources": [
     {
       "league": "spain",
@@ -36,7 +36,7 @@
       "coverage": {
         "fixtures_available": true,
         "scheduled": 115,
-        "confirmed_upcoming": 25,
+        "confirmed_upcoming": 24,
         "warnings": [],
         "source": "MLSZ",
         "matches": 198,
