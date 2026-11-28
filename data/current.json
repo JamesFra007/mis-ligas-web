@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-28T12:00:10.841377+00:00",
+  "captured_at": "2026-11-28T13:17:05.456189+00:00",
   "sources": [
     {
       "league": "spain",
@@ -9,8 +9,8 @@
       "stale": false,
       "coverage": {
         "fixtures_available": true,
-        "scheduled": 250,
-        "confirmed_upcoming": 32,
+        "scheduled": 249,
+        "confirmed_upcoming": 31,
         "warnings": []
       }
     },
@@ -36,7 +36,7 @@
       "coverage": {
         "fixtures_available": true,
         "scheduled": 114,
-        "confirmed_upcoming": 24,
+        "confirmed_upcoming": 23,
         "warnings": [],
         "source": "MLSZ",
         "matches": 198,
@@ -38121,7 +38121,7 @@
       "round": 14,
       "scope": "first",
       "phase": "LaLiga",
-      "status": "scheduled",
+      "status": "live",
       "ht_home": null,
       "ht_away": null,
       "ft_home": null,
